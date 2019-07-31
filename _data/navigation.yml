@@ -32,3 +32,20 @@ header:
       ko      : &KO       소개
       ko-KR   : *KO
     url: /about.html
+
+  - titles:
+      en      : &EN       Resource_set
+      en-GB   : *EN
+      en-US   : *EN
+      en-CA   : *EN
+      en-AU   : *EN
+      zh-Hans : &ZH_HANS  资源集
+      zh      : *ZH_HANS
+      zh-CN   : *ZH_HANS
+      zh-SG   : *ZH_HANS
+      zh-Hant : &ZH_HANT  資源集
+      zh-TW   : *ZH_HANT
+      zh-HK   : *ZH_HANT
+      ko      : &KO       리소스_세트
+      ko-KR   : *KO
+    url: /about.html
