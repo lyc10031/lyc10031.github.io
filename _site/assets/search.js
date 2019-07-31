@@ -1,1 +1,0 @@
-window.TEXT_SEARCH_DATA={'posts':[{'title':"Post with Header Image",'url':"/2018/06/01/header-image.html"},{'title':"Welcome",'url':"/2018/07/01/welcome.html"},{'title':"在使用golang时常见的错误",'url':"/2019/07/30/go-blog2.html"},{'title':"Golang 数据类型的转换",'url':"/2019/07/30/Go1.html"}]};
