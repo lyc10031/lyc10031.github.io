@@ -48,4 +48,4 @@ header:
       zh-HK   : *ZH_HANT
       ko      : &KO       리소스_세트
       ko-KR   : *KO
-    url: /about.html
+    url: /resource-set.html
