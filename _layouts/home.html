@@ -1,5 +1,5 @@
 ---
-layout: articles
+<!-- layout: articles
 titles:
   en      : &EN       Home
   en-GB   : *EN
@@ -15,14 +15,40 @@ titles:
   zh-HK   : *ZH_HANT
   ko      : &KO       홈
   ko-KR   : *KO
-show_title: false
+show_title: true -->
+<!-- articles:
+  data_source: paginator.posts
+  article_type: BlogPosting
+  show_cover: true
+  show_excerpt: true
+  show_readmore: true
+  show_info: true -->
+
+
+layout: articles
+title: 浮名浮利，虚苦劳神。叹隙中驹，石中火，梦中身。——苏轼《行香子·述怀》
+<!-- mode: immersive -->
+
+
+header:
+  theme: blue
+  background: 'linear-gradient(135deg, rgb(34, 139, 87), rgb(139, 34, 139))'
+
+article_header:
+  type: overlay
+  theme: dark
+  background_color: '#203028'
+  background_image:
+    gradient: 'linear-gradient(135deg, rgba(34, 139, 87 , .4), rgba(139, 34, 139, .4))'
+
+
 articles:
   data_source: paginator.posts
   article_type: BlogPosting
-  show_cover: false
-  show_excerpt: true
-  show_readmore: true
-  show_info: true
+  show_cover: true
+  show_excerpt: true <!--显示文章部分信息-->
+  show_readmore: true <!--显示《阅读更多》-->
+  show_info: true <!--显示文章标签-->
 ---
 <div class="layout--home">
   {%- include paginator.html -%}
