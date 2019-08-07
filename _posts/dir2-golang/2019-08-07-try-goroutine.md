@@ -12,35 +12,36 @@ aside:
 ## goroutine是Go并行设计的核心。
 
 goroutine说到底其实就是协程，但是它比线程更小，十几个goroutine可能体现在底层就是五六个线程，Go语言内部帮你实现了这些goroutine之间的内存共享。执行goroutine只需极少的栈内存 *(大概是4~5KB)* ，当然会根据相应的数据伸缩。也正因为如此，可同时运行成千上万个并发任务。*goroutine比thread更易用、更高效、更轻便。*
-<!-- /{% highlight golang linenos%} -->
-<!-- {:.error} -->
+<!-- {% highlight golang linenos%} -->
+<!-- {% endhighlight %} -->
 
 goroutine通过go关键字实现了，其实就是一个普通的函数。
 通过关键字go就启动了一个goroutine
-/{% highlight golang linenos%} -->
+
+{% highlight golang linenos%} -->
 go hello(a, b, c)
-{:.error}
+{% endhighlight %}
 
 ## goroutine 的设计要遵循：不通过共享来通信，而是通过通信来共享。
 
 goroutine 通过channel 来仅需信息的共享。channel可以与Unix shell 中的双向管道做类比：可以通过它发送或者接收值。这些值只能是特定的类型：channel类型。定义一个channel时，也需要定义发送到channel的值的类型。注意，必须*使用make 创建channel*创建并初始化：
 
-/{% highlight golang linenos%}
+{% highlight golang linenos%}
 ci := make(chan int)
 cs := make(chan string)
 cf := make(chan interface{})
-{:.error}
+{% endhighlight %}
 
 ### channel通过操作符<-来接收和发送数据
 
-/{% highlight golang linenos%}
+{% highlight golang linenos%}
 ch <- v    // 发送v到channel ch.
 v := <-ch  // 从ch中接收数据，并赋值给v
-{:.error}
+{% endhighlight %}
 
 #### 例1、
 
-/{% highlight golang linenos%}
+{% highlight golang linenos%}
 func test1() {
 	a := []int{7, 2, 8, -9, 4, 0}
 
@@ -59,7 +60,7 @@ func sum(a []int, c chan int) {
 	}
 	c <- total
 }
-{:.error}
+{% endhighlight %}
 默认情况下，channel接收和发送数据都是阻塞的，除非另一端已经准备好，这样就使得Goroutines同步变的更加的简单，而不需要显式的lock。所谓阻塞，也就是如果读取（value := <-ch）它将会被阻塞，直到有数据接收。其次，任何发送（ch<-5）将会被阻塞，直到数据被读出。无缓冲channel是在多个goroutine之间同步很棒的工具.
 
 ### 带缓存的channels Buffered Channels
@@ -67,7 +68,7 @@ func sum(a []int, c chan int) {
 可以控制channel能存储的元素数量
 当写入的数量超过缓存数量时 代码会阻塞，直到其他goroutine从channel 中读取一些元素，腾出空间。
 #### 例2、
-/{% highlight golang linenos%}
+{% highlight golang linenos%}
 func test1() {
 	// channel with buffered
 	c := make(chan int, 3) //change to 2 will put painc: "fatal error: all goroutines are asleep - deadlock!"
@@ -78,11 +79,11 @@ func test1() {
 	fmt.Println(<-c)
 	fmt.Println(<-c)
 }
-{:.error}
+{% endhighlight %}
 上面的例子中重复读取了多次，比较啰嗦。可以通过range，像操作slice或者map一样操作缓存类型的channel，请看下面的例子
 
 #### 例3、
-/{% highlight golang linenos%}
+{% highlight golang linenos%}
 func fibonacci() {
 	/*
 		for i := range c能够不断的读取channel里面的数据，直到该channel被显式的关闭。上面代码我们看到可以显式的关闭channel，生产者通过内置函数close关闭channel。
@@ -107,12 +108,12 @@ func fibonacci() {
 		fmt.Println(i)
 	}
 }
-{:.error}
+{% endhighlight %}
 
 ### 使用select操作多个channel
 
 通过select可以监听channel上的数据流动。select默认是阻塞的，只有当监听的channel中有发送或接收可以进行时才会运行，当多个channel都准备好的时候，select是随机的选择一个执行的。
-/{% highlight golang linenos%}
+{% highlight golang linenos%}
 package main
 
 import (
@@ -144,23 +145,24 @@ func fibonacci(c, quit chan int) {
 		}
 	}
 }
-
-{:.error}
+{% endhighlight %}
 
 select还有default 语法，select其实就是类似switch的功能，default就是当监听的channel都没有准备好的时候，默认执行的（select不再阻塞等待channel）。
-/{% highlight golang linenos%}
+
+{% highlight golang linenos%}
 select {
 case i := <-c:
 	// use i
 default:
 	// 当c阻塞的时候执行这里
 }
-{:.error}
+{% endhighlight %}
 
 ### channel超时用法
 
 有时候会出现goroutine阻塞的情况，那么我们如何避免整个程序进入阻塞的情况呢？我们可以利用select来设置超时，通过如下的方式实现：
-/{% highlight golang linenos%}
+
+{% highlight golang linenos%}
 func main() {
 	c := make(chan int)
 	o := make(chan bool)
@@ -178,18 +180,18 @@ func main() {
 	}()
 	<- o
 }
-{:.error}
+{% endhighlight %}
 
-## runtime goroutine
+## runtime goroutine -->
 
 runtime包中有几个处理goroutine的函数：
-    _ Goexit
-        退出当前执行的goroutine，但是defer函数还会继续调用
-    _ Gosched
-        让出当前goroutine的执行权限，调度器安排其他等待的任务运行，并在下次某个时候从该位置恢复执行。
-    _ NumCPU
-        返回 CPU 核数量
-    _ NumGoroutine
-        返回正在执行和排队的任务总数
-    _ GOMAXPROCS
-        用来设置可以并行计算的CPU核数的最大值，并返回之前的值。
+    > Goexit 
+        >> 退出当前执行的goroutine，但是defer函数还会继续调用
+    > Gosched 
+        >> 让出当前goroutine的执行权限，调度器安排其他等待的任务运行，并在下次某个时候从该位置恢复执行。
+    > NumCPU
+        >> 返回 CPU 核数量
+    > NumGoroutine 
+        >> 返回正在执行和排队的任务总数
+    > GOMAXPROCS 
+        >> 用来设置可以并行计算的CPU核数的最大值，并返回之前的值。 
