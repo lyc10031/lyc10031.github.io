@@ -6,7 +6,6 @@ date: 2019-08-07 07:58:05 +0800
 aside:
   toc: true
 ---
-
 # 学习下goroutine的使用方法
 
 ## goroutine是Go并行设计的核心。
@@ -202,3 +201,24 @@ func main() {
 + GOMAXPROCS 
 
     用来设置可以并行计算的CPU核数的最大值，并返回之前的值。 
+
+
+<!-- <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>  -->
+
+
+ <!-- <span id="busuanzi_container_site_pv">
+    本站总访问量<span id="busuanzi_value_site_pv"></span>次
+</span>
+
+ <span id="busuanzi_container_site_uv">
+  本站访客数<span id="busuanzi_value_site_uv"></span>人次
+</span>
+
+ <span id="busuanzi_container_page_pv">
+  本文总阅读量<span id="busuanzi_value_page_pv"></span>次
+</span> -->
+
+
+<script src="https://jerry-cdn.b0.upaiyun.com/hit-kounter/hit-kounter-0.1.1.js"></script>
+
+浏览量：<span data-hk-page="current"> - </span>次<span class="pause"> | </span>
