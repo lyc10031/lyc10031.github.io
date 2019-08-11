@@ -235,13 +235,18 @@ func f(i int, wg *sync.WaitGroup) {
 }
 {% endhighlight %}
 
-### 关于WaitGroup.Wait()与timeout
+## 关于WaitGroup.Wait()与timeout
+See **Timeout for WaitGroup.Wait()** [stackoverflow](https://stackoverflow.com/questions/32840687/timeout-for-waitgroup-wait)
+
 Mostly your solution you posted [below](https://stackoverflow.com/a/32840688/1705598) is as good as it can get. Couple of tips to improve it:
 
-    Alternatively you may close the channel to signal completion instead of sending a value on it, a receive operation on a closed channel can always proceed immediately.
-    And it's better to use defer statement to signal completion, it is executed even if a function terminates abruptly.
-    Also if there is only one "job" to wait for, you can completely omit the WaitGroup and just send a value or close the channel when job is complete (the same channel you use in your select statement).
-    Specifying 1 second duration is as simple as: timeout := time.Second. Specifying 2 seconds for example is: timeout := 2 * time.Second. You don't need the conversion, time.Second is already of type time.Duration, multiplying it with an untyped constant like 2 will also yield a value of type time.Duration.
++ Alternatively you may close the channel to signal completion instead of sending a value on it, a receive operation on a closed channel can always proceed immediately.
+
++ And it's better to use defer statement to signal completion, it is executed even if a function terminates abruptly.
+
++ Also if there is only one "job" to wait for, you can completely omit the WaitGroup and just send a value or close the channel when job is complete (the same channel you use in your select statement).
+
++ Specifying 1 second duration is as simple as: timeout := time.Second. Specifying 2 seconds for example is: timeout := 2 * time.Second. You don't need the conversion, time.Second is already of type time.Duration, multiplying it with an untyped constant like 2 will also yield a value of type time.Duration.
 
 I would also create a helper / utility function wrapping this functionality. Note that WaitGroup must be passed as a pointer else the copy will not get "notified" of the WaitGroup.Done() calls. Something like:
 

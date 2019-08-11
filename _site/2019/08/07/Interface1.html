@@ -539,7 +539,7 @@ Go通过interface实现了duck-typing:即”当看到一只鸟走起来像鸭子
 	<span class="n">wc</span><span class="o">.</span><span class="n">Write</span><span class="p">([]</span><span class="kt">byte</span><span class="p">(</span><span class="s">"hello youtbube listeners this is a test.."</span><span class="p">))</span>
 	<span class="n">wc</span><span class="o">.</span><span class="n">Close</span><span class="p">()</span>
 
-	<span class="n">r</span><span class="p">,</span> <span class="n">ok</span> <span class="o">:=</span> <span class="n">wc</span><span class="o">.</span><span class="p">(</span><span class="n">io</span><span class="o">.</span><span class="n">Reader</span><span class="p">)</span> <span class="c">// if you not sure you can ues some interface </span>
+	<span class="n">r</span><span class="p">,</span> <span class="n">ok</span> <span class="o">:=</span> <span class="n">wc</span><span class="o">.</span><span class="p">(</span><span class="n">io</span><span class="o">.</span><span class="n">Reader</span><span class="p">)</span> <span class="c">// 测试wc是否实现了io.Reader interface内所有的method</span>
 	<span class="k">if</span> <span class="n">ok</span> <span class="p">{</span>
 		<span class="n">fmt</span><span class="o">.</span><span class="n">Println</span><span class="p">(</span><span class="n">r</span><span class="p">)</span>
 
