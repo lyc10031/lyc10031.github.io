@@ -33,6 +33,10 @@
 <lastmod>2019-08-07T07:58:05+08:00</lastmod>
 </url>
 <url>
+<loc>http://172.16.80.32:8080/2019/08/07/Interface1.html</loc>
+<lastmod>2019-08-07T07:58:05+08:00</lastmod>
+</url>
+<url>
 <loc>http://172.16.80.32:8080/about.html</loc>
 </url>
 <url>
@@ -43,5 +47,8 @@
 </url>
 <url>
 <loc>http://172.16.80.32:8080/resource-set.html</loc>
+</url>
+<url>
+<loc>http://172.16.80.32:8080/page2/</loc>
 </url>
 </urlset>
