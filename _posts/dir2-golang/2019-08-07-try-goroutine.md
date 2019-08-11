@@ -179,6 +179,97 @@ func main() {
 }
 {% endhighlight %}
 
+### WaitGroup和Mutex
+
+{% highlight golang linenos%}
+package main
+
+import (
+	"fmt"
+	"sync"
+)
+
+var wg = sync.WaitGroup{}
+var m = sync.Mutex{}
+var conunt = 0
+
+func main() {
+	for i := 0; i <= 10; i++ {
+		wg.Add(2)
+		m.Lock() // 加锁
+		go sayhi()
+		m.Lock() // 加锁
+		go increment()
+	}
+	wg.Wait() // 等待goroutine运行完毕
+}
+
+func sayhi() {
+	fmt.Printf("Hello #%v\n", conunt)
+	m.Unlock() // 解锁
+	wg.Done()
+}
+
+func increment() {
+	conunt++
+	m.Unlock() // 解锁
+	wg.Done()
+}
+
+{% endhighlight %}
+Mutex 加锁后 将会按照顺序输出信息，不加锁会乱序输出。
+{% highlight golang linenos%}
+func main() {
+    wg := sync.WaitGroup{}
+    wg.Add(100)
+    for i := 0; i < 100; i++ {
+        go f(i, &wg)
+    }
+    wg.Wait()
+}
+
+// 一定要通过指针传值，不然进程会进入死锁状态
+func f(i int, wg *sync.WaitGroup) { 
+    fmt.Println(i)
+    wg.Done()
+}
+{% endhighlight %}
+
+### 关于WaitGroup.Wait()与timeout
+Mostly your solution you posted [below](https://stackoverflow.com/a/32840688/1705598) is as good as it can get. Couple of tips to improve it:
+
+    Alternatively you may close the channel to signal completion instead of sending a value on it, a receive operation on a closed channel can always proceed immediately.
+    And it's better to use defer statement to signal completion, it is executed even if a function terminates abruptly.
+    Also if there is only one "job" to wait for, you can completely omit the WaitGroup and just send a value or close the channel when job is complete (the same channel you use in your select statement).
+    Specifying 1 second duration is as simple as: timeout := time.Second. Specifying 2 seconds for example is: timeout := 2 * time.Second. You don't need the conversion, time.Second is already of type time.Duration, multiplying it with an untyped constant like 2 will also yield a value of type time.Duration.
+
+I would also create a helper / utility function wrapping this functionality. Note that WaitGroup must be passed as a pointer else the copy will not get "notified" of the WaitGroup.Done() calls. Something like:
+
+// waitTimeout waits for the waitgroup for the specified max timeout.
+// Returns true if waiting timed out.
+{% highlight golang linenos%}
+func waitTimeout(wg *sync.WaitGroup, timeout time.Duration) bool {
+    c := make(chan struct{})
+    go func() {
+        defer close(c)
+        wg.Wait()
+    }()
+    select {
+    case <-c:
+        return false // completed normally
+    case <-time.After(timeout):
+        return true // timed out
+    }
+}
+{% endhighlight %}
+Using it:
+{% highlight golang linenos%}
+if waitTimeout(&wg, time.Second) {
+    fmt.Println("Timed out waiting for wait group")
+} else {
+    fmt.Println("Wait group finished")
+}
+{% endhighlight %}
 ## runtime goroutine
 
 ### runtime包中有几个处理goroutine的函数：
