@@ -6,8 +6,6 @@ category: Document
 tags: 
 - GO-lang
 - channel
-aside:
-  toc: true
 ---
 
 
