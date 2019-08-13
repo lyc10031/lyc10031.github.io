@@ -302,6 +302,51 @@
 <div class="layout--articles">
 <div class="article-list items items--divided">
 <article class="item" itemscope itemtype="http://schema.org/BlogPosting"><div class="item__content">
+          <header><a href="/2019/07/31/go-blog2.html"><h2 itemprop="headline" class="item__header">在使用golang时常见的错误</h2></a></header>
+          <div class="item__description">
+<div class="article__content" itemprop="description articleBody">1 在循环迭代器变量上使用goroutines
+
+错误的写法：
+
+1
+2
+3
+4
+5
+for _, val := range values {
+  go func() {
+		fmt.Println(val)
+	}()
+}
+
+
+上面的for循环可能无法达到您的预期，因为它们的val变量实际上是一个单独的变量，它接受每个slice元素的值。 因为闭包只绑定到那个变量，所以很有可能当你运行这个代码时，你会看到每次迭代打印的最后一个元素而不是序列中的每个值，因为goroutines可能不会开始执行，直到 循环之后。
+
+编写闭包循环正确的写法应该是:
+
+1
+2
+3
+4
+5
+for _, val := range values {
+  go func(val interface{}) {
+		f...</div>
+<p><a href="/2019/07/31/go-blog2.html">阅读更多</a></p>
+</div>
+<div class="article__info clearfix">
+<ul class="left-col menu"><li>
+              <a class="button button--secondary button--pill button--sm" href="/archive.html?tag=GO-lang">GO-lang</a>
+            </li></ul>
+<ul class="right-col menu"><li>
+<i class="far fa-calendar-alt"></i> <span>2019年 07月31日</span>
+            </li></ul>
+</div>
+<meta itemprop="author" content="雷永成|Ray_YC">
+<meta itemprop="datePublished" content="2019-07-31T04:13:13+08:00">
+    <meta itemprop="keywords" content="GO-lang">
+</div>
+      </article><article class="item" itemscope itemtype="http://schema.org/BlogPosting"><div class="item__content">
           <header><a href="/2019/07/31/go-blog1.html"><h2 itemprop="headline" class="item__header">Golang 数据类型的转换</h2></a></header>
           <div class="item__description">
 <div class="article__content" itemprop="description articleBody">1、基本数据类型之间的转换
@@ -387,7 +432,7 @@ You may want to config the site or writing a post next. Please feel free to crea
 </div>
 </div>
 <div class="layout--home"><div class="pagination">
-<p>共计 11 篇文章，2 页。</p>
+<p>共计 12 篇文章，2 页。</p>
     <div class="pagination__menu">
       <ul class="menu menu--nowrap">
 <li><a class="button button--secondary button--circle" href="/">
