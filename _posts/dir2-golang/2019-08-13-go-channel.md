@@ -17,7 +17,7 @@ tags:
 
 因为太长了，YouTube不能自动生成字幕。啃的生肉，有理解不恰当地方的欢迎指正
 
-废话不多说直接上代码:
+### 废话不多说直接上代码:
 {% highlight golang linenos%}
 package main
 
@@ -70,7 +70,7 @@ func logger() {
 {% endhighlight %}
 
 
-两种从channel中获取数据的方法:
+### 两种从channel中获取数据的方法:
 {% highlight golang linenos%}
 
 package main
@@ -112,3 +112,5 @@ func main() {
 }
 
 {% endhighlight %}
+
+<a href="javascript:scroll(0,0)">-- 返回顶部 --</a>
