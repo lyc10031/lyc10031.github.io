@@ -4,6 +4,7 @@ title: Learn Go channel
 tags: 
 - GO-lang
 - channel
+key: 12
 category: Document
 aside:
   toc: true
