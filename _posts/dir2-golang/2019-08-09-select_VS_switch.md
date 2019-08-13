@@ -3,6 +3,7 @@ layout: article
 title: Go switch VS select
 tags: GO-lang
 key: switch-select
+category: Document
 aside:
   toc: true
 ---
