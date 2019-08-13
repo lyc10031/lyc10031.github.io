@@ -78,7 +78,7 @@
 
     {%- if _author.zhihu -%}
       <li title="{{ _locale_string_follow | replace: '[NAME]', 'Zhihu' }}">
-        <a class="button button--circle zhihu-button" itemprop="sameAs" href="https://www.zhihu.com/people/{{ _author.zhihu }}" target="_blank">
+        <a class="button button--circle zhihu-button" itemprop="sameAs" href="https://www.zhihu.com/people/{{ _author.zhihu }}/activities" target="_blank">
           <div class="icon">{%- include svg/icon/social/zhihu.svg -%}</div>
         </a>
       </li>
