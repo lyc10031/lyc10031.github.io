@@ -236,7 +236,7 @@ func f(i int, wg *sync.WaitGroup) {
 {% endhighlight %}
 
 ## 关于WaitGroup.Wait()与timeout
-See **Timeout for WaitGroup.Wait()** [stackoverflow](https://stackoverflow.com/questions/32840687/timeout-for-waitgroup-wait)
+See ***Timeout for WaitGroup.Wait()*** [stackoverflow](https://stackoverflow.com/questions/32840687/timeout-for-waitgroup-wait)
 
 Mostly your solution you posted [below](https://stackoverflow.com/a/32840688/1705598) is as good as it can get. Couple of tips to improve it:
 
