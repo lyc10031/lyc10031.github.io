@@ -2,7 +2,7 @@
 layout: article
 title: Go switch VS select
 tags: GO-lang
-date: 2019-08-07 07:58:05 +0800
+key: switch-select
 aside:
   toc: true
 ---
