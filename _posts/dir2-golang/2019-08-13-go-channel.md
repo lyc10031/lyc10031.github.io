@@ -1,14 +1,15 @@
 ---
 layout: article
 title: Learn Go channel
+key: 12
+category: Document
 tags: 
 - GO-lang
 - channel
-key: 12
-category: Document
 aside:
   toc: true
 ---
+
 
 ## 学习Go channels 的记录
 最近在YouTube上看一个GO 的学习视频。记录下学习过程的知识点。
