@@ -138,3 +138,5 @@ func main() {
     }
 }
 {% endhighlight %}
+
+<a href="javascript:scroll(0,0)">-- 返回顶部 --</a>

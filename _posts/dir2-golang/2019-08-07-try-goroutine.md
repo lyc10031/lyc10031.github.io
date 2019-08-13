@@ -2,7 +2,7 @@
 layout: article
 title: goroutine学习记录
 tags: GO-lang
-date: 2019-08-07 07:58:05 +0800
+key: groutine1
 aside:
   toc: true
 ---
@@ -297,6 +297,9 @@ if waitTimeout(&wg, time.Second) {
 + GOMAXPROCS 
 
     用来设置可以并行计算的CPU核数的最大值，并返回之前的值。 
+
+
+<a href="javascript:scroll(0,0)">-- 返回顶部 --</a>
 
 
 <!-- <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>  -->
