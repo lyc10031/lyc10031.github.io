@@ -1,7 +1,7 @@
 ---
 layout: article
 title: Learn Go channel
-key: 12
+key: channel-12
 category: Document
 tags: 
 - GO-lang
