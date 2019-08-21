@@ -1,5 +1,222 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="zh-CN"><generator uri="https://jekyllrb.com/" version="3.8.6">Jekyll</generator><link href="http://172.16.80.32:8080/feed.xml" rel="self" type="application/atom+xml" /><link href="http://172.16.80.32:8080/" rel="alternate" type="text/html" hreflang="zh-CN" /><updated>2019-08-13T17:41:50+08:00</updated><id>http://172.16.80.32:8080/</id><title type="html">Ray_YC’s Blog</title><subtitle>欢迎访问我的博客。 浮名浮利，虚苦劳神。叹隙中驹，石中火，梦中身。——苏轼《行香子·述怀》
-</subtitle><author><name>雷永成|Ray_YC</name><email>lyc10031@126.com</email></author><entry><title type="html">Learn Go Interface</title><link href="http://172.16.80.32:8080/2019/08/13/interface1.html" rel="alternate" type="text/html" title="Learn Go Interface" /><published>2019-08-13T00:00:00+08:00</published><updated>2019-08-13T00:00:00+08:00</updated><id>http://172.16.80.32:8080/2019/08/13/interface1</id><content type="html" xml:base="http://172.16.80.32:8080/2019/08/13/interface1.html">&lt;h2 id=&quot;go的interface-是一组method方法集只要一个非interface类型数据实现了集合内的方法就能使用该interface&quot;&gt;Go的Interface 是一组method（方法）集，只要一个非interface类型数据实现了集合内的方法就能使用该interface&lt;/h2&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="zh-CN"><generator uri="https://jekyllrb.com/" version="3.8.6">Jekyll</generator><link href="http://172.16.80.32:8080/feed.xml" rel="self" type="application/atom+xml" /><link href="http://172.16.80.32:8080/" rel="alternate" type="text/html" hreflang="zh-CN" /><updated>2019-08-21T11:32:20+08:00</updated><id>http://172.16.80.32:8080/</id><title type="html">Ray_YC’s Blog</title><subtitle>欢迎访问我的博客。 浮名浮利，虚苦劳神。叹隙中驹，石中火，梦中身。——苏轼《行香子·述怀》
+</subtitle><author><name>雷永成|Ray_YC</name><email>lyc10031@126.com</email></author><entry><title type="html">golang 字符串操作</title><link href="http://172.16.80.32:8080/2019/08/21/Strings.html" rel="alternate" type="text/html" title="golang 字符串操作" /><published>2019-08-21T00:00:00+08:00</published><updated>2019-08-21T00:00:00+08:00</updated><id>http://172.16.80.32:8080/2019/08/21/Strings</id><content type="html" xml:base="http://172.16.80.32:8080/2019/08/21/Strings.html">&lt;h2 id=&quot;go-字符串处理的常用函数&quot;&gt;Go 字符串处理的常用函数&lt;/h2&gt;
+
+&lt;p&gt;Go标准库中的strings和strconv两个包里面有一些最常用的字符串操作函数&lt;/p&gt;
+
+&lt;h3 id=&quot;strings-包中的常用函数&quot;&gt;strings 包中的常用函数&lt;/h3&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://go-zh.org/pkg/strings/&quot;&gt;strings官方文档&lt;/a&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;func-containsssubstr-string-bool&quot;&gt;func Contains(s,substr string) bool&lt;/h4&gt;
+
+&lt;p&gt;字符串s中是否包含 substr 返回bool值&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-golang&quot; data-lang=&quot;golang&quot;&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+3
+4
+5
+6
+7
+8
+9
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;n&quot;&gt;fmt&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Println&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;strings&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Contains&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;seafood&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;foo&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;fmt&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Println&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;strings&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Contains&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;seafood&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;bar&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;fmt&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Println&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;strings&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Contains&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;seafood&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;fmt&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Println&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;strings&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Contains&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;//Output:&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;//true&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;//false&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;//true&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;//true&lt;/span&gt;
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;h4 id=&quot;func-joina-string-sep-string-string&quot;&gt;func Join(a []string, sep string) string&lt;/h4&gt;
+
+&lt;p&gt;字符串链接，把slice a通过sep链接起来&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-golang&quot; data-lang=&quot;golang&quot;&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+3
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;n&quot;&gt;s&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;:=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[]&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;string&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;foo&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;bar&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;baz&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;fmt&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Println&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;strings&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Join&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;, &quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;//Output:foo, bar, baz	&lt;/span&gt;
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;h4 id=&quot;func-indexs-sep-string-int&quot;&gt;func Index(s, sep string) int&lt;/h4&gt;
+
+&lt;p&gt;在字符串s中查找sep所在的位置，返回位置值，找不到返回-1&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-golang&quot; data-lang=&quot;golang&quot;&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+3
+4
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;n&quot;&gt;fmt&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Println&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;strings&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Index&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;chicken&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;ken&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;fmt&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Println&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;strings&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Index&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;chicken&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;dmr&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;//Output:4&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;//-1&lt;/span&gt;
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;h4 id=&quot;func-repeats-string-count-int-string&quot;&gt;func Repeat(s string, count int) string&lt;/h4&gt;
+
+&lt;p&gt;重复s字符串count次，最后返回重复的字符串&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-golang&quot; data-lang=&quot;golang&quot;&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;n&quot;&gt;fmt&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Println&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;ba&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;strings&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Repeat&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;na&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;//Output:banana&lt;/span&gt;
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;h4 id=&quot;func-replaces-old-new-string-n-int-string&quot;&gt;func Replace(s, old, new string, n int) string&lt;/h4&gt;
+
+&lt;p&gt;在s字符串中，把old字符串替换为new字符串，n表示替换的次数，小于0表示全部替换&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-golang&quot; data-lang=&quot;golang&quot;&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+3
+4
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;n&quot;&gt;fmt&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Println&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;strings&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Replace&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;oink oink oink&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;k&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;ky&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;fmt&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Println&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;strings&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Replace&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;oink oink oink&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;oink&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;moo&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;//Output:oinky oinky oink&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;//moo moo moo&lt;/span&gt;
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;h4 id=&quot;func-splits-sep-string-string&quot;&gt;func Split(s, sep string) []string&lt;/h4&gt;
+
+&lt;p&gt;把s字符串按照sep分割，返回slice&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-golang&quot; data-lang=&quot;golang&quot;&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+3
+4
+5
+6
+7
+8
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;n&quot;&gt;fmt&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Printf&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;%q&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\n&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;strings&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Split&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;a,b,c&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;,&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;fmt&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Printf&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;%q&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\n&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;strings&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Split&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;a man a plan a canal panama&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;a &quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;fmt&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Printf&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;%q&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\n&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;strings&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Split&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot; xyz &quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;fmt&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Printf&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;%q&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\n&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;strings&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Split&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;Bernardo O'Higgins&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;//Output:[&quot;a&quot; &quot;b&quot; &quot;c&quot;]&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;//[&quot;&quot; &quot;man &quot; &quot;plan &quot; &quot;canal panama&quot;]&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;//[&quot; &quot; &quot;x&quot; &quot;y&quot; &quot;z&quot; &quot; &quot;]&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;//[&quot;&quot;]&lt;/span&gt;
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;h4 id=&quot;func-trims-string-cutset-string-string&quot;&gt;func Trim(s string, cutset string) string&lt;/h4&gt;
+
+&lt;p&gt;在s字符串的头部和尾部去除cutset指定的字符串&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-golang&quot; data-lang=&quot;golang&quot;&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;n&quot;&gt;fmt&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Printf&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;[%q]&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;strings&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Trim&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot; !!! Achtung !!! &quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;! &quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;//Output:[&quot;Achtung&quot;]&lt;/span&gt;
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;h4 id=&quot;func-fieldss-string-string&quot;&gt;func Fields(s string) []string&lt;/h4&gt;
+
+&lt;p&gt;去除s字符串的空格符，并且按照空格分割返回slice&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-golang&quot; data-lang=&quot;golang&quot;&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;n&quot;&gt;fmt&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Printf&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Fields are: %q&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;strings&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Fields&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;  foo bar  baz   &quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;//Output:Fields are: [&quot;foo&quot; &quot;bar&quot; &quot;baz&quot;]&lt;/span&gt;
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;h3 id=&quot;strconv-包中的函数可以用于字符串转换&quot;&gt;strconv 包中的函数可以用于字符串转换&lt;/h3&gt;
+&lt;p&gt;&lt;a href=&quot;https://go-zh.org/pkg/strconv/&quot;&gt;strconv官方文档&lt;/a&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;append-系列函数将整数等转换为字符串后添加到现有的字节数组中&quot;&gt;Append 系列函数将整数等转换为字符串后，添加到现有的字节数组中&lt;/h4&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-golang&quot; data-lang=&quot;golang&quot;&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;k&quot;&gt;func&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;test&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+	&lt;span class=&quot;n&quot;&gt;str&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;:=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;make&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;([]&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;byte&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;100&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+	&lt;span class=&quot;n&quot;&gt;str&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;strconv&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;AppendInt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;str&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;4567&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;10&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+	&lt;span class=&quot;n&quot;&gt;str&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;strconv&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;AppendBool&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;str&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;false&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+	&lt;span class=&quot;n&quot;&gt;str&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;strconv&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;AppendQuote&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;str&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;abcdefg&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+	&lt;span class=&quot;n&quot;&gt;str&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;strconv&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;AppendQuoteRune&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;str&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;sc&quot;&gt;'单'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+	&lt;span class=&quot;n&quot;&gt;fmt&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Println&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;string&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;str&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;o&quot;&gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;output&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;4567&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;false&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;abcdefg&quot;&lt;/span&gt;&lt;span class=&quot;sc&quot;&gt;'单'&lt;/span&gt;
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;h4 id=&quot;format-系列函数把其他类型的转换为字符串&quot;&gt;Format 系列函数把其他类型的转换为字符串&lt;/h4&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-golang&quot; data-lang=&quot;golang&quot;&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+3
+4
+5
+6
+7
+8
+9
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;k&quot;&gt;func&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;test&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+	&lt;span class=&quot;n&quot;&gt;a&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;:=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;strconv&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;FormatBool&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;false&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+	&lt;span class=&quot;n&quot;&gt;b&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;:=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;strconv&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;FormatFloat&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;123.23&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;sc&quot;&gt;'g'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;12&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;64&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+	&lt;span class=&quot;n&quot;&gt;c&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;:=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;strconv&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;FormatInt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;1234&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;10&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+	&lt;span class=&quot;n&quot;&gt;d&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;:=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;strconv&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;FormatUint&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;12345&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;10&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+	&lt;span class=&quot;n&quot;&gt;e&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;:=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;strconv&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Itoa&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;1023&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+	&lt;span class=&quot;n&quot;&gt;fmt&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Println&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;b&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;c&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;d&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;e&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;output&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;false&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;123.23&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;1234&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;12345&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;1023&lt;/span&gt;
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;h4 id=&quot;parse-系列函数把字符串转换为其他类型&quot;&gt;Parse 系列函数把字符串转换为其他类型&lt;/h4&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-golang&quot; data-lang=&quot;golang&quot;&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;k&quot;&gt;func&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;test&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+	&lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;err&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;:=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;strconv&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ParseBool&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;false&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+	&lt;span class=&quot;n&quot;&gt;checkError&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;err&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+	&lt;span class=&quot;n&quot;&gt;b&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;err&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;:=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;strconv&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ParseFloat&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;123.23&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;64&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+	&lt;span class=&quot;n&quot;&gt;checkError&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;err&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+	&lt;span class=&quot;n&quot;&gt;c&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;err&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;:=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;strconv&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ParseInt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;1234&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;10&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;64&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+	&lt;span class=&quot;n&quot;&gt;checkError&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;err&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+	&lt;span class=&quot;n&quot;&gt;d&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;err&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;:=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;strconv&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ParseUint&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;12345&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;10&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;64&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+	&lt;span class=&quot;n&quot;&gt;checkError&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;err&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+	&lt;span class=&quot;n&quot;&gt;e&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;err&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;:=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;strconv&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Atoi&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;1023&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+	&lt;span class=&quot;n&quot;&gt;checkError&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;err&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+	&lt;span class=&quot;n&quot;&gt;fmt&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Println&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;b&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;c&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;d&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;e&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;func&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;checkError&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;e&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;error&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
+	&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;e&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;!=&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;nil&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+		&lt;span class=&quot;n&quot;&gt;fmt&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Println&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;e&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+	&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;o&quot;&gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;output&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;false&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;123.23&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;1234&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;12345&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;1023&lt;/span&gt;
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;</content><author><name>雷永成|Ray_YC</name><email>lyc10031@126.com</email></author><category term="GO" /><category term="go字符串" /><summary type="html">Go 字符串处理的常用函数 Go标准库中的strings和strconv两个包里面有一些最常用的字符串操作函数 strings 包中的常用函数 strings官方文档 func Contains(s,substr string) bool 字符串s中是否包含 substr 返回bool值 1 2 3 4 5 6 7 8 9 fmt.Println(strings.Contains(&quot;seafood&quot;, &quot;foo&quot;)) fmt.Println(strings.Contains(&quot;seafood&quot;, &quot;bar&quot;)) fmt.Println(strings.Contains(&quot;seafood&quot;, &quot;&quot;)) fmt.Println(strings.Contains(&quot;&quot;, &quot;&quot;)) //Output: //true //false //true //true func Join(a []string, sep string) string 字符串链接，把slice a通过sep链接起来 1 2 3 s := []string{&quot;foo&quot;, &quot;bar&quot;, &quot;baz&quot;} fmt.Println(strings.Join(s, &quot;, &quot;)) //Output:foo, bar, baz func Index(s, sep string) int 在字符串s中查找sep所在的位置，返回位置值，找不到返回-1 1 2 3 4 fmt.Println(strings.Index(&quot;chicken&quot;, &quot;ken&quot;)) fmt.Println(strings.Index(&quot;chicken&quot;, &quot;dmr&quot;)) //Output:4 //-1 func Repeat(s string, count int) string 重复s字符串count次，最后返回重复的字符串 1 2 fmt.Println(&quot;ba&quot; + strings.Repeat(&quot;na&quot;, 2)) //Output:banana func Replace(s, old, new string, n int) string 在s字符串中，把old字符串替换为new字符串，n表示替换的次数，小于0表示全部替换 1 2 3 4 fmt.Println(strings.Replace(&quot;oink oink oink&quot;, &quot;k&quot;, &quot;ky&quot;, 2)) fmt.Println(strings.Replace(&quot;oink oink oink&quot;, &quot;oink&quot;, &quot;moo&quot;, -1)) //Output:oinky oinky oink //moo moo moo func Split(s, sep string) []string 把s字符串按照sep分割，返回slice 1 2 3 4 5 6 7 8 fmt.Printf(&quot;%q\n&quot;, strings.Split(&quot;a,b,c&quot;, &quot;,&quot;)) fmt.Printf(&quot;%q\n&quot;, strings.Split(&quot;a man a plan a canal panama&quot;, &quot;a &quot;)) fmt.Printf(&quot;%q\n&quot;, strings.Split(&quot; xyz &quot;, &quot;&quot;)) fmt.Printf(&quot;%q\n&quot;, strings.Split(&quot;&quot;, &quot;Bernardo O'Higgins&quot;)) //Output:[&quot;a&quot; &quot;b&quot; &quot;c&quot;] //[&quot;&quot; &quot;man &quot; &quot;plan &quot; &quot;canal panama&quot;] //[&quot; &quot; &quot;x&quot; &quot;y&quot; &quot;z&quot; &quot; &quot;] //[&quot;&quot;] func Trim(s string, cutset string) string 在s字符串的头部和尾部去除cutset指定的字符串 1 2 fmt.Printf(&quot;[%q]&quot;, strings.Trim(&quot; !!! Achtung !!! &quot;, &quot;! &quot;)) //Output:[&quot;Achtung&quot;] func Fields(s string) []string 去除s字符串的空格符，并且按照空格分割返回slice 1 2 fmt.Printf(&quot;Fields are: %q&quot;, strings.Fields(&quot; foo bar baz &quot;)) //Output:Fields are: [&quot;foo&quot; &quot;bar&quot; &quot;baz&quot;] strconv 包中的函数可以用于字符串转换 strconv官方文档 Append 系列函数将整数等转换为字符串后，添加到现有的字节数组中 1 2 3 4 5 6 7 8 9 10 func test() { str := make([]byte, 0, 100) str = strconv.AppendInt(str, 4567, 10) str = strconv.AppendBool(str, false) str = strconv.AppendQuote(str, &quot;abcdefg&quot;) str = strconv.AppendQuoteRune(str, '单') fmt.Println(string(str)) } &amp;gt;&amp;gt; output:4567false&quot;abcdefg&quot;'单' Format 系列函数把其他类型的转换为字符串 1 2 3 4 5 6 7 8 9 func test() { a := strconv.FormatBool(false) b := strconv.FormatFloat(123.23, 'g', 12, 64) c := strconv.FormatInt(1234, 10) d := strconv.FormatUint(12345, 10) e := strconv.Itoa(1023) fmt.Println(a, b, c, d, e) } &amp;gt;&amp;gt; output:false 123.23 1234 12345 1023 Parse 系列函数把字符串转换为其他类型 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 func test() { a, err := strconv.ParseBool(&quot;false&quot;) checkError(err) b, err := strconv.ParseFloat(&quot;123.23&quot;, 64) checkError(err) c, err := strconv.ParseInt(&quot;1234&quot;, 10, 64) checkError(err) d, err := strconv.ParseUint(&quot;12345&quot;, 10, 64) checkError(err) e, err := strconv.Atoi(&quot;1023&quot;) checkError(err) fmt.Println(a, b, c, d, e) } func checkError(e error){ if e != nil{ fmt.Println(e) } } &amp;gt;&amp;gt; output:false 123.23 1234 12345 1023</summary></entry><entry><title type="html">Learn Go Interface</title><link href="http://172.16.80.32:8080/2019/08/13/interface1.html" rel="alternate" type="text/html" title="Learn Go Interface" /><published>2019-08-13T00:00:00+08:00</published><updated>2019-08-13T00:00:00+08:00</updated><id>http://172.16.80.32:8080/2019/08/13/interface1</id><content type="html" xml:base="http://172.16.80.32:8080/2019/08/13/interface1.html">&lt;h2 id=&quot;go的interface-是一组method方法集只要一个非interface类型数据实现了集合内的方法就能使用该interface&quot;&gt;Go的Interface 是一组method（方法）集，只要一个非interface类型数据实现了集合内的方法就能使用该interface&lt;/h2&gt;
 
 &lt;h3 id=&quot;直接看例子struct继承的例子&quot;&gt;直接看例子，struct继承的例子：&lt;/h3&gt;
 
@@ -1091,9 +1308,46 @@ Go通过interface实现了duck-typing:即”当看到一只鸟走起来像鸭子
 &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
 &lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
-&lt;p&gt;&lt;a href=&quot;javascript:scroll(0,0)&quot;&gt;– 返回顶部 –&lt;/a&gt;&lt;/p&gt;</content><author><name>雷永成|Ray_YC</name><email>lyc10031@126.com</email></author><category term="golang" /><category term="beego-orm" /><category term="mysql" /><summary type="html">原文章地址在这里 代码: 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 57 package main // 接下来我们的例子采用前面(test1/main.go)的数据库表User，现在我们建立相应的struct import ( &quot;time&quot; &quot;github.com/astaxie/beego/orm&quot; // 采用了Go style方式对数据库进行操作，实现了struct到数据表记录的映射. _ &quot;github.com/go-sql-driver/mysql&quot; // _ 代表只执行包里面的init部分 完成初始化工作. ) type Userinfo struct { Uid int `orm:&quot;PK&quot;` //如果表的主键不是id，那么需要加上pk注释，显式的说这个字段是主键 Username string Departname string Created time.Time } type User struct { Uid int `orm:&quot;PK&quot;` // 如果表的主键不是id，那么需要加上pk注释，显式的说这个字段是主键 Name string Profile *Profile `orm:&quot;rel(one)&quot;` // OneToOne relation Post []*Post `orm:&quot;reverse(many)&quot;` // 设置一对多的反向关系 } type Profile struct { Id int Age int16 User *User `orm:&quot;reverse(one)&quot;` // 设置一对一反向关系(可选) } type Post struct { Id int Title string User *User `orm:&quot;rel(fk)&quot;` Tags []*Tag `orm:&quot;rel(m2m)&quot;` } type Tag struct { Id int Name string Posts []*Post `orm:&quot;reverse(many)&quot;` } func init() { // 设置默认数据库 orm.RegisterDataBase(&quot;default&quot;, &quot;mysql&quot;, &quot;root:123456@tcp(localhost:3306)/test?charset=utf8&quot;, 30) // 需要在init中注册定义的model orm.RegisterModel(new(Userinfo), new(User), new(Profile), new(Post), new(Tag)) // 创建table orm.RunSyncdb(&quot;default&quot;, false, true) orm.Debug = true // 打印调试信息 } func main() { } 以下都是在main函数中进行mysql操作的方法: 插入数据 1 2 3 4 5 6 7 8 9 10 11 12 13 o := orm.NewOrm() var user Userinfo user.Username = &quot;xxx2&quot; user.Departname = &quot;software-xxx2&quot; id, err := o.Insert(&amp;amp;user) /* [INSERT INTO `userinfo` (`uid`, `username`, `departname`, `created`) VALUES (?, ?, ?, ?)] - `0`, `leiyongcheng`, `software-engineer`, `&amp;lt;nil&amp;gt;` */ if err != nil { log.Fatalf(&quot;ERROR: %v\n&quot;, err) } else { fmt.Println(id) } 同时插入多个对象:InsertMulti 1 2 3 4 5 6 7 8 9 10 11 12 13 /* 类似sql语句 insert into table (name, age) values(&quot;slene&quot;, 28),(&quot;astaxie&quot;, 30),(&quot;unknown&quot;, 20) */ o := orm.NewOrm() users := []User{ {Name: &quot;slene&quot;}, {Name: &quot;astaxie&quot;}, {Name: &quot;unknown&quot;}, ... } successNums, err := o.InsertMulti(100, users) 更新数据 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 o := orm.NewOrm() user := Userinfo{Uid: 1} // 类似sql 语言中的where 这里Uid 是主键 if o.Read(&amp;amp;user) == nil { /* sql： [SELECT `uid`, `username`, `departname`, `created` FROM `userinfo` WHERE `uid` = ? ] - `1` 这里进行的操作是 先从表中以uid=1为主键查找userinfo的数据 */ user.Username = &quot;new-name&quot; // 将uid = 1 的数据的Username 更新成new-name if num, err := o.Update(&amp;amp;user); err == nil { /* sql： [UPDATE `userinfo` SET `uid` = ?, `username` = ?, `departname` = ?, `created` = ? WHERE `uid` = ?] - `1`, `new-name`, `software-engineer`, `&amp;lt;nil&amp;gt;`, `1` */ fmt.Println(num) } } 查询数据 例子1： 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 o := orm.NewOrm() user := Userinfo{Uid: 2} /* 可以通过修改Uid 查询一条不存在的信息，能够显示查询不到 查询存在的Uid 编号。能够查到数据库中存放的信息。 */ err := o.Read(&amp;amp;user) /* sql: [SELECT `uid`, `username`, `departname`, `created` FROM `userinfo` WHERE `uid` = ? ] - `2` */ if err == orm.ErrNoRows { fmt.Println(&quot;查询不到&quot;) } else if err == orm.ErrMissPK { fmt.Println(&quot;找不到主键&quot;) } else { fmt.Println(user.Uid, user.Username) } 例子2： 1 2 3 4 5 6 7 8 9 10 11 12 o := orm.NewOrm() var user Userinfo qs := o.QueryTable(user) // 返回 QuerySeter qs.Filter(&quot;id&quot;, 3) // WHERE id = 1 qs.Filter(&quot;username&quot;, &quot;xxx2&quot;) // WHERE username=xxx2 qs.Filter(&quot;profile__age__in&quot;, 18, 20) // // WHERE profile.age IN (18, 20) qs.Filter(&quot;profile__age__in&quot;, 18, 20).Exclude(&quot;profile__lt&quot;, 1000) // // WHERE profile.age IN (18, 20) AND NOT profile_id &amp;lt; 1000 获取多条数据 例子1，根据条件age&amp;gt;17，获取20位置开始的10条数据的数据 1 2 3 var allusers []User qs.Filter(&quot;profile__age__gt&quot;, 17) // // WHERE profile.age &amp;gt; 17 获取多条数据 例子2，limit默认从10开始，获取10条数据 1 2 3 //例子2，limit默认从10开始，获取10条数据 qs.Limit(10, 20) // // LIMIT 10 OFFSET 20 注意跟SQL反过来的 删除数据 删除单条数据 1 2 3 4 5 if num, err := o.Delete(&amp;amp;Userinfo{Uid: 1}); err == nil { fmt.Println(num) } //Delete 操作会对反向关系进行操作，此例中 Post 拥有一个到 User 的外键。删除 User 的时候。 // 如果 on_delete 设置为默认的级联操作，将删除对应的 Post 关联查询 1 2 3 4 5 6 7 8 9 type Post struct { Id int `orm:&quot;auto&quot;` Title string `orm:&quot;size(100)&quot;` User *User `orm:&quot;rel(fk)&quot;` // 将另一个表作引入当前struct ，查询的时候 All（&amp;amp;posts） 会应用到所有posts 表中。 } var posts []*Post qs := o.QueryTable(&quot;post&quot;) num, err := qs.Filter(&quot;User__Name&quot;, &quot;slene&quot;).All(&amp;amp;posts) GroupBy和Having 针对有些应用需要用到group by的功能，beego orm也提供了一个简陋的实现 1 2 3 4 5 6 7 8 9 10 11 qs.OrderBy(&quot;id&quot;, &quot;-profile__age&quot;) // ORDER BY id ASC, profile.age DESC qs.OrderBy(&quot;-profile__age&quot;, &quot;profile&quot;) // ORDER BY profile.age DESC, profile_id ASC // 上面的代码中出现了两个新接口函数 // GroupBy:用来指定进行groupby的字段 // Having:用来指定having执行的时候的条件 最后，使用原始sql命令： 简单示例: 1 2 3 o := orm.NewOrm() var r orm.RawSeter r = o.Raw(&quot;UPDATE user SET name = ? WHERE name = ?&quot;, &quot;testing&quot;, &quot;xxx2&quot;) 复杂的原生sql使用: 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 func (m *User) Query(name string) user []User { var o orm.Ormer var rs orm.RawSeter o = orm.NewOrm() rs = o.Raw(&quot;SELECT * FROM user&quot; + &quot;WHERE name=? AND uid&amp;gt;10 &quot;+ &quot;ORDER BY uid DESC &quot;+ &quot;LIMIT 100&quot;, name) //var user []User num, err := rs.QueryRows(&amp;amp;user) if err != nil { fmt.Println(err) } else { fmt.Println(num) //return user } return } – 返回顶部 –</summary></entry><entry><title type="html">linux grep 常用技巧</title><link href="http://172.16.80.32:8080/2019/08/13/grep.html" rel="alternate" type="text/html" title="linux grep 常用技巧" /><published>2019-08-13T00:00:00+08:00</published><updated>2019-08-13T00:00:00+08:00</updated><id>http://172.16.80.32:8080/2019/08/13/grep</id><content type="html" xml:base="http://172.16.80.32:8080/2019/08/13/grep.html">&lt;p&gt;grep ^vivek /etc/passwd&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;javascript:scroll(0,0)&quot;&gt;– 返回顶部 –&lt;/a&gt;&lt;/p&gt;</content><author><name>雷永成|Ray_YC</name><email>lyc10031@126.com</email></author><category term="golang" /><category term="beego-orm" /><category term="mysql" /><summary type="html">原文章地址在这里 代码: 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 57 package main // 接下来我们的例子采用前面(test1/main.go)的数据库表User，现在我们建立相应的struct import ( &quot;time&quot; &quot;github.com/astaxie/beego/orm&quot; // 采用了Go style方式对数据库进行操作，实现了struct到数据表记录的映射. _ &quot;github.com/go-sql-driver/mysql&quot; // _ 代表只执行包里面的init部分 完成初始化工作. ) type Userinfo struct { Uid int `orm:&quot;PK&quot;` //如果表的主键不是id，那么需要加上pk注释，显式的说这个字段是主键 Username string Departname string Created time.Time } type User struct { Uid int `orm:&quot;PK&quot;` // 如果表的主键不是id，那么需要加上pk注释，显式的说这个字段是主键 Name string Profile *Profile `orm:&quot;rel(one)&quot;` // OneToOne relation Post []*Post `orm:&quot;reverse(many)&quot;` // 设置一对多的反向关系 } type Profile struct { Id int Age int16 User *User `orm:&quot;reverse(one)&quot;` // 设置一对一反向关系(可选) } type Post struct { Id int Title string User *User `orm:&quot;rel(fk)&quot;` Tags []*Tag `orm:&quot;rel(m2m)&quot;` } type Tag struct { Id int Name string Posts []*Post `orm:&quot;reverse(many)&quot;` } func init() { // 设置默认数据库 orm.RegisterDataBase(&quot;default&quot;, &quot;mysql&quot;, &quot;root:123456@tcp(localhost:3306)/test?charset=utf8&quot;, 30) // 需要在init中注册定义的model orm.RegisterModel(new(Userinfo), new(User), new(Profile), new(Post), new(Tag)) // 创建table orm.RunSyncdb(&quot;default&quot;, false, true) orm.Debug = true // 打印调试信息 } func main() { } 以下都是在main函数中进行mysql操作的方法: 插入数据 1 2 3 4 5 6 7 8 9 10 11 12 13 o := orm.NewOrm() var user Userinfo user.Username = &quot;xxx2&quot; user.Departname = &quot;software-xxx2&quot; id, err := o.Insert(&amp;amp;user) /* [INSERT INTO `userinfo` (`uid`, `username`, `departname`, `created`) VALUES (?, ?, ?, ?)] - `0`, `leiyongcheng`, `software-engineer`, `&amp;lt;nil&amp;gt;` */ if err != nil { log.Fatalf(&quot;ERROR: %v\n&quot;, err) } else { fmt.Println(id) } 同时插入多个对象:InsertMulti 1 2 3 4 5 6 7 8 9 10 11 12 13 /* 类似sql语句 insert into table (name, age) values(&quot;slene&quot;, 28),(&quot;astaxie&quot;, 30),(&quot;unknown&quot;, 20) */ o := orm.NewOrm() users := []User{ {Name: &quot;slene&quot;}, {Name: &quot;astaxie&quot;}, {Name: &quot;unknown&quot;}, ... } successNums, err := o.InsertMulti(100, users) 更新数据 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 o := orm.NewOrm() user := Userinfo{Uid: 1} // 类似sql 语言中的where 这里Uid 是主键 if o.Read(&amp;amp;user) == nil { /* sql： [SELECT `uid`, `username`, `departname`, `created` FROM `userinfo` WHERE `uid` = ? ] - `1` 这里进行的操作是 先从表中以uid=1为主键查找userinfo的数据 */ user.Username = &quot;new-name&quot; // 将uid = 1 的数据的Username 更新成new-name if num, err := o.Update(&amp;amp;user); err == nil { /* sql： [UPDATE `userinfo` SET `uid` = ?, `username` = ?, `departname` = ?, `created` = ? WHERE `uid` = ?] - `1`, `new-name`, `software-engineer`, `&amp;lt;nil&amp;gt;`, `1` */ fmt.Println(num) } } 查询数据 例子1： 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 o := orm.NewOrm() user := Userinfo{Uid: 2} /* 可以通过修改Uid 查询一条不存在的信息，能够显示查询不到 查询存在的Uid 编号。能够查到数据库中存放的信息。 */ err := o.Read(&amp;amp;user) /* sql: [SELECT `uid`, `username`, `departname`, `created` FROM `userinfo` WHERE `uid` = ? ] - `2` */ if err == orm.ErrNoRows { fmt.Println(&quot;查询不到&quot;) } else if err == orm.ErrMissPK { fmt.Println(&quot;找不到主键&quot;) } else { fmt.Println(user.Uid, user.Username) } 例子2： 1 2 3 4 5 6 7 8 9 10 11 12 o := orm.NewOrm() var user Userinfo qs := o.QueryTable(user) // 返回 QuerySeter qs.Filter(&quot;id&quot;, 3) // WHERE id = 1 qs.Filter(&quot;username&quot;, &quot;xxx2&quot;) // WHERE username=xxx2 qs.Filter(&quot;profile__age__in&quot;, 18, 20) // // WHERE profile.age IN (18, 20) qs.Filter(&quot;profile__age__in&quot;, 18, 20).Exclude(&quot;profile__lt&quot;, 1000) // // WHERE profile.age IN (18, 20) AND NOT profile_id &amp;lt; 1000 获取多条数据 例子1，根据条件age&amp;gt;17，获取20位置开始的10条数据的数据 1 2 3 var allusers []User qs.Filter(&quot;profile__age__gt&quot;, 17) // // WHERE profile.age &amp;gt; 17 获取多条数据 例子2，limit默认从10开始，获取10条数据 1 2 3 //例子2，limit默认从10开始，获取10条数据 qs.Limit(10, 20) // // LIMIT 10 OFFSET 20 注意跟SQL反过来的 删除数据 删除单条数据 1 2 3 4 5 if num, err := o.Delete(&amp;amp;Userinfo{Uid: 1}); err == nil { fmt.Println(num) } //Delete 操作会对反向关系进行操作，此例中 Post 拥有一个到 User 的外键。删除 User 的时候。 // 如果 on_delete 设置为默认的级联操作，将删除对应的 Post 关联查询 1 2 3 4 5 6 7 8 9 type Post struct { Id int `orm:&quot;auto&quot;` Title string `orm:&quot;size(100)&quot;` User *User `orm:&quot;rel(fk)&quot;` // 将另一个表作引入当前struct ，查询的时候 All（&amp;amp;posts） 会应用到所有posts 表中。 } var posts []*Post qs := o.QueryTable(&quot;post&quot;) num, err := qs.Filter(&quot;User__Name&quot;, &quot;slene&quot;).All(&amp;amp;posts) GroupBy和Having 针对有些应用需要用到group by的功能，beego orm也提供了一个简陋的实现 1 2 3 4 5 6 7 8 9 10 11 qs.OrderBy(&quot;id&quot;, &quot;-profile__age&quot;) // ORDER BY id ASC, profile.age DESC qs.OrderBy(&quot;-profile__age&quot;, &quot;profile&quot;) // ORDER BY profile.age DESC, profile_id ASC // 上面的代码中出现了两个新接口函数 // GroupBy:用来指定进行groupby的字段 // Having:用来指定having执行的时候的条件 最后，使用原始sql命令： 简单示例: 1 2 3 o := orm.NewOrm() var r orm.RawSeter r = o.Raw(&quot;UPDATE user SET name = ? WHERE name = ?&quot;, &quot;testing&quot;, &quot;xxx2&quot;) 复杂的原生sql使用: 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 func (m *User) Query(name string) user []User { var o orm.Ormer var rs orm.RawSeter o = orm.NewOrm() rs = o.Raw(&quot;SELECT * FROM user&quot; + &quot;WHERE name=? AND uid&amp;gt;10 &quot;+ &quot;ORDER BY uid DESC &quot;+ &quot;LIMIT 100&quot;, name) //var user []User num, err := rs.QueryRows(&amp;amp;user) if err != nil { fmt.Println(err) } else { fmt.Println(num) //return user } return } – 返回顶部 –</summary></entry><entry><title type="html">linux grep awk 使用记录</title><link href="http://172.16.80.32:8080/2019/08/13/grep_awk.html" rel="alternate" type="text/html" title="linux grep awk 使用记录" /><published>2019-08-13T00:00:00+08:00</published><updated>2019-08-13T00:00:00+08:00</updated><id>http://172.16.80.32:8080/2019/08/13/grep_awk</id><content type="html" xml:base="http://172.16.80.32:8080/2019/08/13/grep_awk.html">&lt;p&gt;grep ^vivek /etc/passwd&lt;/p&gt;
 
-&lt;p&gt;grep -E ‘word1|word2’ 文件名&lt;/p&gt;</content><author><name>雷永成|Ray_YC</name><email>lyc10031@126.com</email></author><category term="linux" /><category term="grep" /><summary type="html">grep ^vivek /etc/passwd grep -E ‘word1|word2’ 文件名</summary></entry><entry><title type="html">Go switch VS select</title><link href="http://172.16.80.32:8080/document/2019/08/09/select_VS_switch.html" rel="alternate" type="text/html" title="Go switch VS select" /><published>2019-08-09T00:00:00+08:00</published><updated>2019-08-09T00:00:00+08:00</updated><id>http://172.16.80.32:8080/document/2019/08/09/select_VS_switch</id><content type="html" xml:base="http://172.16.80.32:8080/document/2019/08/09/select_VS_switch.html">&lt;h2 id=&quot;switch-is-used-to-make-a-decision-based-on-a-variable-value-of-any-type&quot;&gt;switch is used to make a decision based on a variable value of any type.&lt;/h2&gt;
+&lt;p&gt;grep -E ‘word1|word2’ 文件名&lt;/p&gt;
+
+&lt;h2 id=&quot;awk-命令&quot;&gt;awk 命令&lt;/h2&gt;
+
+&lt;h3 id=&quot;substr-截取字符串&quot;&gt;substr 截取字符串&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;substr(s,p) 返回字符串s中从p开始的后缀部分&lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;substr(s,p,n) 返回字符串s中从p开始长度为n的后缀部分&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;awk -F ‘,’ ‘{print substr($3,6)}’
+    &lt;blockquote&gt;
+      &lt;p&gt;表示以”,”分割 从第3个字段里的第6个字符开始，一直到设定的分隔符”,”结束.&lt;/p&gt;
+    &lt;/blockquote&gt;
+  &lt;/li&gt;
+  &lt;li&gt;substr($3,10,8)
+    &lt;blockquote&gt;
+      &lt;p&gt;表示是从第3个字段里的第10个字符开始，截取8个字符结束.&lt;/p&gt;
+    &lt;/blockquote&gt;
+  &lt;/li&gt;
+  &lt;li&gt;substr($3,6)
+    &lt;blockquote&gt;
+      &lt;p&gt;表示是从第3个字段里的第6个字符开始，一直到结尾&lt;/p&gt;
+    &lt;/blockquote&gt;
+  &lt;/li&gt;
+  &lt;li&gt;eg:
+获取eth0 IP 地址
+    &lt;blockquote&gt;
+      &lt;p&gt;ifconfig eth0 | sed -n “2p” | awk ‘{print substr($2,1)}’&lt;/p&gt;
+    &lt;/blockquote&gt;
+  &lt;/li&gt;
+  &lt;li&gt;eg:
+    &lt;blockquote&gt;
+      &lt;p&gt;echo “123” | awk ‘{print substr($0,1,1)}’
+output: 1&lt;/p&gt;
+    &lt;/blockquote&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;</content><author><name>雷永成|Ray_YC</name><email>lyc10031@126.com</email></author><category term="linux" /><category term="grep" /><category term="awk" /><summary type="html">grep ^vivek /etc/passwd grep -E ‘word1|word2’ 文件名 awk 命令 substr 截取字符串 substr(s,p) 返回字符串s中从p开始的后缀部分 substr(s,p,n) 返回字符串s中从p开始长度为n的后缀部分 awk -F ‘,’ ‘{print substr($3,6)}’ 表示以”,”分割 从第3个字段里的第6个字符开始，一直到设定的分隔符”,”结束. substr($3,10,8) 表示是从第3个字段里的第10个字符开始，截取8个字符结束. substr($3,6) 表示是从第3个字段里的第6个字符开始，一直到结尾 eg: 获取eth0 IP 地址 ifconfig eth0 | sed -n “2p” | awk ‘{print substr($2,1)}’ eg: echo “123” | awk ‘{print substr($0,1,1)}’ output: 1</summary></entry><entry><title type="html">Go switch VS select</title><link href="http://172.16.80.32:8080/document/2019/08/09/select_VS_switch.html" rel="alternate" type="text/html" title="Go switch VS select" /><published>2019-08-09T00:00:00+08:00</published><updated>2019-08-09T00:00:00+08:00</updated><id>http://172.16.80.32:8080/document/2019/08/09/select_VS_switch</id><content type="html" xml:base="http://172.16.80.32:8080/document/2019/08/09/select_VS_switch.html">&lt;h2 id=&quot;switch-is-used-to-make-a-decision-based-on-a-variable-value-of-any-type&quot;&gt;switch is used to make a decision based on a variable value of any type.&lt;/h2&gt;
 
 &lt;p&gt;switch用于根据任何类型的变量值做出决定。&lt;/p&gt;
 
@@ -1962,66 +2216,4 @@ Alias=rc-local.service
 
 &lt;p&gt;&lt;a href=&quot;javascript:scroll(0,0)&quot;&gt;– 返回顶部 –&lt;/a&gt;&lt;/p&gt;
 
-&lt;hr /&gt;</content><author><name>雷永成|Ray_YC</name><email>lyc10031@126.com</email></author><category term="GO-lang" /><summary type="html">1 在循环迭代器变量上使用goroutines 错误的写法： 1 2 3 4 5 for _, val := range values { go func() { fmt.Println(val) }() } 上面的for循环可能无法达到您的预期，因为它们的val变量实际上是一个单独的变量，它接受每个slice元素的值。 因为闭包只绑定到那个变量，所以很有可能当你运行这个代码时，你会看到每次迭代打印的最后一个元素而不是序列中的每个值，因为goroutines可能不会开始执行，直到 循环之后。 编写闭包循环正确的写法应该是: 1 2 3 4 5 for _, val := range values { go func(val interface{}) { fmt.Println(val) }(val) } 通过将val作为参数添加到闭包中，在每次迭代时计算val并将其放置在goroutine的堆栈上，因此每个切片元素在最终执行时都可用于goroutine。 Note that without executing this closure as a goroutine, the code runs as expected. The following example prints out the integers between 1 and 10. 1 2 3 4 5 for i := 1; i &amp;lt;= 10; i++ { func() { fmt.Println(i) }() } 即使闭包仍然对同一个变量关闭(在这种情况下，是i)，它们也是在变量改变之前执行的，导致了期望的行为。 点击查看 闭包作为goroutines运行会发生什么 – 返回顶部 –</summary></entry><entry><title type="html">Golang 数据类型的转换</title><link href="http://172.16.80.32:8080/2019/07/31/go-blog1.html" rel="alternate" type="text/html" title="Golang 数据类型的转换" /><published>2019-07-31T04:13:13+08:00</published><updated>2019-07-31T04:13:13+08:00</updated><id>http://172.16.80.32:8080/2019/07/31/go-blog1</id><content type="html" xml:base="http://172.16.80.32:8080/2019/07/31/go-blog1.html">&lt;h2 id=&quot;1基本数据类型之间的转换&quot;&gt;1、基本数据类型之间的转换&lt;/h2&gt;
-
-&lt;h3 id=&quot;11string到int&quot;&gt;1.1、string到int&lt;/h3&gt;
-
-&lt;p&gt;int,err:=strconv.Atoi(string)&lt;/p&gt;
-
-&lt;h3 id=&quot;12string到int64&quot;&gt;1.2、string到int64&lt;/h3&gt;
-
-&lt;p&gt;int64, err := strconv.ParseInt(string, 10, 64)&lt;/p&gt;
-
-&lt;h3 id=&quot;13int到string&quot;&gt;1.3、int到string&lt;/h3&gt;
-
-&lt;p&gt;string:=strconv.Itoa(int)&lt;/p&gt;
-
-&lt;h3 id=&quot;14int64到string&quot;&gt;1.4、int64到string&lt;/h3&gt;
-
-&lt;p&gt;string:=strconv.FormatInt(int64,10)&lt;/p&gt;
-
-&lt;h3 id=&quot;15字符串到float32float64&quot;&gt;1.5、字符串到float32/float64&lt;/h3&gt;
-
-&lt;p&gt;float32, err = ParseFloat(string, 32)&lt;/p&gt;
-
-&lt;p&gt;float64,err = ParseFloat(string,64)&lt;/p&gt;
-
-&lt;h3 id=&quot;16int64转int&quot;&gt;1.6、int64转int&lt;/h3&gt;
-
-&lt;p&gt;int:=int(int64)&lt;/p&gt;
-
-&lt;h3 id=&quot;17int转int64&quot;&gt;1.7、int转int64&lt;/h3&gt;
-
-&lt;p&gt;int64:=int64(int)&lt;/p&gt;
-
-&lt;h3 id=&quot;18string与byte之间的转换&quot;&gt;1.8、string与[]byte之间的转换：&lt;/h3&gt;
-
-&lt;p&gt;string到[]byte:字节数组=[]byte(字符串)&lt;/p&gt;
-
-&lt;p&gt;字节数组到string: 字符串=string([]byte)&lt;/p&gt;
-
-&lt;h2 id=&quot;2interface与其他类型之间的转换&quot;&gt;2、interface{}与其他类型之间的转换&lt;/h2&gt;
-
-&lt;p&gt;转换方式包括隐式转换与断言转换。&lt;/p&gt;
-
-&lt;h3 id=&quot;21interface类型转换成具体类型interfacevar具体类型&quot;&gt;2.1、interface{}类型转换成具体类型：interfaceVar.(具体类型)&lt;/h3&gt;
-
-&lt;p&gt;原理：断言实现。如：&lt;/p&gt;
-
-&lt;p&gt;断言成功返回true,失败返回false&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-golang&quot; data-lang=&quot;golang&quot;&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
-2
-3
-4
-5
-6
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;n&quot;&gt;value&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ok&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;:=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;string&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;!&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ok&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;fmt&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Println&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;It's not ok for type string&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;fmt&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Println&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;The value is &quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;value&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;h2 id=&quot;-返回顶部-&quot;&gt;&lt;a href=&quot;javascript:scroll(0,0)&quot;&gt;– 返回顶部 –&lt;/a&gt;&lt;/h2&gt;</content><author><name>雷永成|Ray_YC</name><email>lyc10031@126.com</email></author><category term="GO-lang" /><summary type="html">1、基本数据类型之间的转换 1.1、string到int int,err:=strconv.Atoi(string) 1.2、string到int64 int64, err := strconv.ParseInt(string, 10, 64) 1.3、int到string string:=strconv.Itoa(int) 1.4、int64到string string:=strconv.FormatInt(int64,10) 1.5、字符串到float32/float64 float32, err = ParseFloat(string, 32) float64,err = ParseFloat(string,64) 1.6、int64转int int:=int(int64) 1.7、int转int64 int64:=int64(int) 1.8、string与[]byte之间的转换： string到[]byte:字节数组=[]byte(字符串) 字节数组到string: 字符串=string([]byte) 2、interface{}与其他类型之间的转换 转换方式包括隐式转换与断言转换。 2.1、interface{}类型转换成具体类型：interfaceVar.(具体类型) 原理：断言实现。如： 断言成功返回true,失败返回false 1 2 3 4 5 6 value, ok := a.(string) if !ok { fmt.Println(&quot;It's not ok for type string&quot;) return } fmt.Println(&quot;The value is &quot;, value) – 返回顶部 –</summary></entry></feed>
+&lt;hr /&gt;</content><author><name>雷永成|Ray_YC</name><email>lyc10031@126.com</email></author><category term="GO-lang" /><summary type="html">1 在循环迭代器变量上使用goroutines 错误的写法： 1 2 3 4 5 for _, val := range values { go func() { fmt.Println(val) }() } 上面的for循环可能无法达到您的预期，因为它们的val变量实际上是一个单独的变量，它接受每个slice元素的值。 因为闭包只绑定到那个变量，所以很有可能当你运行这个代码时，你会看到每次迭代打印的最后一个元素而不是序列中的每个值，因为goroutines可能不会开始执行，直到 循环之后。 编写闭包循环正确的写法应该是: 1 2 3 4 5 for _, val := range values { go func(val interface{}) { fmt.Println(val) }(val) } 通过将val作为参数添加到闭包中，在每次迭代时计算val并将其放置在goroutine的堆栈上，因此每个切片元素在最终执行时都可用于goroutine。 Note that without executing this closure as a goroutine, the code runs as expected. The following example prints out the integers between 1 and 10. 1 2 3 4 5 for i := 1; i &amp;lt;= 10; i++ { func() { fmt.Println(i) }() } 即使闭包仍然对同一个变量关闭(在这种情况下，是i)，它们也是在变量改变之前执行的，导致了期望的行为。 点击查看 闭包作为goroutines运行会发生什么 – 返回顶部 –</summary></entry></feed>

@@ -1,10 +1,10 @@
 <!DOCTYPE html><html lang="zh-CN">
   <head><meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"><title>linux grep 常用技巧 - Ray_YC's Blog</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"><title>linux grep awk 使用记录 - Ray_YC's Blog</title>
 
-<meta name="description" content="grep ^vivek /etc/passwdgrep -E ‘word1|word2’ 文件名">
-<link rel="canonical" href="http://172.16.80.32:8080/2019/08/13/grep.html"><link rel="alternate" type="application/rss+xml" title="Ray_YC's Blog" href="/feed.xml"><!-- start favicons snippet, use https://realfavicongenerator.net/ --><link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png"><link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png"><link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png"><link rel="manifest" href="/assets/site.webmanifest"><link rel="mask-icon" href="/assets/safari-pinned-tab.svg" color="#fc4d50"><link rel="shortcut icon" href="/assets/favicon.ico">
+<meta name="description" content="grep ^vivek /etc/passwdgrep -E ‘word1|word2’ 文件名awk 命令substr 截取字符串  substr(s,p) 返回字符串s中从p开始的后缀部分      substr(s,p,n) 返回字符串s中从p开始长度为n的后缀部分    awk -F ‘,’ ‘{prin...">
+<link rel="canonical" href="http://172.16.80.32:8080/2019/08/13/grep_awk.html"><link rel="alternate" type="application/rss+xml" title="Ray_YC's Blog" href="/feed.xml"><!-- start favicons snippet, use https://realfavicongenerator.net/ --><link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png"><link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png"><link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png"><link rel="manifest" href="/assets/site.webmanifest"><link rel="mask-icon" href="/assets/safari-pinned-tab.svg" color="#fc4d50"><link rel="shortcut icon" href="/assets/favicon.ico">
 
 <meta name="msapplication-TileColor" content="#ffc40d"><meta name="msapplication-config" content="/assets/browserconfig.xml">
 
@@ -274,23 +274,63 @@
 
               <div class="col-main cell cell--auto"><!-- start custom main top snippet -->
 
-<!-- end custom main top snippet --><article itemscope itemtype="http://schema.org/Article"><div class="article__header"><header><h1>linux grep 常用技巧</h1></header><span class="split-space">&nbsp;</span>
+<!-- end custom main top snippet --><article itemscope itemtype="http://schema.org/Article"><div class="article__header"><header><h1>linux grep awk 使用记录</h1></header><span class="split-space">&nbsp;</span>
           <a class="edit-on-github"
             title="在 Github 上修改"
-            href="https://github.com/lyc10031/lyc10031.github.io/tree/master/_posts/dir1-linux/2019-08-13-grep.md">
-            <i class="far fa-edit"></i></a></div><meta itemprop="headline" content="linux grep 常用技巧"><div class="article__info clearfix"><ul class="left-col menu"><li>
+            href="https://github.com/lyc10031/lyc10031.github.io/tree/master/_posts/dir1-linux/2019-08-13-grep_awk.md">
+            <i class="far fa-edit"></i></a></div><meta itemprop="headline" content="linux grep awk 使用记录"><div class="article__info clearfix"><ul class="left-col menu"><li>
               <a class="button button--secondary button--pill button--sm"
                 href="/archive.html?tag=linux">linux</a>
             </li><li>
               <a class="button button--secondary button--pill button--sm"
                 href="/archive.html?tag=grep">grep</a>
+            </li><li>
+              <a class="button button--secondary button--pill button--sm"
+                href="/archive.html?tag=awk">awk</a>
             </li></ul><ul class="right-col menu"><li><i class="far fa-calendar-alt"></i> <span>2019年 08月13日</span>
             </li></ul></div><meta itemprop="author" content="雷永成|Ray_YC"/><meta itemprop="datePublished" content="2019-08-13T00:00:00+08:00">
-    <meta itemprop="keywords" content="linux,grep"><div class="js-article-content"><div class="layout--article"><!-- start custom article top snippet -->
+    <meta itemprop="keywords" content="linux,grep,awk"><div class="js-article-content"><div class="layout--article"><!-- start custom article top snippet -->
 
 <!-- end custom article top snippet --><div class="article__content" itemprop="articleBody"><p>grep ^vivek /etc/passwd</p>
 
 <p>grep -E ‘word1|word2’ 文件名</p>
+
+<h2 id="awk-命令">awk 命令</h2>
+
+<h3 id="substr-截取字符串">substr 截取字符串</h3>
+<ul>
+  <li>substr(s,p) 返回字符串s中从p开始的后缀部分</li>
+  <li>
+    <p>substr(s,p,n) 返回字符串s中从p开始长度为n的后缀部分</p>
+  </li>
+  <li>awk -F ‘,’ ‘{print substr($3,6)}’
+    <blockquote>
+      <p>表示以”,”分割 从第3个字段里的第6个字符开始，一直到设定的分隔符”,”结束.</p>
+    </blockquote>
+  </li>
+  <li>substr($3,10,8)
+    <blockquote>
+      <p>表示是从第3个字段里的第10个字符开始，截取8个字符结束.</p>
+    </blockquote>
+  </li>
+  <li>substr($3,6)
+    <blockquote>
+      <p>表示是从第3个字段里的第6个字符开始，一直到结尾</p>
+    </blockquote>
+  </li>
+  <li>eg:
+获取eth0 IP 地址
+    <blockquote>
+      <p>ifconfig eth0 | sed -n “2p” | awk ‘{print substr($2,1)}’</p>
+    </blockquote>
+  </li>
+  <li>eg:
+    <blockquote>
+      <p>echo “123” | awk ‘{print substr($0,1,1)}’
+output: 1</p>
+    </blockquote>
+  </li>
+</ul>
 </div><section class="article__sharing d-print-none"></section><div class="d-print-none"><footer class="article__footer"><meta itemprop="dateModified" content="2019-08-13T00:00:00+08:00"><!-- start custom article footer snippet -->
 
 <!-- end custom article footer snippet --><div class="article__subscribe"><div class="subscribe"><i class="fas fa-rss"></i> <a type="application/rss+xml" href="/feed.xml">订阅</a></div></div><div class="article__license"><div class="license">
