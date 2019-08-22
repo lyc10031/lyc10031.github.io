@@ -31,7 +31,8 @@ article_header:
     gradient: 'linear-gradient(135deg, rgba(34, 139, 87 , .4), rgba(139, 34, 139, .4))'
     src: assets/images/img/cover3.jpg
 ---
-<div>{%- include extensions/netease-cloud-music.html id='413812448' -%}</div>
+<div>{%- include extensions/netease-cloud-music.html id='480916' -%}</div>
+
 
 > “There is nothing either good or bad, but thinking makes it so.”
 >
