@@ -278,7 +278,29 @@
               <div class="col-main cell cell--auto"><!-- start custom main top snippet -->
 
 <!-- end custom main top snippet --><article itemscope itemtype="http://schema.org/WebPage"><meta itemprop="headline" content="浮名浮利，虚苦劳神。叹隙中驹，石中火，梦中身。——苏轼《行香子·述怀》"><meta itemprop="author" content="雷永成|Ray_YC"/><div class="js-article-content"><div class="layout--articles"><div class="article-list items items--divided"><article class="item" itemscope itemtype="http://schema.org/BlogPosting"><div class="item__content">
-          <header><a href="/2019/08/21/Strings.html"><h2 itemprop="headline" class="item__header">golang 字符串操作</h2></a></header>
+          <header><a href="/2019/08/21/socket%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0.html"><h2 itemprop="headline" class="item__header">go语言socket编程笔记</h2></a></header>
+          <div class="item__description"><div class="article__content" itemprop="description articleBody">原文地址
+
+本文是我的一些总结和记录。
+
+Socket介绍
+
+
+  
+    Socket起源于Unix，而Unix基本哲学之一就是 “一切皆文件”，都可以用“打开open –&gt; 读写write/read –&gt; 关闭close”模式来操作。Socket就是该模式的一个实现，网络的Socket数据传输是一种特殊的I/O，Socket也是一种文件描述符。Socket也具有一个类似于打开文件的函数调用：Socket()，该函数返回一个整型的Socket描述符，随后的连接建立、数据传输等操作都是通过该Socket实现的。
+  
+  
+    常用的Socket类型有两种：流式Socket（SOCK_STREAM）和数据报式Socket（SOCK_DGRAM）。流式是一种面向连接的S...</div><p><a href="/2019/08/21/socket%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0.html">阅读更多</a></p></div><div class="article__info clearfix"><ul class="left-col menu"><li>
+              <a class="button button--secondary button--pill button--sm"
+                href="/archive.html?tag=GO">GO</a>
+            </li><li>
+              <a class="button button--secondary button--pill button--sm"
+                href="/archive.html?tag=socket">socket</a>
+            </li></ul><ul class="right-col menu"><li><i class="far fa-calendar-alt"></i> <span>2019年 08月21日</span>
+            </li></ul></div><meta itemprop="author" content="雷永成|Ray_YC"/><meta itemprop="datePublished" content="2019-08-21T00:00:00+08:00">
+    <meta itemprop="keywords" content="GO,socket"></div>
+      </article><article class="item" itemscope itemtype="http://schema.org/BlogPosting"><div class="item__content">
+          <header><a href="/2019/08/21/golang-%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%93%8D%E4%BD%9C.html"><h2 itemprop="headline" class="item__header">golang 字符串操作</h2></a></header>
           <div class="item__description"><div class="article__content" itemprop="description articleBody">Go 字符串处理的常用函数
 
 Go标准库中的strings和strconv两个包里面有一些最常用的字符串操作函数
@@ -303,7 +325,7 @@ func Contains(s,substr string) bool
 fmt.Println(strings.Contains("seafood", "foo"))
 fmt.Println(strings.Contains("seafood", "bar"))
 fmt.Println(strings.Contains("seafood", ""))
-fmt.Println(strings.Contains("", ""))...</div><p><a href="/2019/08/21/Strings.html">阅读更多</a></p></div><div class="article__info clearfix"><ul class="left-col menu"><li>
+fmt.Println(strings.Contains("", ""))...</div><p><a href="/2019/08/21/golang-%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%93%8D%E4%BD%9C.html">阅读更多</a></p></div><div class="article__info clearfix"><ul class="left-col menu"><li>
               <a class="button button--secondary button--pill button--sm"
                 href="/archive.html?tag=GO">GO</a>
             </li><li>
@@ -638,30 +660,8 @@ gorouti...</div><p><a href="/2019/08/07/try-goroutine.html">阅读更多</a></p>
             </li></ul><ul class="right-col menu"><li><i class="far fa-calendar-alt"></i> <span>2019年 08月07日</span>
             </li></ul></div><meta itemprop="author" content="雷永成|Ray_YC"/><meta itemprop="datePublished" content="2019-08-07T00:00:00+08:00">
     <meta itemprop="keywords" content="GO-lang"></div>
-      </article><article class="item" itemscope itemtype="http://schema.org/BlogPosting"><div class="item__content">
-          <header><a href="/2019/08/03/grpc1.html"><h2 itemprop="headline" class="item__header">grpc初识</h2></a></header>
-          <div class="item__description"><div class="article__content" itemprop="description articleBody">使用grpc  内置的 protobuf 协议，其 DSL 语法 可清晰定义服务间通信的数据结构。
-可参考：gRPC Go: Beyond the basics
-
-编写好.proto 文件后可以使用Makefile 进行构建
-
-1
-2
-3
-4
-5
-build:
-    # 一定要注意 Makefile 中的缩进，否则 make build 可能报错 Nothing to be done for build
-    # protoc 命令前边是一个 Tab，不是四个或八个空格
-    # grpc:后面最好跟绝对路径
-    protoc -I. --go_out=plugins=grpc:$(GOPATH)/src/shippy/consignment-service proto/co...</div><p><a href="/2019/08/03/grpc1.html">阅读更多</a></p></div><div class="article__info clearfix"><ul class="left-col menu"><li>
-              <a class="button button--secondary button--pill button--sm"
-                href="/archive.html?tag=GO-lang">GO-lang</a>
-            </li></ul><ul class="right-col menu"><li><i class="far fa-calendar-alt"></i> <span>2019年 08月03日</span>
-            </li></ul></div><meta itemprop="author" content="雷永成|Ray_YC"/><meta itemprop="datePublished" content="2019-08-03T08:41:13+08:00">
-    <meta itemprop="keywords" content="GO-lang"></div>
       </article></div>
-</div><div class="layout--home"><div class="pagination"><p>共计 13 篇文章，2 页。</p>
+</div><div class="layout--home"><div class="pagination"><p>共计 14 篇文章，2 页。</p>
     <div class="pagination__menu">
       <ul class="menu menu--nowrap"><li><div class="button button--secondary button--circle disabled">
             <i class="fas fa-angle-left"></i>

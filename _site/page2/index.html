@@ -302,6 +302,38 @@
 <div class="layout--articles">
 <div class="article-list items items--divided">
 <article class="item" itemscope itemtype="http://schema.org/BlogPosting"><div class="item__content">
+          <header><a href="/2019/08/03/grpc1.html"><h2 itemprop="headline" class="item__header">grpc初识</h2></a></header>
+          <div class="item__description">
+<div class="article__content" itemprop="description articleBody">使用grpc  内置的 protobuf 协议，其 DSL 语法 可清晰定义服务间通信的数据结构。
+可参考：gRPC Go: Beyond the basics
+
+编写好.proto 文件后可以使用Makefile 进行构建
+
+1
+2
+3
+4
+5
+build:
+    # 一定要注意 Makefile 中的缩进，否则 make build 可能报错 Nothing to be done for build
+    # protoc 命令前边是一个 Tab，不是四个或八个空格
+    # grpc:后面最好跟绝对路径
+    protoc -I. --go_out=plugins=grpc:$(GOPATH)/src/shippy/consignment-service proto/co...</div>
+<p><a href="/2019/08/03/grpc1.html">阅读更多</a></p>
+</div>
+<div class="article__info clearfix">
+<ul class="left-col menu"><li>
+              <a class="button button--secondary button--pill button--sm" href="/archive.html?tag=GO-lang">GO-lang</a>
+            </li></ul>
+<ul class="right-col menu"><li>
+<i class="far fa-calendar-alt"></i> <span>2019年 08月03日</span>
+            </li></ul>
+</div>
+<meta itemprop="author" content="雷永成|Ray_YC">
+<meta itemprop="datePublished" content="2019-08-03T08:41:13+08:00">
+    <meta itemprop="keywords" content="GO-lang">
+</div>
+      </article><article class="item" itemscope itemtype="http://schema.org/BlogPosting"><div class="item__content">
           <header><a href="/2019/08/01/Ubuntu-set-rc.local.html"><h2 itemprop="headline" class="item__header">ubuntu1804 设置开机启动脚本</h2></a></header>
           <div class="item__description">
 <div class="article__content" itemprop="description articleBody">在Ubuntu 1804 中使用/etc/rc.local
@@ -485,7 +517,7 @@ You may want to config the site or writing a post next. Please feel free to crea
 </div>
 </div>
 <div class="layout--home"><div class="pagination">
-<p>共计 13 篇文章，2 页。</p>
+<p>共计 14 篇文章，2 页。</p>
     <div class="pagination__menu">
       <ul class="menu menu--nowrap">
 <li><a class="button button--secondary button--circle" href="/">
