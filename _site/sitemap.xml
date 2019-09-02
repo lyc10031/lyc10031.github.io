@@ -65,6 +65,10 @@
 <lastmod>2019-08-23T00:00:00+08:00</lastmod>
 </url>
 <url>
+<loc>http://172.16.80.32/2019/09/02/gin%E8%B0%83%E7%94%A8%E6%B5%81%E7%A8%8B.html</loc>
+<lastmod>2019-09-02T00:00:00+08:00</lastmod>
+</url>
+<url>
 <loc>http://172.16.80.32/about.html</loc>
 </url>
 <url>
@@ -78,5 +82,8 @@
 </url>
 <url>
 <loc>http://172.16.80.32/page2/</loc>
+</url>
+<url>
+<loc>http://172.16.80.32/page3/</loc>
 </url>
 </urlset>

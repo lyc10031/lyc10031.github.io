@@ -302,6 +302,56 @@
 <div class="layout--articles">
 <div class="article-list items items--divided">
 <article class="item" itemscope itemtype="http://schema.org/BlogPosting"><div class="item__content">
+          <header><a href="/2019/08/13/grep_awk.html"><h2 itemprop="headline" class="item__header">linux grep awk 使用记录</h2></a></header>
+          <div class="item__description">
+<div class="article__content" itemprop="description articleBody">grep ^vivek /etc/passwd
+
+grep -E ‘word1|word2’ 文件名
+
+awk 命令
+
+substr 截取字符串
+
+  substr(s,p) 返回字符串s中从p开始的后缀部分
+  
+    substr(s,p,n) 返回字符串s中从p开始长度为n的后缀部分
+  
+  awk -F ‘,’ ‘{print substr($3,6)}’
+    
+      表示以”,”分割 从第3个字段里的第6个字符开始，一直到设定的分隔符”,”结束.
+    
+  
+  substr($3,10,8)
+    
+      表示是从第3个字段里的第10个字符开始，截取8个字符结束.
+    
+  
+  substr($3,6)
+    
+      表示是从第3个字...</div>
+<p><a href="/2019/08/13/grep_awk.html">阅读更多</a></p>
+</div>
+<div class="article__info clearfix">
+<ul class="left-col menu">
+<li>
+              <a class="button button--secondary button--pill button--sm" href="/archive.html?tag=linux">linux</a>
+            </li>
+<li>
+              <a class="button button--secondary button--pill button--sm" href="/archive.html?tag=grep">grep</a>
+            </li>
+<li>
+              <a class="button button--secondary button--pill button--sm" href="/archive.html?tag=awk">awk</a>
+            </li>
+</ul>
+<ul class="right-col menu"><li>
+<i class="far fa-calendar-alt"></i> <span>2019年 08月13日</span>
+            </li></ul>
+</div>
+<meta itemprop="author" content="雷永成|Ray_YC">
+<meta itemprop="datePublished" content="2019-08-13T00:00:00+08:00">
+    <meta itemprop="keywords" content="linux,grep,awk">
+</div>
+      </article><article class="item" itemscope itemtype="http://schema.org/BlogPosting"><div class="item__content">
           <header><a href="/document/2019/08/09/select_VS_switch.html"><h2 itemprop="headline" class="item__header">Go switch VS select</h2></a></header>
           <div class="item__description">
 <div class="article__content" itemprop="description articleBody">switch is used to make a decision based on a variable value of any type.
@@ -554,29 +604,11 @@ You may want to config the site or writing a post next. Please feel free to crea
 <meta itemprop="datePublished" content="2018-07-01T00:00:00+08:00">
     <meta itemprop="keywords" content="TeXt">
 </div>
-      </article><article class="item" itemscope itemtype="http://schema.org/BlogPosting"><div class="item__content">
-          <header><a href="/2018/06/01/header-image.html"><h2 itemprop="headline" class="item__header">Post with Header Image</h2></a></header>
-          <div class="item__description">
-<div class="article__content" itemprop="description articleBody">A Post with Header Image, See Page layout for more examples.</div>
-<p><a href="/2018/06/01/header-image.html">阅读更多</a></p>
-</div>
-<div class="article__info clearfix">
-<ul class="left-col menu"><li>
-              <a class="button button--secondary button--pill button--sm" href="/archive.html?tag=TeXt">TeXt</a>
-            </li></ul>
-<ul class="right-col menu"><li>
-<i class="far fa-calendar-alt"></i> <span>2018年 06月01日</span>
-            </li></ul>
-</div>
-<meta itemprop="author" content="雷永成|Ray_YC">
-<meta itemprop="datePublished" content="2018-06-01T00:00:00+08:00">
-    <meta itemprop="keywords" content="TeXt">
-</div>
       </article>
 </div>
 </div>
 <div class="layout--home"><div class="pagination">
-<p>共计 16 篇文章，2 页。</p>
+<p>共计 17 篇文章，3 页。</p>
     <div class="pagination__menu">
       <ul class="menu menu--nowrap">
 <li><a class="button button--secondary button--circle" href="/">
@@ -588,9 +620,12 @@ You may want to config the site or writing a post next. Please feel free to crea
 <li>
               <div class="button button--primary button--circle focus"><span>2</span></div>
             </li>
-<li><div class="button button--secondary button--circle disabled">
+<li>
+                <a class="button button--secondary button--circle" href="/page3"><span>3</span></a>
+              </li>
+<li><a class="button button--secondary button--circle" href="/page3">
             <i class="fas fa-angle-right"></i>
-          </div></li>
+          </a></li>
 </ul>
     </div>
   </div></div>
