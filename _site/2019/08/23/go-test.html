@@ -529,6 +529,116 @@
 
 <p>通过上面对单元测试和压力测试的学习，我们可以看到testing包很轻量，编写单元测试和压力测试用例非常简单，配合内置的go test命令就可以非常方便的进行测试，这样在我们每次修改完代码,执行一下go test就可以简单的完成回归测试了。</p>
 
+<h3 id="使用defer会产生额外的消耗">使用defer会产生额外的消耗</h3>
+<p>来看一个例子：</p>
+
+<ul>
+  <li>代码：</li>
+</ul>
+
+<figure class="highlight"><pre><code class="language-golang" data-lang="golang"><table class="rouge-table"><tbody><tr><td class="gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+</pre></td><td class="code"><pre><span class="k">package</span> <span class="n">main</span>
+
+<span class="k">import</span> <span class="p">(</span>
+<span class="p">)</span>
+
+<span class="k">func</span>  <span class="n">DoDefer</span><span class="p">(</span><span class="n">key</span><span class="p">,</span><span class="n">value</span> <span class="kt">string</span><span class="p">)</span> <span class="p">{</span>
+	<span class="k">defer</span> <span class="k">func</span><span class="p">(</span><span class="n">key</span><span class="p">,</span><span class="n">value</span> <span class="kt">string</span><span class="p">)</span> <span class="p">{</span>
+		<span class="n">_</span> <span class="o">=</span> <span class="n">key</span> <span class="o">+</span> <span class="n">value</span>
+	<span class="p">}(</span><span class="n">key</span><span class="p">,</span><span class="n">value</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="k">func</span> <span class="n">DoNotDefer</span><span class="p">(</span><span class="n">key</span><span class="p">,</span><span class="n">value</span> <span class="kt">string</span><span class="p">)</span> <span class="p">{</span>
+	<span class="n">_</span> <span class="o">=</span> <span class="n">key</span> <span class="o">+</span> <span class="n">value</span>
+<span class="p">}</span>
+</pre></td></tr></tbody></table></code></pre></figure>
+
+<ul>
+  <li>测试代码：</li>
+</ul>
+
+<figure class="highlight"><pre><code class="language-golang" data-lang="golang"><table class="rouge-table"><tbody><tr><td class="gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+</pre></td><td class="code"><pre><span class="k">package</span> <span class="n">main</span>
+
+<span class="k">import</span> <span class="p">(</span>
+	<span class="s">"testing"</span>
+<span class="p">)</span>
+
+<span class="k">func</span> <span class="n">BenchmarkDoDefer</span><span class="p">(</span><span class="n">b</span> <span class="o">*</span><span class="n">testing</span><span class="o">.</span><span class="n">B</span><span class="p">)</span> <span class="p">{</span>
+	<span class="k">for</span> <span class="n">i</span> <span class="o">:=</span> <span class="m">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">b</span><span class="o">.</span><span class="n">N</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span> <span class="p">{</span>
+		<span class="n">DoDefer</span><span class="p">(</span><span class="s">"煎鱼"</span><span class="p">,</span> <span class="s">"https://github.com/EDDYCJY/blog"</span><span class="p">)</span>
+	<span class="p">}</span>
+<span class="p">}</span>
+
+<span class="k">func</span> <span class="n">BenchmarkDoNotDefer</span><span class="p">(</span><span class="n">b</span> <span class="o">*</span><span class="n">testing</span><span class="o">.</span><span class="n">B</span><span class="p">)</span> <span class="p">{</span>
+	<span class="k">for</span> <span class="n">i</span> <span class="o">:=</span> <span class="m">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">b</span><span class="o">.</span><span class="n">N</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span> <span class="p">{</span>
+		<span class="n">DoNotDefer</span><span class="p">(</span><span class="s">"煎鱼"</span><span class="p">,</span> <span class="s">"https://github.com/EDDYCJY/blog"</span><span class="p">)</span>
+	<span class="p">}</span>
+<span class="p">}</span>
+</pre></td></tr></tbody></table></code></pre></figure>
+
+<ul>
+  <li>
+    <p>go test -bench=. -benchmem -run=none</p>
+  </li>
+  <li>
+    <p>结果:</p>
+  </li>
+</ul>
+
+<figure class="highlight"><pre><code class="language-golang" data-lang="golang"><table class="rouge-table"><tbody><tr><td class="gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+</pre></td><td class="code"><pre><span class="n">goos</span><span class="o">:</span> <span class="n">linux</span>
+<span class="n">goarch</span><span class="o">:</span> <span class="n">amd64</span>
+<span class="n">pkg</span><span class="o">:</span> <span class="n">myfile</span><span class="o">/</span><span class="n">benchmark</span><span class="o">-</span><span class="n">test</span>
+<span class="n">BenchmarkDoDefer</span><span class="o">-</span><span class="m">4</span>              <span class="m">20000000</span>                <span class="m">95.9</span> <span class="n">ns</span><span class="o">/</span><span class="n">op</span>            <span class="m">48</span> <span class="n">B</span><span class="o">/</span><span class="n">op</span>          <span class="m">1</span> <span class="n">allocs</span><span class="o">/</span><span class="n">op</span>
+<span class="n">BenchmarkDoNotDefer</span><span class="o">-</span><span class="m">4</span>           <span class="m">30000000</span>                <span class="m">48.3</span> <span class="n">ns</span><span class="o">/</span><span class="n">op</span>            <span class="m">48</span> <span class="n">B</span><span class="o">/</span><span class="n">op</span>          <span class="m">1</span> <span class="n">allocs</span><span class="o">/</span><span class="n">op</span>
+<span class="n">PASS</span>
+<span class="n">ok</span>      <span class="n">myfile</span><span class="o">/</span><span class="n">benchmark</span><span class="o">-</span><span class="n">test</span>   <span class="m">3.536</span><span class="n">s</span>
+</pre></td></tr></tbody></table></code></pre></figure>
+
+<p>关于defer的消耗问题可以参考<a href="https://book.eddycjy.com/golang/talk/defer-loss.html">Go defer 会有性能损耗</a></p>
+
+<h3 id="结论">结论</h3>
+<p>一个 defer 关键字实际上包含了不少的动作和处理，和你单纯调用一个函数一条指令是没法比的。而与对照物相比，它确确实实是有性能损耗，目前延迟调用的全部开销大约在 50ns，但 defer 所提供的作用远远大于此，你从全局来看，它的损耗非常小，并且官方还不断地在优化中。</p>
+
+<p>因此，对于 “Go defer 会有性能损耗，尽量不能用？” 这个问题，我认为该用就用，应该及时关闭就不要延迟，在 hot paths 用时一定要想清楚场景。
+最后补充上柴大的回复：“不是性能问题，defer 最大的功能是 Panic 后依然有效。如果没有 defer，Panic 后就会导致 unlock 丢失，从而导致死锁了”，非常经典</p>
+
 <p><a href="javascript:scroll(0,0)">– 返回顶部 –</a></p>
 </div><section class="article__sharing d-print-none"></section><div class="d-print-none"><footer class="article__footer"><meta itemprop="dateModified" content="2019-08-23T00:00:00+08:00"><!-- start custom article footer snippet -->
 
