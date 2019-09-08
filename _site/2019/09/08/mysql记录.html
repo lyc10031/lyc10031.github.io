@@ -1,10 +1,10 @@
 <!DOCTYPE html><html lang="zh-CN">
   <head><meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"><title>Golang 数据类型的转换 - Ray_YC's Blog</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"><title>mysql 学习记录 - Ray_YC's Blog</title>
 
-<meta name="description" content="1、基本数据类型之间的转换1.1、string到intint,err:=strconv.Atoi(string)1.2、string到int64int64, err := strconv.ParseInt(string, 10, 64)1.3、int到stringstring:=strconv.Itoa(int)...">
-<link rel="canonical" href="http://172.16.80.32:80/2019/07/31/go-blog1.html"><link rel="alternate" type="application/rss+xml" title="Ray_YC's Blog" href="/feed.xml"><!-- start favicons snippet, use https://realfavicongenerator.net/ --><link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png"><link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png"><link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png"><link rel="manifest" href="/assets/site.webmanifest"><link rel="mask-icon" href="/assets/safari-pinned-tab.svg" color="#fc4d50"><link rel="shortcut icon" href="/assets/favicon.ico">
+<meta name="description" content="视频已搬运到B站  视频链接YouTube链接B站链接SELECT  SELECT fist_name,last_name      FROM customers    从 customers 表中查找 fist_name,last_name  SELECT last_name,fist_name,points ...">
+<link rel="canonical" href="http://172.16.80.32:80/2019/09/08/mysql%E8%AE%B0%E5%BD%95.html"><link rel="alternate" type="application/rss+xml" title="Ray_YC's Blog" href="/feed.xml"><!-- start favicons snippet, use https://realfavicongenerator.net/ --><link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png"><link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png"><link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png"><link rel="manifest" href="/assets/site.webmanifest"><link rel="mask-icon" href="/assets/safari-pinned-tab.svg" color="#fc4d50"><link rel="shortcut icon" href="/assets/favicon.ico">
 
 <meta name="msapplication-TileColor" content="#ffc40d"><meta name="msapplication-config" content="/assets/browserconfig.xml">
 
@@ -274,81 +274,742 @@
 
               <div class="col-main cell cell--auto"><!-- start custom main top snippet -->
 
-<!-- end custom main top snippet --><article itemscope itemtype="http://schema.org/Article"><div class="article__header"><header><h1>Golang 数据类型的转换</h1></header><span class="split-space">&nbsp;</span>
+<!-- end custom main top snippet --><article itemscope itemtype="http://schema.org/Article"><div class="article__header"><header><h1>mysql 学习记录</h1></header><span class="split-space">&nbsp;</span>
           <a class="edit-on-github"
             title="在 Github 上修改"
-            href="https://github.com/lyc10031/lyc10031.github.io/tree/master/_posts/dir2-golang/2019-07-30-go-blog1.md">
-            <i class="far fa-edit"></i></a></div><meta itemprop="headline" content="Golang 数据类型的转换"><div class="article__info clearfix"><ul class="left-col menu"><li>
+            href="https://github.com/lyc10031/lyc10031.github.io/tree/master/_posts/dir1-linux/2019-09-08-mysql记录.md">
+            <i class="far fa-edit"></i></a></div><meta itemprop="headline" content="mysql 学习记录"><div class="article__info clearfix"><ul class="left-col menu"><li>
               <a class="button button--secondary button--pill button--sm"
-                href="/archive.html?tag=GO-lang">GO-lang</a>
-            </li></ul><ul class="right-col menu"><li><i class="far fa-calendar-alt"></i> <span>2019年 07月31日</span>
-            </li></ul></div><meta itemprop="author" content="雷永成|Ray_YC"/><meta itemprop="datePublished" content="2019-07-31T04:13:13+08:00">
-    <meta itemprop="keywords" content="GO-lang"><div class="js-article-content"><div class="layout--article"><!-- start custom article top snippet -->
+                href="/archive.html?tag=linux">linux</a>
+            </li><li>
+              <a class="button button--secondary button--pill button--sm"
+                href="/archive.html?tag=mysql">mysql</a>
+            </li><li>
+              <a class="button button--secondary button--pill button--sm"
+                href="/archive.html?tag=%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0">学习笔记</a>
+            </li></ul><ul class="right-col menu"><li><i class="far fa-calendar-alt"></i> <span>2019年 09月08日</span>
+            </li></ul></div><meta itemprop="author" content="雷永成|Ray_YC"/><meta itemprop="datePublished" content="2019-09-08T00:00:00+08:00">
+    <meta itemprop="keywords" content="linux,mysql,学习笔记"><div class="js-article-content"><div class="layout--article"><!-- start custom article top snippet -->
 
-<!-- end custom article top snippet --><div class="article__content" itemprop="articleBody"><h2 id="1基本数据类型之间的转换">1、基本数据类型之间的转换</h2>
+<!-- end custom article top snippet --><div class="article__content" itemprop="articleBody"><h2 id="视频已搬运到b站">视频已搬运到B站</h2>
 
-<h3 id="11string到int">1.1、string到int</h3>
+<ul>
+  <li>视频链接</li>
+</ul>
 
-<p>int,err:=strconv.Atoi(string)</p>
+<p><a href="https://www.youtube.com/watch?v=7S_tz1z_5bA">YouTube链接</a>
+<a href="https://www.bilibili.com/video/av66138789">B站链接</a></p>
 
-<h3 id="12string到int64">1.2、string到int64</h3>
+<h3 id="select">SELECT</h3>
+<blockquote>
+  <p>SELECT fist_name,last_name</p>
+  <blockquote>
+    <p>FROM customers</p>
+  </blockquote>
+</blockquote>
 
-<p>int64, err := strconv.ParseInt(string, 10, 64)</p>
+<ul>
+  <li><strong>从 customers 表中查找 fist_name,last_name</strong></li>
+</ul>
 
-<h3 id="13int到string">1.3、int到string</h3>
+<blockquote>
+  <p>SELECT last_name,fist_name,points</p>
+  <blockquote>
+    <p>FROM customers</p>
+  </blockquote>
+</blockquote>
 
-<p>string:=strconv.Itoa(int)</p>
+<ul>
+  <li><strong>从 customers 表中查找 last_name, fist_name,points</strong></li>
+</ul>
 
-<h3 id="14int64到string">1.4、int64到string</h3>
+<blockquote>
+  <p>SELECT last_name,fist_name,points</p>
+  <blockquote>
+    <p>FROM customers</p>
+  </blockquote>
+</blockquote>
 
-<p>string:=strconv.FormatInt(int64,10)</p>
+<ul>
+  <li><strong>从 customers 表中查找 last_name, fist_name,points</strong></li>
+</ul>
 
-<h3 id="15字符串到float32float64">1.5、字符串到float32/float64</h3>
+<blockquote>
+  <p>SELECT last_name,fist_name,points,(points + 100) * 10 AS discount_factor</p>
+  <blockquote>
+    <p>FROM customers</p>
+  </blockquote>
+</blockquote>
 
-<p>float32, err = ParseFloat(string, 32)</p>
+<ul>
+  <li><strong>从 customers 表中查找 last_name, fist_name,points,discount_factor</strong></li>
+</ul>
 
-<p>float64,err = ParseFloat(string,64)</p>
+<blockquote>
+  <p>SELECT name,unit_price,unit_price * 1.1 AS new_price</p>
+  <blockquote>
+    <p>FROM products</p>
+  </blockquote>
+</blockquote>
 
-<h3 id="16int64转int">1.6、int64转int</h3>
+<ul>
+  <li><strong>从 products 表中查找 name, unit_price, new_price</strong></li>
+</ul>
 
-<p>int:=int(int64)</p>
+<h3 id="where">WHERE</h3>
+<blockquote>
+  <p>SELECT *</p>
+  <blockquote>
+    <p>FROM  Customers</p>
+    <blockquote>
+      <p>WHERE points &gt; 3000</p>
+    </blockquote>
+  </blockquote>
+</blockquote>
 
-<h3 id="17int转int64">1.7、int转int64</h3>
+<ul>
+  <li><strong>从 customers 表中查找 所有 points大于3000的数据</strong></li>
+</ul>
 
-<p>int64:=int64(int)</p>
+<blockquote>
+  <p>SELECT *</p>
+  <blockquote>
+    <p>FROM  orders</p>
+    <blockquote>
+      <p>WHERE order_data &gt;= ‘2019-01-01’</p>
+    </blockquote>
+  </blockquote>
+</blockquote>
 
-<h3 id="18string与byte之间的转换">1.8、string与[]byte之间的转换：</h3>
+<ul>
+  <li><strong>从 orders 表中查找 所有 order_data &gt;= ‘2019-01-01’的数据</strong></li>
+</ul>
 
-<p>string到[]byte:字节数组=[]byte(字符串)</p>
+<blockquote>
+  <p>SELECT *</p>
+  <blockquote>
+    <p>FROM  Customers</p>
+    <blockquote>
+      <p>WHERE points &gt; 3000 AND brith_data &gt; ‘1990-01-01’</p>
+    </blockquote>
+  </blockquote>
+</blockquote>
 
-<p>字节数组到string: 字符串=string([]byte)</p>
+<ul>
+  <li><strong>从 customers 表中查找 所有 points大于3000 且 brith_data &gt; ‘1990-01-01 的数据</strong></li>
+</ul>
 
-<h2 id="2interface与其他类型之间的转换">2、interface{}与其他类型之间的转换</h2>
+<blockquote>
+  <p>SELECT *</p>
+  <blockquote>
+    <p>FROM  Customers</p>
+    <blockquote>
+      <p>WHERE points &gt; 1000 OR brith_data &gt; ‘2019-01-01’</p>
+    </blockquote>
+  </blockquote>
+</blockquote>
 
-<p>转换方式包括隐式转换与断言转换。</p>
+<ul>
+  <li><strong>从 customers 表中查找 所有 points大于1000 或 brith_data &gt; ‘1990-01-01 的数据</strong></li>
+</ul>
 
-<h3 id="21interface类型转换成具体类型interfacevar具体类型">2.1、interface{}类型转换成具体类型：interfaceVar.(具体类型)</h3>
+<blockquote>
+  <p>SELECT *</p>
+  <blockquote>
+    <p>FROM  Customers</p>
+    <blockquote>
+      <p>WHERE NOT (points &gt; 1000 OR brith_data &gt; ‘2019-01-01’)</p>
+    </blockquote>
+  </blockquote>
+</blockquote>
 
-<p>原理：断言实现。如：</p>
+<ul>
+  <li><strong>从 customers 表中查找 对上面条件取反后的数据</strong></li>
+</ul>
 
-<p>断言成功返回true,失败返回false</p>
+<blockquote>
+  <p>SELECT *</p>
+  <blockquote>
+    <p>FROM odrer_items</p>
+    <blockquote>
+      <p>WHERE order_id = 6 AND unit_price * quantity &gt; 30</p>
+    </blockquote>
+  </blockquote>
+</blockquote>
 
-<figure class="highlight"><pre><code class="language-golang" data-lang="golang"><table class="rouge-table"><tbody><tr><td class="gutter gl"><pre class="lineno">1
-2
-3
-4
-5
-6
-</pre></td><td class="code"><pre><span class="n">value</span><span class="p">,</span> <span class="n">ok</span> <span class="o">:=</span> <span class="n">a</span><span class="o">.</span><span class="p">(</span><span class="kt">string</span><span class="p">)</span>
-<span class="k">if</span> <span class="o">!</span><span class="n">ok</span> <span class="p">{</span>
-    <span class="n">fmt</span><span class="o">.</span><span class="n">Println</span><span class="p">(</span><span class="s">"It's not ok for type string"</span><span class="p">)</span>
-    <span class="k">return</span>
-<span class="p">}</span>
-<span class="n">fmt</span><span class="o">.</span><span class="n">Println</span><span class="p">(</span><span class="s">"The value is "</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
-</pre></td></tr></tbody></table></code></pre></figure>
+<ul>
+  <li><strong>从 odrer_items 表中查找 order_id = 6 AND unit_price * quantity &gt; 30 的数据</strong></li>
+</ul>
 
-<h2 id="-返回顶部-"><a href="javascript:scroll(0,0)">– 返回顶部 –</a></h2>
-</div><section class="article__sharing d-print-none"></section><div class="d-print-none"><footer class="article__footer"><meta itemprop="dateModified" content="2019-07-31T04:13:13+08:00"><!-- start custom article footer snippet -->
+<blockquote>
+  <p>SELECT *</p>
+  <blockquote>
+    <p>FROM Customers</p>
+    <blockquote>
+      <p>WHERE state IN(‘VA’,’FL’,’GA’)</p>
+    </blockquote>
+  </blockquote>
+</blockquote>
+
+<ul>
+  <li><strong>从 customers 表中查找 state 等于 ‘VA’或’FL’或’GA’ 的数据</strong></li>
+</ul>
+
+<h3 id="between">BETWEEN</h3>
+<blockquote>
+  <p>SELECT *</p>
+  <blockquote>
+    <p>FROM Customers</p>
+    <blockquote>
+      <p>WHERE points  BETWEEN 1000 AND 3000</p>
+    </blockquote>
+  </blockquote>
+</blockquote>
+
+<ul>
+  <li><strong>从 customers 表中查找 所有 points大于等于1000 或小于等于3000的数据</strong></li>
+</ul>
+
+<blockquote>
+  <p>SELECT *</p>
+  <blockquote>
+    <p>FROM  Customers</p>
+    <blockquote>
+      <p>WHERE brith_data BETWEEN ‘1990-01-01’ AND ‘2000-01-01’</p>
+    </blockquote>
+  </blockquote>
+</blockquote>
+
+<ul>
+  <li><strong>从 customers 表中查找 所有 brith_data大于等于’1990-01-01’ 或小于等于’2000-01-01’的数据</strong></li>
+</ul>
+
+<h3 id="like">LIKE</h3>
+<blockquote>
+  <p>SELECT *</p>
+  <blockquote>
+    <p>FROM Customers</p>
+    <blockquote>
+      <p>WHERE last_name NOT LIKE ‘b%’</p>
+    </blockquote>
+  </blockquote>
+</blockquote>
+
+<ul>
+  <li><strong>从 customers 表中查找 last_name 不以b开头（大小写都行） 的数据</strong></li>
+</ul>
+
+<h3 id="regexp">REGEXP</h3>
+
+<ul>
+  <li>^ beginning</li>
+  <li>$ end</li>
+  <li>| 逻辑或</li>
+  <li>[abcd]</li>
+  <li>[a-z]</li>
+</ul>
+
+<blockquote>
+  <p>SELECT *</p>
+  <blockquote>
+    <p>FROM Customers</p>
+    <blockquote>
+      <p>WHERE last_name REGEXP ‘b’</p>
+    </blockquote>
+  </blockquote>
+</blockquote>
+
+<ul>
+  <li><strong>从 customers 表中查找 last_name 包含b（大小写都行） 的数据</strong></li>
+</ul>
+
+<blockquote>
+  <p>SELECT *</p>
+  <blockquote>
+    <p>FROM Customers</p>
+    <blockquote>
+      <p>WHERE last_name REGEXP ‘^field|mac|rose’</p>
+    </blockquote>
+  </blockquote>
+</blockquote>
+
+<ul>
+  <li><strong>从 customers 表中查找 last_name 以field开头 或包含 mac或rose（大小写都行） 的数据</strong></li>
+</ul>
+
+<blockquote>
+  <p>SELECT *</p>
+  <blockquote>
+    <p>FROM Customers</p>
+    <blockquote>
+      <p>WHERE last_name REGEXP ‘[gim]e’</p>
+    </blockquote>
+  </blockquote>
+</blockquote>
+
+<ul>
+  <li><strong>从 customers 表中查找 last_name 包含 ge、ie、me（大小写都行） 的数据</strong></li>
+</ul>
+
+<h3 id="is-null">IS NULL</h3>
+<blockquote>
+  <p>SELECT *</p>
+  <blockquote>
+    <p>FROM Customers</p>
+    <blockquote>
+      <p>WHERE phone IS NOT NULL</p>
+    </blockquote>
+  </blockquote>
+</blockquote>
+
+<ul>
+  <li><strong>从 customers 表中查找 phone 不为空的数据</strong></li>
+</ul>
+
+<h3 id="order-by">ORDER BY</h3>
+
+<ul>
+  <li>mysql 默认使用创建表时指定的主键（primary key）排序</li>
+</ul>
+
+<blockquote>
+  <p>SELECT *</p>
+  <blockquote>
+    <p>FROM Customers</p>
+    <blockquote>
+      <p>ORDER BY first_name DESC</p>
+    </blockquote>
+  </blockquote>
+</blockquote>
+
+<ul>
+  <li><strong>从 customers 表中查找 全部数据 以first_name排序后的倒序(DESC)方式输出</strong></li>
+</ul>
+
+<blockquote>
+  <p>SELECT *</p>
+  <blockquote>
+    <p>FROM Customers</p>
+    <blockquote>
+      <p>ORDER BY state DESC,first_name DESC</p>
+    </blockquote>
+  </blockquote>
+</blockquote>
+
+<ul>
+  <li><strong>从 customers 表中查找 全部数据 先以state排序后的倒序(DESC),后用first_name排序后的倒序(DESC)方式输出</strong></li>
+</ul>
+
+<blockquote>
+  <p>SELECT *,quantity * unit_price AS total_price</p>
+  <blockquote>
+    <p>FROM Customers</p>
+    <blockquote>
+      <p>WHERE order_id = 2</p>
+      <blockquote>
+        <p>ORDER BY tota_price DESC</p>
+      </blockquote>
+    </blockquote>
+  </blockquote>
+</blockquote>
+
+<ul>
+  <li><strong>从 customers 表中查找order_id = 2 全部数据 和以 quantity * unit_price排序后的倒序(DESC)数据方式输出</strong></li>
+</ul>
+
+<h3 id="limit">LIMIT</h3>
+<blockquote>
+  <p>SELECT *</p>
+  <blockquote>
+    <p>FROM Customers</p>
+    <blockquote>
+      <p>LIMIT 6,3</p>
+    </blockquote>
+  </blockquote>
+</blockquote>
+
+<ul>
+  <li><strong>从 customers 表中查找 全部 跳过（6）条数据 输出前3条数据 【6叫做偏移量】</strong></li>
+</ul>
+
+<h3 id="join">JOIN</h3>
+
+<ul>
+  <li>用于在多个表之间建立联系。输出想要的数据。</li>
+</ul>
+
+<blockquote>
+  <p>SELECT order_id,o.customer_id,first_name,last_name</p>
+  <blockquote>
+    <p>FROM orders o</p>
+    <blockquote>
+      <p>JOIN customers c</p>
+      <blockquote>
+        <p>ON o.customers_id = c.custormer_id</p>
+      </blockquote>
+    </blockquote>
+  </blockquote>
+</blockquote>
+
+<ul>
+  <li><strong>从orders 表格中查找 customers_id等于customers表中的custormer_id的数据</strong></li>
+  <li>在select中 如果两个表中有相同的列名(customer_id) 必须指定列所属的表名，否则mysql无法定位列所处的表到底是哪个表，会报错。</li>
+  <li>在查询中为表指定别名，简化书写(orders o)(customers c)</li>
+</ul>
+
+<blockquote>
+  <p>SELECT order_id,oi.product_id,quantity,oi.unit_price</p>
+  <blockquote>
+    <p>FROM orders_items oi</p>
+    <blockquote>
+      <p>JOIN products p</p>
+      <blockquote>
+        <p>ON oi.product_id = p.product_id</p>
+      </blockquote>
+    </blockquote>
+  </blockquote>
+</blockquote>
+
+<ul>
+  <li><strong>从orders 表格中查找 product_id等于products表中的product_id的数据</strong></li>
+  <li>在select中 如果两个表中有相同的列名(customer_id) 必须指定列所属的表名，否则mysql无法定位列所处的表到底是哪个表，会报错。</li>
+  <li>在查询中为表指定别名，简化书写(orders o)(customers c)</li>
+  <li>在产品表(product)和订单表(orders_items)中都有unit_price 需要根据实际情况选择输出的具体是哪个unit_price (例子中为了输出当前价格使用的是orders 表的数据)</li>
+</ul>
+
+<h3 id="join-to-accross-databases">JOIN to accross databases</h3>
+
+<ul>
+  <li>跨数据库表链接，类似linux系统中的绝对路径，在查询时必须使用绝对路径 数据库名.表名.列名 来定位数据。</li>
+</ul>
+
+<h3 id="join-to-itself-自链接">JOIN to it’self 自链接</h3>
+
+<ul>
+  <li>use sql_ht;</li>
+</ul>
+
+<blockquote>
+  <p>SELECT e.employee_id,e.first_name,m.first_name AS manager</p>
+  <blockquote>
+    <p>FROM employees e</p>
+    <blockquote>
+      <p>JOIN employees m</p>
+      <blockquote>
+        <p>ON e.reports_to = m.employee_id</p>
+      </blockquote>
+    </blockquote>
+  </blockquote>
+</blockquote>
+
+<ul>
+  <li><strong>从employees 表格中查找 reports_to等于employees表中的employee_id的数据</strong></li>
+</ul>
+
+<h4 id="join-两个以上表格的链接">JOIN 两个以上表格的链接</h4>
+
+<blockquote>
+  <p>SELECT o.order_id,o.order_date,c.first_name,c.last_name</p>
+  <blockquote>
+    <p>FROM orders o</p>
+    <blockquote>
+      <p>JOIN customers c</p>
+      <blockquote>
+        <p>ON o.customer_id = c.customer_id
+JOIN order_statuses os
+ON o.status = os.order_status_id</p>
+      </blockquote>
+    </blockquote>
+  </blockquote>
+</blockquote>
+
+<ul>
+  <li><strong>从orders 表格中查找 o.customer_id等于customers表中的c.customer_id的数据。之后， 查找order_statuses表中 os.order_status_id（订单状态id） = 订单状态 的数据</strong></li>
+</ul>
+
+<blockquote>
+  <p>SELECT p.date,p.invoice_id,p.amount,c.name,pm.name</p>
+  <blockquote>
+    <p>FORM payments p</p>
+    <blockquote>
+      <p>JOIN clients c</p>
+      <blockquote>
+        <p>ON p.client_id = c.client_id
+JOIN payment_methods pm
+ON p.payment_method = pm.payment_method_id</p>
+      </blockquote>
+    </blockquote>
+  </blockquote>
+</blockquote>
+
+<ul>
+  <li><strong>从payments 表中查找client_id = clients表中client_id的数据。之后， 查找payments_methods 表中支付方式id = payments表中订单支付方式的数据</strong></li>
+  <li>最终返回 订单时间（from payments），订单编号（from payments）、订单价格（from payments） 客户姓名(from client)、支付方式(from payment_methods) 数据。</li>
+</ul>
+
+<h3 id="复合主键-join">复合主键 JOIN</h3>
+<ul>
+  <li>当表格中存在不只一个主键的时候，使用 JOIN ON (1) AND (2) 来进行JOIN 操作。 1、2 分别使用 复合主键的主键1、主键2、进行条件匹配。</li>
+</ul>
+
+<blockquote>
+  <p>SELECT *</p>
+  <blockquote>
+    <p>FROM order_items oi</p>
+    <blockquote>
+      <p>JOIN order_items_notes oin</p>
+      <blockquote>
+        <p>ON oi.order_id = oin.order_id
+AND oi.product_id = oin.product_id</p>
+      </blockquote>
+    </blockquote>
+  </blockquote>
+</blockquote>
+
+<h3 id="隐式join语法implicit-join">隐式JOIN语法(implicit join)</h3>
+
+<blockquote>
+  <p>SELECT *</p>
+  <blockquote>
+    <p>FROM orders o</p>
+    <blockquote>
+      <p>JOIN customers c</p>
+      <blockquote>
+        <p>ON o.customer_id = c.customer_id</p>
+      </blockquote>
+    </blockquote>
+  </blockquote>
+</blockquote>
+
+<blockquote>
+  <p>SELECT *</p>
+  <blockquote>
+    <p>FROM orders o,customer c</p>
+    <blockquote>
+      <p>WHERE o.customer_id = c.customer_id</p>
+    </blockquote>
+  </blockquote>
+</blockquote>
+
+<ul>
+  <li>上面两个sql语句是相等的。下面的这个sql语句就使用了隐式join ，在隐式join中必须指定WHERE (1) = (2) 条件，否则将生产两张表的交叉数据。</li>
+</ul>
+
+<h3 id="inner-join-and-outer-join">(INNER JOIN) AND (OUTER JOIN)</h3>
+
+<ul>
+  <li>
+    <p>JOIN 默认使用INNER JOIN</p>
+  </li>
+  <li>
+    <p>OUTER JOIN 例子</p>
+  </li>
+</ul>
+
+<blockquote>
+  <p>SELECT c.customer_id,c.first_name,o.order_id</p>
+  <blockquote>
+    <p>FROM customers c</p>
+    <blockquote>
+      <p>JOIN orders o</p>
+      <blockquote>
+        <p>ON c.customer_id = o.customer_id
+ORDER BY c.customer_id</p>
+      </blockquote>
+    </blockquote>
+  </blockquote>
+</blockquote>
+
+<ul>
+  <li>
+    <p>上面的例子将看到所有有订单的customer_id 和first_name 还有order_id 的数据</p>
+  </li>
+  <li>
+    <p>上面的结果 是因为JOIN ON 的条件 将会只返回orders表中存在customer_id的数据。那些在orders表中没有的customer 数据将不会返回，所以就看不到全部customer数据。</p>
+  </li>
+  <li>为了看到所有的customer 的订单信息，不管customer是否有order_id 可以使用OUTJOIN。</li>
+  <li>
+    <p>OUTJOIN 有两种：1、 LEFT JOIN；2、RIGHT JOIN。</p>
+  </li>
+  <li>在上面的例子中，如果使用LEFT JOIN 那么 不论数据是否满足ON 的条件（c.customer_id = o.customer_id）select语句中选中的左侧表的数据都将被返回。这样就能看到所有customer的订单信息了。sql语句如下：</li>
+</ul>
+
+<blockquote>
+  <p>SELECT c.customer_id,c.first_name,o.order_id</p>
+  <blockquote>
+    <p>FROM customers c</p>
+    <blockquote>
+      <p>LEFT JOIN orders o</p>
+      <blockquote>
+        <p>ON c.customer_id = o.customer_id
+ORDER BY c.customer_id</p>
+      </blockquote>
+    </blockquote>
+  </blockquote>
+</blockquote>
+
+<ul>
+  <li>
+    <p>同理使用RIGTH JOIN 不论数据是否满足ON 的条件（c.customer_id = o.customer_id）select语句中选中的右侧表的数据都将被返回。</p>
+  </li>
+  <li>
+    <p>也可以总结为 LEFT JOIN 将返回FROM 后面表格的全部数据 RIGHT JOIN 将返回JOIN 后面表格的全部数据。这样的话只要将两个表格的顺序互换就能产生不一样的数据。</p>
+  </li>
+  <li>
+    <p>JOIN 代表inner join left join or right join 代表outer join。</p>
+  </li>
+</ul>
+
+<h3 id="outer-join-两个以上表格的链接">OUTER JOIN 两个以上表格的链接</h3>
+
+<ul>
+  <li>与inner join 类似的 outer join 也可以用作多个表中</li>
+</ul>
+
+<blockquote>
+  <p>SELECT c.customer_id,c.first_name,o.order_id,sh.name AS shipper</p>
+  <blockquote>
+    <p>FROM customers c</p>
+    <blockquote>
+      <p>LEFT JOIN orders o</p>
+      <blockquote>
+        <p>ON c.customer_id = o.customer_id
+LEFT JOIN shippers sh
+ON o.shipper_id = sh.shipper_id
+ORDER BY c.customer_id</p>
+      </blockquote>
+    </blockquote>
+  </blockquote>
+</blockquote>
+
+<blockquote>
+  <p>SELECT o.order_id,o.order_date,c.first_name AS customer,sh.name AS shipper,os.name AS status</p>
+  <blockquote>
+    <p>FROM order o</p>
+    <blockquote>
+      <p>JOIN customer c</p>
+      <blockquote>
+        <p>ON o.customer_id = c.customer_id
+LEFT JOIN shippers sh
+ON o.shipper_id = sh.shipper_id
+JOIN order_status os
+ON o.status = os.status_id
+ORDER BY c.customer_id</p>
+      </blockquote>
+    </blockquote>
+  </blockquote>
+</blockquote>
+
+<h3 id="outer-join-to-itself-outer自链接">OUTER JOIN to it’self OUTER自链接</h3>
+
+<ul>
+  <li>与前面join的内链接一样，</li>
+</ul>
+
+<blockquote>
+  <p>SELECT e.employee_id,e.first_name,m.first_name AS manager</p>
+  <blockquote>
+    <p>FROM employees e</p>
+    <blockquote>
+      <p>LEFT JOIN employees m</p>
+      <blockquote>
+        <p>ON e.reports_to = m.employee_id</p>
+      </blockquote>
+    </blockquote>
+  </blockquote>
+</blockquote>
+
+<h3 id="using">USING</h3>
+
+<ul>
+  <li>如果on 条件中 列的名称相同，可以使用USING() 语句来简化 ON 语句</li>
+</ul>
+
+<blockquote>
+  <p>SELECT order_id,o.customer_id,first_name,last_name</p>
+  <blockquote>
+    <p>FROM orders o</p>
+    <blockquote>
+      <p>JOIN customers c</p>
+      <blockquote>
+        <p>ON o.customers_id = c.custormer_id</p>
+      </blockquote>
+    </blockquote>
+  </blockquote>
+</blockquote>
+
+<p>上面的sql语句可以写成</p>
+
+<blockquote>
+  <p>SELECT order_id,o.customer_id,first_name,last_name</p>
+  <blockquote>
+    <p>FROM orders o</p>
+    <blockquote>
+      <p>JOIN customers c</p>
+      <blockquote>
+        <p>USING (custormer_id)</p>
+      </blockquote>
+    </blockquote>
+  </blockquote>
+</blockquote>
+
+<ul>
+  <li>两者功能相同。</li>
+</ul>
+
+<blockquote>
+  <p>SELECT c.customer_id,c.first_name,o.order_id,sh.name AS shipper</p>
+  <blockquote>
+    <p>FROM customers c</p>
+    <blockquote>
+      <p>LEFT JOIN orders o</p>
+      <blockquote>
+        <p>USING (customer_id)
+LEFT JOIN shippers sh
+USING (shipper_id)
+ORDER BY c.customer_id</p>
+      </blockquote>
+    </blockquote>
+  </blockquote>
+</blockquote>
+
+<h3 id="多主键join-using-语句">多主键join using 语句</h3>
+
+<blockquote>
+  <p>SELECT *</p>
+  <blockquote>
+    <p>FROM order_items oi</p>
+    <blockquote>
+      <p>JOIN order_items_notes oin</p>
+      <blockquote>
+        <p>ON oi.order_id = oin.order_id 
+AND
+oi.product_id = oin.product_id</p>
+      </blockquote>
+    </blockquote>
+  </blockquote>
+</blockquote>
+
+<ul>
+  <li>可以写成：</li>
+</ul>
+
+<blockquote>
+  <p>SELECT *</p>
+  <blockquote>
+    <p>FROM order_items oi</p>
+    <blockquote>
+      <p>JOIN order_items_notes oin</p>
+      <blockquote>
+        <p>USING (order_id,product_id)</p>
+      </blockquote>
+    </blockquote>
+  </blockquote>
+</blockquote>
+
+<p><a href="javascript:scroll(0,0)">– 返回顶部 –</a></p>
+
+</div><section class="article__sharing d-print-none"></section><div class="d-print-none"><footer class="article__footer"><meta itemprop="dateModified" content="2019-09-08T00:00:00+08:00"><!-- start custom article footer snippet -->
 
 <!-- end custom article footer snippet --><div class="article__subscribe"><div class="subscribe"><i class="fas fa-rss"></i> <a type="application/rss+xml" href="/feed.xml">订阅</a></div></div><div class="article__license"><div class="license">
     <p>本文遵守 <a itemprop="license" rel="license" href="https://creativecommons.org/licenses/by-nc/4.0/">Attribution-NonCommercial 4.0 International</a> 许可协议。
@@ -356,7 +1017,7 @@
         <img alt="Attribution-NonCommercial 4.0 International" src="https://i.creativecommons.org/l/by-nc/4.0/88x31.png" />
       </a>
     </p>
-  </div></div></footer><div class="article__section-navigator clearfix"><div class="previous"><span>上篇</span><a href="/2018/07/01/welcome.html">Welcome</a></div><div class="next"><span>下篇</span><a href="/2019/07/31/go-blog2.html">在使用golang时常见的错误</a></div></div></div>
+  </div></div></footer><div class="article__section-navigator clearfix"><div class="previous"><span>上篇</span><a href="/2019/09/02/gin%E8%B0%83%E7%94%A8%E6%B5%81%E7%A8%8B.html">gin框架的调用流程</a></div></div></div>
 
 </div>
 
