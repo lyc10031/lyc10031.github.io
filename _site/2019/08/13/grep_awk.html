@@ -372,6 +372,71 @@ output: 1</p>
   </li>
 </ul>
 
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">#!/bin/bash</span>
+<span class="nv">time1</span><span class="o">=</span><span class="sb">`</span><span class="nb">date</span> <span class="s2">"+%Y-%m-%d %H:%M:%S"</span><span class="sb">`</span>
+<span class="c">#time1=`date -d"$A" +%s`</span>
+<span class="nb">echo</span> <span class="s2">" ___________________________________________"</span> <span class="o">&gt;&gt;</span> cpus.txt
+<span class="nb">echo</span> <span class="s2">"|                                           |"</span> <span class="o">&gt;&gt;</span> cpus.txt
+<span class="nv">cpu_info</span><span class="o">=</span><span class="sb">`</span><span class="nb">cat</span> /proc/cpuinfo  | <span class="nb">grep</span> <span class="s2">"model name"</span> | <span class="nb">uniq</span>  | <span class="nb">awk</span> <span class="nt">-F</span> <span class="s2">":"</span> <span class="s1">'{print $2}'</span> |sed <span class="s1">'s/[ ][ ]*/ /g'</span><span class="sb">`</span>
+<span class="nb">echo</span> <span class="s2">"|</span><span class="nv">$cpu_info</span><span class="s2">  |"</span><span class="o">&gt;&gt;</span> cpus.txt
+<span class="nb">echo</span> <span class="s2">"|  </span><span class="sb">`</span>free <span class="nt">-h</span> | <span class="nb">grep</span> <span class="s2">"Mem"</span> | <span class="nb">awk</span> <span class="s1">'{print "Mem_totle: "$2}'</span><span class="sb">`</span><span class="s2">"</span> <span class="o">&gt;&gt;</span> cpus.txt
+<span class="nb">echo</span> <span class="s2">"|********CPU_Idle(%) and Mem_free(%)********|"</span> <span class="o">&gt;&gt;</span> cpus.txt
+<span class="nb">echo</span> <span class="s2">"|******Start Time:</span><span class="nv">$time1</span><span class="s2">*******|    "</span> <span class="o">&gt;&gt;</span> cpus.txt
+<span class="nv">totle</span><span class="o">=</span><span class="sb">`</span>free <span class="nt">-m</span> | <span class="nb">grep</span> <span class="nt">-i</span> <span class="s1">'Mem'</span>| <span class="nb">awk</span> <span class="nt">-F</span> <span class="s1">' '</span> <span class="s1">'{print $2}'</span><span class="sb">`</span>
+
+<span class="nb">sync</span><span class="p">;</span> <span class="nb">echo </span>1 <span class="o">&gt;</span> /proc/sys/vm/drop_caches  <span class="c"># 清空缓存</span>
+<span class="k">if</span> <span class="o">[</span> <span class="o">!</span> <span class="nt">-d</span> <span class="s2">"tmp"</span> <span class="o">]</span><span class="p">;</span> <span class="k">then
+ </span><span class="nb">mkdir</span> <span class="s2">"tmp"</span>
+<span class="k">fi</span>
+
+<span class="c">#cat /dev/null &gt; cpus.txt</span>
+<span class="k">for </span>i <span class="k">in</span> <span class="o">{</span>1..10<span class="o">}</span>
+<span class="k">do
+if</span> <span class="o">[</span> <span class="nv">$i</span> <span class="nt">-lt</span> 10 <span class="o">]</span><span class="p">;</span><span class="k">then</span>
+<span class="c">#    A=`top -b -n 1 | grep %Cpu | awk -F ',' '{print $4}' | awk  '{print $1}'`</span>
+    <span class="nv">A</span><span class="o">=</span><span class="sb">`</span>top <span class="nt">-b</span> <span class="nt">-n</span> 2 | <span class="nb">grep</span> <span class="s2">"%Cpu"</span> | <span class="nb">awk</span> <span class="s1">'NR==2'</span> | <span class="nb">awk</span> <span class="nt">-F</span> <span class="s1">' '</span> <span class="s1">'{print $8}'</span><span class="sb">`</span>
+   <span class="c"># B=`top -b -n 1 | grep -i 'KiB Mem' | awk -F ',' '{print $1}' | awk '{print $4}'`</span>
+    <span class="nv">C</span><span class="o">=</span><span class="sb">`</span>free <span class="nt">-m</span> | <span class="nb">grep</span> <span class="nt">-i</span> <span class="s1">'Mem'</span>| <span class="nb">awk</span> <span class="nt">-F</span> <span class="s1">' '</span> <span class="s1">'{print $4}'</span><span class="sb">`</span>
+   <span class="c"># D=`expr $C / $B`</span>
+    <span class="nb">echo</span> <span class="nv">$C</span> <span class="o">&gt;&gt;</span> tmp/tmp_Mem.txt
+    <span class="nb">echo</span> <span class="nv">$A</span> <span class="o">&gt;&gt;</span> tmp/tmp_Idle.txt
+    <span class="nv">i</span><span class="o">=</span><span class="sb">`</span><span class="nb">expr</span> <span class="nv">$i</span> + 1<span class="sb">`</span>
+<span class="c">#    sleep $1</span>
+<span class="k">else</span>
+<span class="c">#    B=`awk -F' ' '{sum+=$1;count+=1} END{print "SUM:"sum"\nAVG:"sum/count}' tmp.txt`</span>
+<span class="c">#    B=`awk -F' ' '{sum+=$1;count+=1} END{print "AVG:"sum/count}' tmp.txt`</span>
+    <span class="nv">E</span><span class="o">=</span><span class="sb">`</span><span class="nb">awk</span> <span class="s1">'{sum+=$1} END {print "CPU_idle_Avg: ", sum/NR}'</span> tmp/tmp_Idle.txt<span class="sb">`</span>
+    <span class="nv">F</span><span class="o">=</span><span class="sb">`</span><span class="nb">awk</span> <span class="s1">'BEGIN {max = 0} {if ($1+0 &gt; max+0) max=$1} END {print "CPU_idle_Max: ", max}'</span> tmp/tmp_Idle.txt<span class="sb">`</span>
+    <span class="nv">G</span><span class="o">=</span><span class="sb">`</span><span class="nb">awk</span> <span class="s1">'BEGIN {min = 65536} {if ($1+0 &lt; min+0) min=$1} END {print "CPU_idle_Min: ", min}'</span> tmp/tmp_Idle.txt<span class="sb">`</span>
+   <span class="c"># H=`awk '{sum+=$1} END {print "CPU_Mem_Avg: ", sum/NR/7810}' tmp_Mem.txt`</span>
+    <span class="nv">H</span><span class="o">=</span><span class="sb">`</span><span class="nb">awk</span> <span class="nt">-v</span> <span class="nv">totle</span><span class="o">=</span><span class="nv">$totle</span> <span class="s1">'{sum+=$1} END {print "Mem_Avg: ", (sum/NR/totle)*100}'</span> tmp/tmp_Mem.txt<span class="sb">`</span>
+    <span class="nv">I</span><span class="o">=</span><span class="sb">`</span><span class="nb">awk</span> <span class="nt">-v</span> <span class="nv">totle</span><span class="o">=</span><span class="nv">$totle</span> <span class="s1">'BEGIN {max = 0} {if ($1+0 &gt; max+0) max=$1} END {print "Mem_Max: ", (max/totle)*100}'</span> tmp/tmp_Mem.txt<span class="sb">`</span>
+    <span class="nv">J</span><span class="o">=</span><span class="sb">`</span><span class="nb">awk</span> <span class="nt">-v</span> <span class="nv">totle</span><span class="o">=</span><span class="nv">$totle</span>  <span class="s1">'BEGIN {min = 65536} {if ($1+0 &lt; min+0) min=$1} END {print "Mem_Min: ", (min/totle)*100}'</span> tmp/tmp_Mem.txt<span class="sb">`</span>
+    <span class="nb">echo</span> <span class="s2">" </span><span class="nv">$E</span><span class="s2"> "</span> <span class="o">&gt;&gt;</span> cpus.txt
+    <span class="nb">echo</span> <span class="s2">" </span><span class="nv">$F</span><span class="s2"> "</span> <span class="o">&gt;&gt;</span> cpus.txt
+    <span class="nb">echo</span> <span class="s2">" </span><span class="nv">$G</span><span class="s2"> "</span> <span class="o">&gt;&gt;</span> cpus.txt
+    <span class="nb">echo</span> <span class="s2">" ----------"</span> <span class="o">&gt;&gt;</span> cpus.txt
+<span class="c">#    echo " `free -m | grep "Mem" | awk '{print "Mem_totle: "$2}'`" &gt;&gt; cpus.txt</span>
+    <span class="nb">echo</span> <span class="s2">" </span><span class="nv">$H</span><span class="s2"> "</span> <span class="o">&gt;&gt;</span> cpus.txt
+    <span class="nb">echo</span> <span class="s2">" </span><span class="nv">$I</span><span class="s2"> "</span> <span class="o">&gt;&gt;</span> cpus.txt
+    <span class="nb">echo</span> <span class="s2">" </span><span class="nv">$J</span><span class="s2"> "</span> <span class="o">&gt;&gt;</span> cpus.txt
+<span class="k">fi
+done
+</span><span class="nb">cat</span> /dev/null <span class="o">&gt;</span> tmp/tmp_Idle.txt
+<span class="nb">cat</span> /dev/null <span class="o">&gt;</span> tmp/tmp_Mem.txt
+<span class="nv">time2</span><span class="o">=</span><span class="sb">`</span><span class="nb">date</span> <span class="s2">"+%Y-%m-%d %H:%M:%S"</span><span class="sb">`</span>
+<span class="nv">Times1</span><span class="o">=</span><span class="sb">`</span><span class="nb">date</span> <span class="nt">-d</span><span class="s2">"</span><span class="nv">$time1</span><span class="s2">"</span> +%s<span class="sb">`</span>
+<span class="nv">Times2</span><span class="o">=</span><span class="sb">`</span><span class="nb">date</span> <span class="nt">-d</span><span class="s2">"</span><span class="nv">$time2</span><span class="s2">"</span> +%s<span class="sb">`</span>
+<span class="nv">time3</span><span class="o">=</span><span class="sb">`</span><span class="nb">expr</span> <span class="nv">$Times2</span> - <span class="nv">$Times1</span><span class="sb">`</span>
+<span class="nv">time4</span><span class="o">=</span><span class="sb">`</span><span class="nb">date</span> <span class="nt">-d</span> @<span class="nv">$time3</span> +%M:%S<span class="sb">`</span>
+<span class="nb">echo</span> <span class="s2">"|*******End Time:</span><span class="nv">$time2</span><span class="s2">********|"</span> <span class="o">&gt;&gt;</span> cpus.txt
+<span class="nb">echo</span> <span class="s2">"|*************Duration(</span><span class="nv">$time4</span><span class="s2">)***************|"</span> <span class="o">&gt;&gt;</span> cpus.txt
+<span class="nb">echo</span> <span class="s2">"|___________________________________________|"</span> <span class="o">&gt;&gt;</span> cpus.txt
+<span class="nb">echo</span> <span class="nt">-e</span> <span class="s2">" </span><span class="se">\n</span><span class="s2"> "</span> <span class="o">&gt;&gt;</span> cpus.txt
+<span class="nb">sleep </span>2
+<span class="nb">cat </span>cpus.txt
+</code></pre></div></div>
+
 <p><a href="javascript:scroll(0,0)">– 返回顶部 –</a></p>
 </div><section class="article__sharing d-print-none"></section><div class="d-print-none"><footer class="article__footer"><meta itemprop="dateModified" content="2019-08-13T00:00:00+08:00"><!-- start custom article footer snippet -->
 
