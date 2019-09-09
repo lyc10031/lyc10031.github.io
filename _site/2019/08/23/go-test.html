@@ -639,6 +639,10 @@
 <p>因此，对于 “Go defer 会有性能损耗，尽量不能用？” 这个问题，我认为该用就用，应该及时关闭就不要延迟，在 hot paths 用时一定要想清楚场景。
 最后补充上柴大的回复：“不是性能问题，defer 最大的功能是 Panic 后依然有效。如果没有 defer，Panic 后就会导致 unlock 丢失，从而导致死锁了”，非常经典</p>
 
+<ul>
+  <li>在最新的go 1.13 版本中 defer的新能提升了30%</li>
+</ul>
+
 <p><a href="javascript:scroll(0,0)">– 返回顶部 –</a></p>
 </div><section class="article__sharing d-print-none"></section><div class="d-print-none"><footer class="article__footer"><meta itemprop="dateModified" content="2019-08-23T00:00:00+08:00"><!-- start custom article footer snippet -->
 
