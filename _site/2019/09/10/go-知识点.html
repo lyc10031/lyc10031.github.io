@@ -1,11 +1,10 @@
 <!DOCTYPE html><html lang="zh-CN">
   <head><meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"><title>浮名浮利，虚苦劳神。叹隙中驹，石中火，梦中身。——苏轼《行香子·述怀》 - Ray_YC's Blog</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"><title>go知识点 - Ray_YC's Blog</title>
 
-<meta name="description" content="欢迎访问我的博客。 浮名浮利，虚苦劳神。叹隙中驹，石中火，梦中身。——苏轼《行香子·述怀》
-">
-<link rel="canonical" href="http://172.16.80.32:8080/"><link rel="alternate" type="application/rss+xml" title="Ray_YC's Blog" href="/feed.xml"><!-- start favicons snippet, use https://realfavicongenerator.net/ --><link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png"><link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png"><link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png"><link rel="manifest" href="/assets/site.webmanifest"><link rel="mask-icon" href="/assets/safari-pinned-tab.svg" color="#fc4d50"><link rel="shortcut icon" href="/assets/favicon.ico">
+<meta name="description" content="defer  defer 是后进先出。panic 需要等defer 结束后才会向上传递。 出现panic会先按照defer的后入先出的顺序执行，最后才会执行panic。    例子1：  package mainimport "fmt"func calc(index string, a, b int) int {...">
+<link rel="canonical" href="http://172.16.80.32:8080/2019/09/10/go-%E7%9F%A5%E8%AF%86%E7%82%B9.html"><link rel="alternate" type="application/rss+xml" title="Ray_YC's Blog" href="/feed.xml"><!-- start favicons snippet, use https://realfavicongenerator.net/ --><link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png"><link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png"><link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png"><link rel="manifest" href="/assets/site.webmanifest"><link rel="mask-icon" href="/assets/safari-pinned-tab.svg" color="#fc4d50"><link rel="shortcut icon" href="/assets/favicon.ico">
 
 <meta name="msapplication-TileColor" content="#ffc40d"><meta name="msapplication-config" content="/assets/browserconfig.xml">
 
@@ -253,7 +252,7 @@
 </script></head>
   <body>
     <div class="root" data-is-touch="false">
-      <div class="layout--page js-page-root"><div class="page__main js-page-main page__viewport cell cell--auto">
+      <div class="layout--page js-page-root"><div class="page__main js-page-main page__viewport has-aside cell cell--auto">
 
       <div class="page__main-inner"><div class="page__header d-print-none"><header class="header"><div class="main">
       <div class="header__title">
@@ -269,40 +268,17 @@
         <ul><li class="navigation__item"><a href="/archive.html">归档</a></li><li class="navigation__item"><a href="/about.html">关于</a></li><li class="navigation__item"><a href="/resource-set.html">资源集</a></li><li><button class="button button--secondary button--circle search-button js-search-toggle"><i class="fas fa-search"></i></button></li></ul>
       </nav></div>
   </header>
-</div><div class="page__content"><div class="article__header--overlay"><div class="hero hero--dark overlay" style="background-image:url(/assets/images/img/Wallions-changpian.jpg);"><div class="hero__content"><div class ="main"><div class="article__header"><header><h1>浮名浮利，虚苦劳神。叹隙中驹，石中火，梦中身。——苏轼《行香子·述怀》</h1></header></div></div></div>
-              </div>
-            </div><div class ="main"><div class="grid grid--reverse">
+</div><div class="page__content"><div class ="main"><div class="grid grid--reverse">
 
-              <div class="col-aside d-print-none js-col-aside"></div>
+              <div class="col-aside d-print-none js-col-aside"><aside class="page__aside js-page-aside"><div class="toc-aside js-toc-root"></div></aside></div>
 
               <div class="col-main cell cell--auto"><!-- start custom main top snippet -->
 
-<!-- end custom main top snippet --><article itemscope itemtype="http://schema.org/WebPage"><meta itemprop="headline" content="浮名浮利，虚苦劳神。叹隙中驹，石中火，梦中身。——苏轼《行香子·述怀》"><meta itemprop="author" content="雷永成|Ray_YC"/><div class="js-article-content"><div class="layout--articles"><div class="article-list items items--divided"><article class="item" itemscope itemtype="http://schema.org/BlogPosting"><div class="item__content">
-          <header><a href="/2019/09/10/go-%E7%9F%A5%E8%AF%86%E7%82%B9.html"><h2 itemprop="headline" class="item__header">go知识点</h2></a></header>
-          <div class="item__description"><div class="article__content" itemprop="description articleBody">defer
-
-  defer 是后进先出。panic 需要等defer 结束后才会向上传递。 出现panic会先按照defer的后入先出的顺序执行，最后才会执行panic。
-    例子1：
-  
-
-
-package main
-
-import "fmt"
-
-func calc(index string, a, b int) int {
-	ret := a + b
-	fmt.Println(index, a, b, ret)
-	return ret
-}
-
-func main() {
-	a := 1
-	b := 2
-	defer calc("1", a, calc("10", a, b))
-	a = 0
-	defer calc("2", a, calc("20", a, b))
-	b = ...</div><p><a href="/2019/09/10/go-%E7%9F%A5%E8%AF%86%E7%82%B9.html">阅读更多</a></p></div><div class="article__info clearfix"><ul class="left-col menu"><li>
+<!-- end custom main top snippet --><article itemscope itemtype="http://schema.org/Article"><div class="article__header"><header><h1>go知识点</h1></header><span class="split-space">&nbsp;</span>
+          <a class="edit-on-github"
+            title="在 Github 上修改"
+            href="https://github.com/lyc10031/lyc10031.github.io/tree/master/_posts/dir2-golang/2019-09-10-go-知识点.md">
+            <i class="far fa-edit"></i></a></div><meta itemprop="headline" content="go知识点"><div class="article__info clearfix"><ul class="left-col menu"><li>
               <a class="button button--secondary button--pill button--sm"
                 href="/archive.html?tag=GO">GO</a>
             </li><li>
@@ -310,347 +286,122 @@ func main() {
                 href="/archive.html?tag=%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95">学习记录</a>
             </li></ul><ul class="right-col menu"><li><i class="far fa-calendar-alt"></i> <span>2019年 09月10日</span>
             </li></ul></div><meta itemprop="author" content="雷永成|Ray_YC"/><meta itemprop="datePublished" content="2019-09-10T00:00:00+08:00">
-    <meta itemprop="keywords" content="GO,学习记录"></div>
-      </article><article class="item" itemscope itemtype="http://schema.org/BlogPosting"><div class="item__content">
-          <header><a href="/2019/09/08/mysql%E8%AE%B0%E5%BD%95.html"><h2 itemprop="headline" class="item__header">mysql 学习记录</h2></a></header>
-          <div class="item__description"><div class="article__content" itemprop="description articleBody">视频已搬运到B站
+    <meta itemprop="keywords" content="GO,学习记录"><div class="js-article-content"><div class="layout--article"><!-- start custom article top snippet -->
 
+<!-- end custom article top snippet --><div class="article__content" itemprop="articleBody"><h2 id="defer">defer</h2>
+<ul>
+  <li>defer 是后进先出。panic 需要等defer 结束后才会向上传递。 出现panic会先按照defer的后入先出的顺序执行，最后才会执行panic。
+    <h3 id="例子1">例子1：</h3>
+  </li>
+</ul>
 
-  视频链接
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">package</span> <span class="n">main</span>
 
+<span class="n">import</span> <span class="s2">"fmt"</span>
 
-YouTube链接
-B站链接
+<span class="n">func</span> <span class="n">calc</span><span class="p">(</span><span class="n">index</span> <span class="k">string</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="n">int</span><span class="p">)</span> <span class="n">int</span> <span class="p">{</span>
+	<span class="n">ret</span> <span class="p">:=</span> <span class="n">a</span> <span class="p">+</span> <span class="n">b</span>
+	<span class="n">fmt</span><span class="p">.</span><span class="n">Println</span><span class="p">(</span><span class="n">index</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">ret</span><span class="p">)</span>
+	<span class="n">return</span> <span class="n">ret</span>
+<span class="p">}</span>
 
-SELECT
+<span class="n">func</span> <span class="n">main</span><span class="p">()</span> <span class="p">{</span>
+	<span class="n">a</span> <span class="p">:=</span> <span class="m">1</span>
+	<span class="n">b</span> <span class="p">:=</span> <span class="m">2</span>
+	<span class="n">defer</span> <span class="n">calc</span><span class="p">(</span><span class="s2">"1"</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">calc</span><span class="p">(</span><span class="s2">"10"</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">))</span>
+	<span class="n">a</span> <span class="p">=</span> <span class="m">0</span>
+	<span class="n">defer</span> <span class="n">calc</span><span class="p">(</span><span class="s2">"2"</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">calc</span><span class="p">(</span><span class="s2">"20"</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">))</span>
+	<span class="n">b</span> <span class="p">=</span> <span class="m">1</span>
+<span class="p">}</span>
+<span class="n">OUTPUT</span> <span class="p">&gt;&gt;</span> 
+<span class="m">10</span> <span class="m">1</span> <span class="m">2</span> <span class="m">3</span>
+<span class="m">20</span> <span class="m">0</span> <span class="m">2</span> <span class="m">2</span>
+<span class="m">2</span> <span class="m">0</span> <span class="m">2</span> <span class="m">2</span>
+<span class="m">1</span> <span class="m">1</span> <span class="m">3</span> <span class="m">4</span>
 
-  SELECT fist_name,last_name
-  
-    FROM customers
-  
+</code></pre></div></div>
 
+<ul>
+  <li>解释：defer 依据先入后出的规则，外围的calc 将会是先2后1, 在calc内部的calc 会在声明defer的时候立即执行。先声明的1，所以calc(“10”,a,b) 将会先执行函数，进行fmt.Println() 输出。输出完后，会返回ret 给外围的calc 进行计算。
+所以执行的顺序是10 x x x、20 x x x、2 x x x、1 x x x。</li>
+</ul>
 
+<h2 id="for">for</h2>
+<h3 id="例子1-1">例子1：</h3>
 
-  从 customers 表中查找 fist_name,last_name
+<ul>
+  <li><strong>for range 语句相当于将range 结果赋值给for 后面的参数。如果使用指针赋值的话。结果会与预期不同。</strong></li>
+</ul>
 
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>type student struct {
+    Name string
+    Age  int
+}
 
+func pase_student() {
+    m := make(map[string]*student)
+    stus := []student{
+        {Name: "zhou", Age: 24},
+        {Name: "li", Age: 23},
+        {Name: "wang", Age: 22},
+    }
+    for _, stu := range stus {
+        m[stu.Name] = &amp;stu
+    }
+    for k,v:=range m{
+        println(k,"=&gt;",v.Name)
+    }
+}
+OUTPUT &gt;&gt; 
+wang,wang,wang
+</code></pre></div></div>
+<blockquote>
+  <p><strong>解决方法，可以用索引迭代，或者加入中间变量，使用中间变量来赋值。</strong></p>
+</blockquote>
 
-  SELECT last_name,fist_name,points
-  
-    FROM customers
-  
+<h2 id="select">select</h2>
+<ul>
+  <li>select 中只要有一个case能return，则立刻执行。</li>
+  <li>当如果同一时间有多个case均能return则伪随机方式抽取任意一个执行。</li>
+  <li>如果没有一个case能return则可以执行”default”块。</li>
+</ul>
+</div><section class="article__sharing d-print-none"></section><div class="d-print-none"><footer class="article__footer"><meta itemprop="dateModified" content="2019-09-10T00:00:00+08:00"><!-- start custom article footer snippet -->
 
+<!-- end custom article footer snippet --><div class="article__subscribe"><div class="subscribe"><i class="fas fa-rss"></i> <a type="application/rss+xml" href="/feed.xml">订阅</a></div></div><div class="article__license"><div class="license">
+    <p>本文遵守 <a itemprop="license" rel="license" href="https://creativecommons.org/licenses/by-nc/4.0/">Attribution-NonCommercial 4.0 International</a> 许可协议。
+      <a rel="license" href="https://creativecommons.org/licenses/by-nc/4.0/">
+        <img alt="Attribution-NonCommercial 4.0 International" src="https://i.creativecommons.org/l/by-nc/4.0/88x31.png" />
+      </a>
+    </p>
+  </div></div></footer><div class="article__section-navigator clearfix"><div class="previous"><span>上篇</span><a href="/2019/09/08/mysql%E8%AE%B0%E5%BD%95.html">mysql 学习记录</a></div></div></div>
 
+</div>
 
-  从 customers 表中查找 last_name, fist_name,points
+<script>(function() {
+  var SOURCES = window.TEXT_VARIABLES.sources;
+  window.Lazyload.js(SOURCES.jquery, function() {
+    $(function() {
+      var $this ,$scroll;
+      var $articleContent = $('.js-article-content');
+      var hasSidebar = $('.js-page-root').hasClass('layout--page--sidebar');
+      var scroll = hasSidebar ? '.js-page-main' : 'html, body';
+      $scroll = $(scroll);
 
-
-
-  SELECT last_name,fist_name,points
-  
-    FROM customers
-  
-
-
-
-  从 customers 表中查找 last_na...</div><p><a href="/2019/09/08/mysql%E8%AE%B0%E5%BD%95.html">阅读更多</a></p></div><div class="article__info clearfix"><ul class="left-col menu"><li>
-              <a class="button button--secondary button--pill button--sm"
-                href="/archive.html?tag=linux">linux</a>
-            </li><li>
-              <a class="button button--secondary button--pill button--sm"
-                href="/archive.html?tag=mysql">mysql</a>
-            </li><li>
-              <a class="button button--secondary button--pill button--sm"
-                href="/archive.html?tag=%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0">学习笔记</a>
-            </li></ul><ul class="right-col menu"><li><i class="far fa-calendar-alt"></i> <span>2019年 09月08日</span>
-            </li></ul></div><meta itemprop="author" content="雷永成|Ray_YC"/><meta itemprop="datePublished" content="2019-09-08T00:00:00+08:00">
-    <meta itemprop="keywords" content="linux,mysql,学习笔记"></div>
-      </article><article class="item" itemscope itemtype="http://schema.org/BlogPosting"><div class="item__content">
-          <header><a href="/2019/09/02/gin%E8%B0%83%E7%94%A8%E6%B5%81%E7%A8%8B.html"><h2 itemprop="headline" class="item__header">gin框架的调用流程</h2></a></header>
-          <div class="item__description"><div class="article__content" itemprop="description articleBody">文件树：
-my-gin1/
-├── conf
-│   └── app.ini
-├── main.go
-├── middleware
-├── models
-│   ├── models.go
-│   └── tag.go
-├── pkg
-│   ├── e
-│   │   ├── code.go
-│   │   └── msg.go
-│   ├── setting
-│   │   └── setting.go
-│   └── util
-│       └── pagination.go
-├── routers
-│   ├── api
-│   │   └── v1
-│   │       └── tag.go
-│   └── router.go
-└── runtime
-
-11 direct...</div><p><a href="/2019/09/02/gin%E8%B0%83%E7%94%A8%E6%B5%81%E7%A8%8B.html">阅读更多</a></p></div><div class="article__info clearfix"><ul class="left-col menu"><li>
-              <a class="button button--secondary button--pill button--sm"
-                href="/archive.html?tag=GO">GO</a>
-            </li><li>
-              <a class="button button--secondary button--pill button--sm"
-                href="/archive.html?tag=gin">gin</a>
-            </li><li>
-              <a class="button button--secondary button--pill button--sm"
-                href="/archive.html?tag=%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0">学习笔记</a>
-            </li></ul><ul class="right-col menu"><li><i class="far fa-calendar-alt"></i> <span>2019年 09月02日</span>
-            </li></ul></div><meta itemprop="author" content="雷永成|Ray_YC"/><meta itemprop="datePublished" content="2019-09-02T00:00:00+08:00">
-    <meta itemprop="keywords" content="GO,gin,学习笔记"></div>
-      </article><article class="item" itemscope itemtype="http://schema.org/BlogPosting"><div class="item__content">
-          <header><a href="/2019/08/23/go-test.html"><h2 itemprop="headline" class="item__header">为go程序编写测试用例</h2></a></header>
-          <div class="item__description"><div class="article__content" itemprop="description articleBody">原文地址
-
-本文是我的一些总结和记录。
-
-Go 如何编写测试用例
-Go语言中自带有一个轻量级的测试框架testing，使用自带的go test命令来实现单元测试和性能测试。
-可以基于这个框架写针对相应函数的测试用例，也可以基于该框架写相应的压力测试用例。
-
-建议安装gotests插件自动生成测试代码
-
-
-  go get -u -v github.com/cweill/gotests/…
-
-
-普通测试
-
-
-  go test 命令会执行当前目录下的测试文件，测试代码和被测代码放在同一目录下。
-
-
-接下来我们在该目录下面创建两个文件：gotest.go和gotest_test.go
-
-
-  gotest.go:这个文件里面我们是创建了一个包，里面有一个函数实现了除法运算:
-
-
-1
-2
-3...</div><p><a href="/2019/08/23/go-test.html">阅读更多</a></p></div><div class="article__info clearfix"><ul class="left-col menu"><li>
-              <a class="button button--secondary button--pill button--sm"
-                href="/archive.html?tag=GO">GO</a>
-            </li><li>
-              <a class="button button--secondary button--pill button--sm"
-                href="/archive.html?tag=go-test">go-test</a>
-            </li><li>
-              <a class="button button--secondary button--pill button--sm"
-                href="/archive.html?tag=%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0">学习笔记</a>
-            </li></ul><ul class="right-col menu"><li><i class="far fa-calendar-alt"></i> <span>2019年 08月23日</span>
-            </li></ul></div><meta itemprop="author" content="雷永成|Ray_YC"/><meta itemprop="datePublished" content="2019-08-23T00:00:00+08:00">
-    <meta itemprop="keywords" content="GO,go-test,学习笔记"></div>
-      </article><article class="item" itemscope itemtype="http://schema.org/BlogPosting"><div class="item__content">
-          <header><a href="/2019/08/22/go-RESTful.html"><h2 itemprop="headline" class="item__header">RESTful架构及Go语言的实现笔记</h2></a></header>
-          <div class="item__description"><div class="article__content" itemprop="description articleBody">原文地址
-
-本文是我的一些总结和记录。
-
-RESTful
-
-
-  RESTful，是目前最为流行的一种互联网软件架构。因为它结构清晰、符合标准、易于理解、扩展方便，所以正得到越来越多网站的采用。
-    
-      REST(REpresentational State Transfer)这个概念，首次出现是在 2000年Roy Thomas Fielding（他是HTTP规范的主要编写者之一）的博士论文中，它指的是一组架构约束条件和原则。满足这些约束条件和原则的应用程序或设计就是RESTful的。
-    
-  
-
-
-
-  资源（Resources） REST是”表现层状态转化”，这里表现层指的是”资源”的”表现层”。
-    
-      那么什么是资源呢？就是我们平常上网访问的...</div><p><a href="/2019/08/22/go-RESTful.html">阅读更多</a></p></div><div class="article__info clearfix"><ul class="left-col menu"><li>
-              <a class="button button--secondary button--pill button--sm"
-                href="/archive.html?tag=GO">GO</a>
-            </li><li>
-              <a class="button button--secondary button--pill button--sm"
-                href="/archive.html?tag=RESTful">RESTful</a>
-            </li><li>
-              <a class="button button--secondary button--pill button--sm"
-                href="/archive.html?tag=%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0">学习笔记</a>
-            </li></ul><ul class="right-col menu"><li><i class="far fa-calendar-alt"></i> <span>2019年 08月22日</span>
-            </li></ul></div><meta itemprop="author" content="雷永成|Ray_YC"/><meta itemprop="datePublished" content="2019-08-22T00:00:00+08:00">
-    <meta itemprop="keywords" content="GO,RESTful,学习笔记"></div>
-      </article><article class="item" itemscope itemtype="http://schema.org/BlogPosting"><div class="item__content">
-          <header><a href="/2019/08/21/socket%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0.html"><h2 itemprop="headline" class="item__header">go语言socket编程笔记</h2></a></header>
-          <div class="item__description"><div class="article__content" itemprop="description articleBody">原文地址
-
-本文是我的一些总结和记录。
-
-Socket介绍
-
-
-  
-    Socket起源于Unix，而Unix基本哲学之一就是 “一切皆文件”，都可以用“打开open –&gt; 读写write/read –&gt; 关闭close”模式来操作。Socket就是该模式的一个实现，网络的Socket数据传输是一种特殊的I/O，Socket也是一种文件描述符。Socket也具有一个类似于打开文件的函数调用：Socket()，该函数返回一个整型的Socket描述符，随后的连接建立、数据传输等操作都是通过该Socket实现的。
-  
-  
-    常用的Socket类型有两种：流式Socket（SOCK_STREAM）和数据报式Socket（SOCK_DGRAM）。流式是一种面向连接的S...</div><p><a href="/2019/08/21/socket%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0.html">阅读更多</a></p></div><div class="article__info clearfix"><ul class="left-col menu"><li>
-              <a class="button button--secondary button--pill button--sm"
-                href="/archive.html?tag=GO">GO</a>
-            </li><li>
-              <a class="button button--secondary button--pill button--sm"
-                href="/archive.html?tag=socket">socket</a>
-            </li><li>
-              <a class="button button--secondary button--pill button--sm"
-                href="/archive.html?tag=%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0">学习笔记</a>
-            </li></ul><ul class="right-col menu"><li><i class="far fa-calendar-alt"></i> <span>2019年 08月21日</span>
-            </li></ul></div><meta itemprop="author" content="雷永成|Ray_YC"/><meta itemprop="datePublished" content="2019-08-21T00:00:00+08:00">
-    <meta itemprop="keywords" content="GO,socket,学习笔记"></div>
-      </article><article class="item" itemscope itemtype="http://schema.org/BlogPosting"><div class="item__content">
-          <header><a href="/2019/08/21/golang-%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%93%8D%E4%BD%9C.html"><h2 itemprop="headline" class="item__header">golang 字符串操作</h2></a></header>
-          <div class="item__description"><div class="article__content" itemprop="description articleBody">Go 字符串处理的常用函数
-
-Go标准库中的strings和strconv两个包里面有一些最常用的字符串操作函数
-
-strings 包中的常用函数
-
-strings官方文档
-
-func Contains(s,substr string) bool
-
-字符串s中是否包含 substr 返回bool值
-
-1
-2
-3
-4
-5
-6
-7
-8
-9
-fmt.Println(strings.Contains("seafood", "foo"))
-fmt.Println(strings.Contains("seafood", "bar"))
-fmt.Println(strings.Contains("seafood", ""))
-fmt.Println(strings.Contains("", ""))...</div><p><a href="/2019/08/21/golang-%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%93%8D%E4%BD%9C.html">阅读更多</a></p></div><div class="article__info clearfix"><ul class="left-col menu"><li>
-              <a class="button button--secondary button--pill button--sm"
-                href="/archive.html?tag=GO">GO</a>
-            </li><li>
-              <a class="button button--secondary button--pill button--sm"
-                href="/archive.html?tag=go%E5%AD%97%E7%AC%A6%E4%B8%B2">go字符串</a>
-            </li></ul><ul class="right-col menu"><li><i class="far fa-calendar-alt"></i> <span>2019年 08月21日</span>
-            </li></ul></div><meta itemprop="author" content="雷永成|Ray_YC"/><meta itemprop="datePublished" content="2019-08-21T00:00:00+08:00">
-    <meta itemprop="keywords" content="GO,go字符串"></div>
-      </article><article class="item" itemscope itemtype="http://schema.org/BlogPosting"><div class="item__content">
-          <header><a href="/2019/08/13/interface1.html"><h2 itemprop="headline" class="item__header">Learn Go Interface</h2></a></header>
-          <div class="item__description"><div class="article__content" itemprop="description articleBody">Go的Interface 是一组method（方法）集，只要一个非interface类型数据实现了集合内的方法就能使用该interface
-
-直接看例子，struct继承的例子：
-
-1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12
-13
-14
-15
-16
-17
-18
-19
-20
-21
-22
-23
-24
-25
-26
-27
-28
-29
-30
-31
-32
-33
-34
-35
-36
-37
-38
-39
-40
-41
-42
-43
-44
-45
-46
-47
-48
-49
-50
-51
-52
-53
-54
-55
-56
-57
-58
-59
-60
-61
-62
-63
-64
-65
-66
-67
-68
-69
-70
-71
-72
-73
-74
-75
-76
-package main
-
-import "fmt"
-
-type Huma...</div><p><a href="/2019/08/13/interface1.html">阅读更多</a></p></div><div class="article__info clearfix"><ul class="left-col menu"><li>
-              <a class="button button--secondary button--pill button--sm"
-                href="/archive.html?tag=GO-lang">GO-lang</a>
-            </li></ul><ul class="right-col menu"><li><i class="far fa-calendar-alt"></i> <span>2019年 08月13日</span>
-            </li></ul></div><meta itemprop="author" content="雷永成|Ray_YC"/><meta itemprop="datePublished" content="2019-08-13T00:00:00+08:00">
-    <meta itemprop="keywords" content="GO-lang"></div>
-      </article></div>
-</div><div class="layout--home"><div class="pagination"><p>共计 19 篇文章，3 页。</p>
-    <div class="pagination__menu">
-      <ul class="menu menu--nowrap"><li><div class="button button--secondary button--circle disabled">
-            <i class="fas fa-angle-left"></i>
-          </div></li><li>
-              <div class="button button--primary button--circle focus"><span>1</span></div>
-            </li><li>
-                <a class="button button--secondary button--circle" href="/page2"><span>2</span></a>
-              </li><li>
-                <a class="button button--secondary button--circle" href="/page3"><span>3</span></a>
-              </li><li><a class="button button--secondary button--circle" href="/page2">
-            <i class="fas fa-angle-right"></i>
-          </a></li></ul>
-    </div>
-  </div></div>
-<script>/*(function () {
-
-})();*/
-</script>
-
-
-</div><section class="page__comments d-print-none"></section></article><!-- start custom main bottom snippet -->
+      $articleContent.find('.highlight').each(function() {
+        $this = $(this);
+        $this.attr('data-lang', $this.find('code').attr('data-lang'));
+      });
+      $articleContent.find('h1[id], h2[id], h3[id], h4[id], h5[id], h6[id]').each(function() {
+        $this = $(this);
+        $this.append($('<a class="anchor d-print-none" aria-hidden="true"></a>').html('<i class="fas fa-anchor"></i>'));
+      });
+      $articleContent.on('click', '.anchor', function() {
+        $scroll.scrollToAnchor('#' + $(this).parent().attr('id'), 400);
+      });
+    });
+  });
+})();
+</script></div><section class="page__comments d-print-none"></section></article><!-- start custom main bottom snippet -->
 
 <!-- end custom main bottom snippet --></div>
             </div></div></div><div class="page__footer d-print-none">
@@ -1200,6 +951,68 @@ window.Lazyload.js([SOURCES.jquery, PAHTS.search_js], function() {
 /*(function () {
 
 })();*/
+</script><script>
+  /* toc must before affix, since affix need to konw toc' height. */(function() {
+  var SOURCES = window.TEXT_VARIABLES.sources;
+  var TOC_SELECTOR = window.TEXT_VARIABLES.site.toc.selectors;
+  window.Lazyload.js(SOURCES.jquery, function() {
+    var $window = $(window);
+    var $articleContent = $('.js-article-content');
+    var $tocRoot = $('.js-toc-root'), $col2 = $('.js-col-aside');
+    var toc;
+    var tocDisabled = false;
+    var hasSidebar = $('.js-page-root').hasClass('layout--page--sidebar');
+    var hasToc = $articleContent.find(TOC_SELECTOR).length > 0;
+
+    function disabled() {
+      return $col2.css('display') === 'none' || !hasToc;
+    }
+
+    tocDisabled = disabled();
+
+    toc = $tocRoot.toc({
+      selectors: TOC_SELECTOR,
+      container: $articleContent,
+      scrollTarget: hasSidebar ? '.js-page-main' : null,
+      scroller: hasSidebar ? '.js-page-main' : null,
+      disabled: tocDisabled
+    });
+
+    $window.on('resize', window.throttle(function() {
+      tocDisabled = disabled();
+      toc && toc.setOptions({
+        disabled: tocDisabled
+      });
+    }, 100));
+
+  });
+})();
+(function() {
+  var SOURCES = window.TEXT_VARIABLES.sources;
+  window.Lazyload.js(SOURCES.jquery, function() {
+    var $window = $(window), $pageFooter = $('.js-page-footer');
+    var $pageAside = $('.js-page-aside');
+    var affix;
+    var tocDisabled = false;
+    var hasSidebar = $('.js-page-root').hasClass('layout--page--sidebar');
+
+    affix = $pageAside.affix({
+      offsetBottom: $pageFooter.outerHeight(),
+      scrollTarget: hasSidebar ? '.js-page-main' : null,
+      scroller: hasSidebar ? '.js-page-main' : null,
+      scroll: hasSidebar ? $('.js-page-main').children() : null,
+      disabled: tocDisabled
+    });
+
+    $window.on('resize', window.throttle(function() {
+      affix && affix.setOptions({
+        disabled: tocDisabled
+      });
+    }, 100));
+
+    window.pageAsideAffix = affix;
+  });
+})();
 </script>
     </div>      
     <script>(function () {
