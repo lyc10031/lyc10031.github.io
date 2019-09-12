@@ -3,7 +3,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"><title>go知识点 - Ray_YC's Blog</title>
 
-<meta name="description" content="defer  defer 是后进先出。panic 需要等defer 结束后才会向上传递。 出现panic会先按照defer的后入先出的顺序执行，最后才会执行panic。    例子1：  package mainimport "fmt"func calc(index string, a, b int) int {...">
+<meta name="description" content="golang 的堆和栈var p *int    //全局指针变量func f(){    var i int    i = 1    p = &amp;i    //全局指针变量指向局部变量i}func f(){    p := new(int) //局部指针变量，使用new申请的空间    *p = 1}上面...">
 <link rel="canonical" href="http://172.16.80.32:8080/2019/09/10/go-%E7%9F%A5%E8%AF%86%E7%82%B9.html"><link rel="alternate" type="application/rss+xml" title="Ray_YC's Blog" href="/feed.xml"><!-- start favicons snippet, use https://realfavicongenerator.net/ --><link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png"><link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png"><link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png"><link rel="manifest" href="/assets/site.webmanifest"><link rel="mask-icon" href="/assets/safari-pinned-tab.svg" color="#fc4d50"><link rel="shortcut icon" href="/assets/favicon.ico">
 
 <meta name="msapplication-TileColor" content="#ffc40d"><meta name="msapplication-config" content="/assets/browserconfig.xml">
@@ -288,7 +288,35 @@
             </li></ul></div><meta itemprop="author" content="雷永成|Ray_YC"/><meta itemprop="datePublished" content="2019-09-10T00:00:00+08:00">
     <meta itemprop="keywords" content="GO,学习记录"><div class="js-article-content"><div class="layout--article"><!-- start custom article top snippet -->
 
-<!-- end custom article top snippet --><div class="article__content" itemprop="articleBody"><h2 id="defer">defer</h2>
+<!-- end custom article top snippet --><div class="article__content" itemprop="articleBody"><h2 id="golang-的堆和栈">golang 的堆和栈</h2>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>var p *int    //全局指针变量
+func f(){
+    var i int
+    i = 1
+    p = &amp;i    //全局指针变量指向局部变量i
+}
+</code></pre></div></div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>func f(){
+    p := new(int) //局部指针变量，使用new申请的空间
+    *p = 1
+}
+</code></pre></div></div>
+<h3 id="上面程序中第一个程序虽然i是通过var申请的局部变量但是由于有外部指针指向访问我们有路径可找到这个空间变量能够逃逸出函数所以局部变量i是申请在堆空间上而第二个程序中p指针变量虽然是使用new申请的空间但是由于退出函数就没有路径可寻找到它变量无法逃出函数所以局部变量p是申请在栈空间上的">上面程序中，第一个程序虽然i是通过var申请的局部变量，但是由于有外部指针指向访问，我们有路径可找到这个空间（变量能够逃逸出函数），所以局部变量i是申请在堆空间上。而第二个程序中p指针变量虽然是使用new申请的空间，但是由于退出函数就没有路径可寻找到它（变量无法逃出函数），所以局部变量p是申请在栈空间上的。</h3>
+
+<ul>
+  <li>
+    <p>golang 1.13 defer新增了一个heap字段用于标识_defer 是在堆上还是在栈上。编译器会根据应用场景去选择使用 deferproc 还是 deferprocStack 方法，他们分别是针对分配在堆上和栈上的使用场景。也就是当 defer func 是顶级函数时，将会分配到栈上。但是若在 defer func 外层出现显式的迭代循环，又或是出现隐式迭代，将会分配到堆上。</p>
+  </li>
+  <li>
+    <p>得益于其延迟对象的堆栈分配规则的改变，措施是由编译器通过对 defer 的 for-loop 迭代深度进行分析，如果 loopdepth 为 1，则设置逃逸分析的结果，将分配到栈上，否则分配到堆上。进而加快了defer的处理速度，官方说明 Go1.13 defer 性能提高 30%。</p>
+  </li>
+</ul>
+
+<p><a href="https://book.eddycjy.com/golang/talk/go1.13-defer.html">Go1.13 defer 的性能是如何提高的？</a></p>
+
+<h2 id="defer">defer</h2>
 <ul>
   <li>defer 是后进先出。panic 需要等defer 结束后才会向上传递。 出现panic会先按照defer的后入先出的顺序执行，最后才会执行panic。
     <h3 id="例子1">例子1：</h3>
@@ -362,9 +390,28 @@ wang,wang,wang
 <h2 id="select">select</h2>
 <ul>
   <li>select 中只要有一个case能return，则立刻执行。</li>
-  <li>当如果同一时间有多个case均能return则伪随机方式抽取任意一个执行。</li>
+  <li>如果同一时间有多个case均能return则伪随机方式抽取任意一个执行。</li>
   <li>如果没有一个case能return则可以执行”default”块。</li>
 </ul>
+
+<h2 id="go的并发机制">Go的并发机制</h2>
+
+<ul>
+  <li>Go 搭建了一个特有的两级线程模型，创造了独有的goroutine 这个专有名词。</li>
+  <li>Go 推荐使用channel 来进行多个goroutine之间的数据传递，并保证整个过程的并发安全性。同时也提供了传统的同步方法，（比如互斥量，条件变量等）。</li>
+  <li>Go 不以共享内存来进行通信，而是使用通信来进行共享内存。</li>
+</ul>
+
+<h3 id="mpg">MPG</h3>
+<ul>
+  <li><strong>M</strong> : machine    一个M代表一个内核线程，或称“工作线程”。</li>
+  <li><strong>P</strong> : processor  一个P代表执行一个Go代码片段所必须的资源（或称上下文环境）。</li>
+  <li><strong>G</strong> : goroutine  一个G代表一个Go代码片段。前者是对后者的一种封装。</li>
+</ul>
+
+<p>Go 的runtime(运行时)会自动的维护这个MPG框架。 M与系统内核绑定。负责最终调用CPU 执行任务。同时与P（processor，上下文）对接，一个M可以对接一个P, 一个P 又可以对接多个G(Go的代码片段)，P中维护一个G的队列。其中M与P,P与G的关系是易变的，在实际调度中会发生改变。一个G 的执行需要P和M 共同支持、</p>
+
+<p><a href="javascript:scroll(0,0)">– 返回顶部 –</a></p>
 </div><section class="article__sharing d-print-none"></section><div class="d-print-none"><footer class="article__footer"><meta itemprop="dateModified" content="2019-09-10T00:00:00+08:00"><!-- start custom article footer snippet -->
 
 <!-- end custom article footer snippet --><div class="article__subscribe"><div class="subscribe"><i class="fas fa-rss"></i> <a type="application/rss+xml" href="/feed.xml">订阅</a></div></div><div class="article__license"><div class="license">
@@ -373,7 +420,7 @@ wang,wang,wang
         <img alt="Attribution-NonCommercial 4.0 International" src="https://i.creativecommons.org/l/by-nc/4.0/88x31.png" />
       </a>
     </p>
-  </div></div></footer><div class="article__section-navigator clearfix"><div class="previous"><span>上篇</span><a href="/2019/09/08/mysql%E8%AE%B0%E5%BD%95.html">mysql 学习记录</a></div></div></div>
+  </div></div></footer><div class="article__section-navigator clearfix"><div class="previous"><span>上篇</span><a href="/2019/09/08/mysql%E8%AE%B0%E5%BD%95.html">mysql 学习记录</a></div><div class="next"><span>下篇</span><a href="/2019/09/11/go-slice_and_array.html">Go 的slice和array</a></div></div></div>
 
 </div>
 

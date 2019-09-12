@@ -1,11 +1,10 @@
 <!DOCTYPE html><html lang="zh-CN">
   <head><meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"><title>浮名浮利，虚苦劳神。叹隙中驹，石中火，梦中身。——苏轼《行香子·述怀》 - Ray_YC's Blog</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"><title>Go 的slice和array - Ray_YC's Blog</title>
 
-<meta name="description" content="欢迎访问我的博客。 浮名浮利，虚苦劳神。叹隙中驹，石中火，梦中身。——苏轼《行香子·述怀》
-">
-<link rel="canonical" href="http://172.16.80.32:8080/page2/"><link rel="alternate" type="application/rss+xml" title="Ray_YC's Blog" href="/feed.xml"><!-- start favicons snippet, use https://realfavicongenerator.net/ --><link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png"><link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png"><link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png"><link rel="manifest" href="/assets/site.webmanifest"><link rel="mask-icon" href="/assets/safari-pinned-tab.svg" color="#fc4d50"><link rel="shortcut icon" href="/assets/favicon.ico">
+<meta name="description" content="Arrayfunc main() {    nums := [3]int{} //定义并初始化一个array    nums[0] = 1    n := nums[0]    n = 2    fmt.Printf("nums: %v\n", nums)    fmt.Printf("n: %d\n", n)}...">
+<link rel="canonical" href="http://172.16.80.32:8080/2019/09/11/go-slice_and_array.html"><link rel="alternate" type="application/rss+xml" title="Ray_YC's Blog" href="/feed.xml"><!-- start favicons snippet, use https://realfavicongenerator.net/ --><link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png"><link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png"><link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png"><link rel="manifest" href="/assets/site.webmanifest"><link rel="mask-icon" href="/assets/safari-pinned-tab.svg" color="#fc4d50"><link rel="shortcut icon" href="/assets/favicon.ico">
 
 <meta name="msapplication-TileColor" content="#ffc40d"><meta name="msapplication-config" content="/assets/browserconfig.xml">
 
@@ -253,7 +252,7 @@
 </script></head>
   <body>
     <div class="root" data-is-touch="false">
-      <div class="layout--page js-page-root"><div class="page__main js-page-main page__viewport cell cell--auto">
+      <div class="layout--page js-page-root"><div class="page__main js-page-main page__viewport has-aside cell cell--auto">
 
       <div class="page__main-inner"><div class="page__header d-print-none"><header class="header"><div class="main">
       <div class="header__title">
@@ -269,417 +268,122 @@
         <ul><li class="navigation__item"><a href="/archive.html">归档</a></li><li class="navigation__item"><a href="/about.html">关于</a></li><li class="navigation__item"><a href="/resource-set.html">资源集</a></li><li><button class="button button--secondary button--circle search-button js-search-toggle"><i class="fas fa-search"></i></button></li></ul>
       </nav></div>
   </header>
-</div><div class="page__content"><div class="article__header--overlay"><div class="hero hero--dark overlay" style="background-image:url(/assets/images/img/Wallions-changpian.jpg);"><div class="hero__content"><div class ="main"><div class="article__header"><header><h1>浮名浮利，虚苦劳神。叹隙中驹，石中火，梦中身。——苏轼《行香子·述怀》</h1></header></div></div></div>
-              </div>
-            </div><div class ="main"><div class="grid grid--reverse">
+</div><div class="page__content"><div class ="main"><div class="grid grid--reverse">
 
-              <div class="col-aside d-print-none js-col-aside"></div>
+              <div class="col-aside d-print-none js-col-aside"><aside class="page__aside js-page-aside"><div class="toc-aside js-toc-root"></div></aside></div>
 
               <div class="col-main cell cell--auto"><!-- start custom main top snippet -->
 
-<!-- end custom main top snippet --><article itemscope itemtype="http://schema.org/WebPage"><meta itemprop="headline" content="浮名浮利，虚苦劳神。叹隙中驹，石中火，梦中身。——苏轼《行香子·述怀》"><meta itemprop="author" content="雷永成|Ray_YC"/><div class="js-article-content"><div class="layout--articles"><div class="article-list items items--divided"><article class="item" itemscope itemtype="http://schema.org/BlogPosting"><div class="item__content">
-          <header><a href="/2019/08/13/interface1.html"><h2 itemprop="headline" class="item__header">Learn Go Interface</h2></a></header>
-          <div class="item__description"><div class="article__content" itemprop="description articleBody">Go的Interface 是一组method（方法）集，只要一个非interface类型数据实现了集合内的方法就能使用该interface
-
-直接看例子，struct继承的例子：
-
-1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12
-13
-14
-15
-16
-17
-18
-19
-20
-21
-22
-23
-24
-25
-26
-27
-28
-29
-30
-31
-32
-33
-34
-35
-36
-37
-38
-39
-40
-41
-42
-43
-44
-45
-46
-47
-48
-49
-50
-51
-52
-53
-54
-55
-56
-57
-58
-59
-60
-61
-62
-63
-64
-65
-66
-67
-68
-69
-70
-71
-72
-73
-74
-75
-76
-package main
-
-import "fmt"
-
-type Huma...</div><p><a href="/2019/08/13/interface1.html">阅读更多</a></p></div><div class="article__info clearfix"><ul class="left-col menu"><li>
+<!-- end custom main top snippet --><article itemscope itemtype="http://schema.org/Article"><div class="article__header"><header><h1>Go 的slice和array</h1></header><span class="split-space">&nbsp;</span>
+          <a class="edit-on-github"
+            title="在 Github 上修改"
+            href="https://github.com/lyc10031/lyc10031.github.io/tree/master/_posts/dir2-golang/2019-09-11-go-slice_and_array.md">
+            <i class="far fa-edit"></i></a></div><meta itemprop="headline" content="Go 的slice和array"><div class="article__info clearfix"><ul class="left-col menu"><li>
               <a class="button button--secondary button--pill button--sm"
-                href="/archive.html?tag=GO-lang">GO-lang</a>
-            </li></ul><ul class="right-col menu"><li><i class="far fa-calendar-alt"></i> <span>2019年 08月13日</span>
-            </li></ul></div><meta itemprop="author" content="雷永成|Ray_YC"/><meta itemprop="datePublished" content="2019-08-13T00:00:00+08:00">
-    <meta itemprop="keywords" content="GO-lang"></div>
-      </article><article class="item" itemscope itemtype="http://schema.org/BlogPosting"><div class="item__content">
-          <header><a href="/document/2019/08/13/go-channel.html"><h2 itemprop="headline" class="item__header">Learn Go channel</h2></a></header>
-          <div class="item__description"><div class="article__content" itemprop="description articleBody">学习Go channels 的记录
-最近在YouTube上看一个GO 的学习视频。记录下学习过程的知识点。
-链接在这里：
-
-Learn Go Programming - Golang Tutorial for Beginners
-
-因为太长了，YouTube不能自动生成字幕。啃的生肉，有理解不恰当地方的欢迎指正
-
-废话不多说直接上代码:
-
-1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12
-13
-14
-15
-16
-17
-18
-19
-20
-21
-22
-23
-24
-25
-26
-27
-28
-29
-30
-31
-32
-33
-34
-35
-36
-37
-38
-39
-40
-41
-42
-43
-44
-45
-46
-47
-package main
-
-import (
-	"fmt"
-	"time"
-)
-
-con...</div><p><a href="/document/2019/08/13/go-channel.html">阅读更多</a></p></div><div class="article__info clearfix"><ul class="left-col menu"><li>
-              <a class="button button--secondary button--pill button--sm"
-                href="/archive.html?tag=GO-lang">GO-lang</a>
+                href="/archive.html?tag=GO">GO</a>
             </li><li>
               <a class="button button--secondary button--pill button--sm"
-                href="/archive.html?tag=channel">channel</a>
-            </li></ul><ul class="right-col menu"><li><i class="far fa-calendar-alt"></i> <span>2019年 08月13日</span>
-            </li></ul></div><meta itemprop="author" content="雷永成|Ray_YC"/><meta itemprop="datePublished" content="2019-08-13T00:00:00+08:00">
-    <meta itemprop="keywords" content="GO-lang,channel"></div>
-      </article><article class="item" itemscope itemtype="http://schema.org/BlogPosting"><div class="item__content">
-          <header><a href="/2019/08/13/beego-orm-msql.html"><h2 itemprop="headline" class="item__header">使用beego-orm 操作mysql数据库</h2></a></header>
-          <div class="item__description"><div class="article__content" itemprop="description articleBody">原文章地址在这里
-
-代码:
-
-1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12
-13
-14
-15
-16
-17
-18
-19
-20
-21
-22
-23
-24
-25
-26
-27
-28
-29
-30
-31
-32
-33
-34
-35
-36
-37
-38
-39
-40
-41
-42
-43
-44
-45
-46
-47
-48
-49
-50
-51
-52
-53
-54
-55
-56
-57
-package main
-
-// 接下来我们的例子采用前面(test1/main.go)的数据库表User，现在我们建立相应的struct
-import (
-	"time"
-
-	"github.com/astaxie/beego/orm"     // 采用了Go style方式对数据库进行操作，实现了struct到数据表记录的映射.
-	...</div><p><a href="/2019/08/13/beego-orm-msql.html">阅读更多</a></p></div><div class="article__info clearfix"><ul class="left-col menu"><li>
-              <a class="button button--secondary button--pill button--sm"
-                href="/archive.html?tag=golang">golang</a>
+                href="/archive.html?tag=slice">slice</a>
             </li><li>
               <a class="button button--secondary button--pill button--sm"
-                href="/archive.html?tag=beego-orm">beego-orm</a>
+                href="/archive.html?tag=array">array</a>
             </li><li>
               <a class="button button--secondary button--pill button--sm"
-                href="/archive.html?tag=mysql">mysql</a>
-            </li></ul><ul class="right-col menu"><li><i class="far fa-calendar-alt"></i> <span>2019年 08月13日</span>
-            </li></ul></div><meta itemprop="author" content="雷永成|Ray_YC"/><meta itemprop="datePublished" content="2019-08-13T00:00:00+08:00">
-    <meta itemprop="keywords" content="golang,beego-orm,mysql"></div>
-      </article><article class="item" itemscope itemtype="http://schema.org/BlogPosting"><div class="item__content">
-          <header><a href="/2019/08/13/grep_awk.html"><h2 itemprop="headline" class="item__header">linux grep awk 使用记录</h2></a></header>
-          <div class="item__description"><div class="article__content" itemprop="description articleBody">grep 命令
-grep ^vivek /etc/passwd
+                href="/archive.html?tag=%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95">学习记录</a>
+            </li></ul><ul class="right-col menu"><li><i class="far fa-calendar-alt"></i> <span>2019年 09月11日</span>
+            </li></ul></div><meta itemprop="author" content="雷永成|Ray_YC"/><meta itemprop="datePublished" content="2019-09-11T00:00:00+08:00">
+    <meta itemprop="keywords" content="GO,slice,array,学习记录"><div class="js-article-content"><div class="layout--article"><!-- start custom article top snippet -->
 
-grep -E ‘word1|word2’ 文件名
+<!-- end custom article top snippet --><div class="article__content" itemprop="articleBody"><h2 id="array">Array</h2>
 
-ping -qc1 google.com 2&gt;&amp;1 | awk -F’/’ ‘END{ print (/^rtt/? “OK “$5” ms”:”FAIL”) }’
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>func main() {
+    nums := [3]int{} //定义并初始化一个array
+    nums[0] = 1
 
+    n := nums[0]
+    n = 2
 
-  ping -qc1 : 不输出ping 的过程；
-2&gt;&amp;1 : 将标准警告（2）重定向到标准输出（1）；
-awk -F’/’ 定位最后一行（END）如果是以rtt开头 输出OK 并打印$5,如果是其他的信息，输出FAIL。
+    fmt.Printf("nums: %v\n", nums)
+    fmt.Printf("n: %d\n", n)
+}
+</code></pre></div></div>
 
+<p>我们可得知在 Go 中，数组类型需要指定长度和元素类型。在上述代码中，可得知 [3]int{} 表示 3 个整数的数组，并进行了初始化。底层数据存储为一段连续的内存空间，通过固定的索引值（下标）进行检索</p>
 
-ping -qc4 47.240.25.22 2&gt;&amp;1   |grep rtt |awk -F ‘[/= ]’ ‘{print “...</div><p><a href="/2019/08/13/grep_awk.html">阅读更多</a></p></div><div class="article__info clearfix"><ul class="left-col menu"><li>
-              <a class="button button--secondary button--pill button--sm"
-                href="/archive.html?tag=linux">linux</a>
-            </li><li>
-              <a class="button button--secondary button--pill button--sm"
-                href="/archive.html?tag=grep">grep</a>
-            </li><li>
-              <a class="button button--secondary button--pill button--sm"
-                href="/archive.html?tag=awk">awk</a>
-            </li></ul><ul class="right-col menu"><li><i class="far fa-calendar-alt"></i> <span>2019年 08月13日</span>
-            </li></ul></div><meta itemprop="author" content="雷永成|Ray_YC"/><meta itemprop="datePublished" content="2019-08-13T00:00:00+08:00">
-    <meta itemprop="keywords" content="linux,grep,awk"></div>
-      </article><article class="item" itemscope itemtype="http://schema.org/BlogPosting"><div class="item__content">
-          <header><a href="/document/2019/08/09/select_VS_switch.html"><h2 itemprop="headline" class="item__header">Go switch VS select</h2></a></header>
-          <div class="item__description"><div class="article__content" itemprop="description articleBody">switch is used to make a decision based on a variable value of any type.
+<ul>
+  <li>数组类型需要指定长度和元素类型。</li>
+  <li>数组在声明后，其元素的初始值（也就是零值）为 0。并且该变量可以直接使用，不需要特殊操作。</li>
+  <li>同时数组的长度是固定的，它的长度是类型的一部分。因此 [3]int 和 [4]int 在类型上是不同的，不能称为 “一个东西”。</li>
+</ul>
 
-switch用于根据任何类型的变量值做出决定。
+<h2 id="slice">slice</h2>
 
+<p>slice 本质上是在数组之上提供了访问指定范围内（起始索引和终止索引）的数组数据。</p>
 
-  Read this for more details:
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>func main() {
+    nums := [3]int{}
+    nums[0] = 1
 
+    dnums := nums[:]
 
-Go’s switch is more general than C’s. The expressions need not be constants or even integers, the cases are evaluated top to bottom until a match is found, and if the switch has no expression it switches on true. It...</div><p><a href="/document/2019/08/09/select_VS_switch.html">阅读更多</a></p></div><div class="article__info clearfix"><ul class="left-col menu"><li>
-              <a class="button button--secondary button--pill button--sm"
-                href="/archive.html?tag=GO-lang">GO-lang</a>
-            </li></ul><ul class="right-col menu"><li><i class="far fa-calendar-alt"></i> <span>2019年 08月09日</span>
-            </li></ul></div><meta itemprop="author" content="雷永成|Ray_YC"/><meta itemprop="datePublished" content="2019-08-09T00:00:00+08:00">
-    <meta itemprop="keywords" content="GO-lang"></div>
-      </article><article class="item" itemscope itemtype="http://schema.org/BlogPosting"><div class="item__content">
-          <header><a href="/2019/08/07/try-goroutine.html"><h2 itemprop="headline" class="item__header">goroutine学习记录</h2></a></header>
-          <div class="item__description"><div class="article__content" itemprop="description articleBody">学习下goroutine的使用方法
+    fmt.Printf("dnums: %v", dnums)
+}
+</code></pre></div></div>
+<h2 id="golang-的堆和栈">golang 的堆和栈</h2>
 
-goroutine是Go并行设计的核心。
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>var p *int    //全局指针变量
+func f(){
+    var i int
+    i = 1
+    p = &amp;i    //全局指针变量指向局部变量i
+}
+</code></pre></div></div>
 
-goroutine说到底其实就是协程，但是它比线程更小，十几个goroutine可能体现在底层就是五六个线程，Go语言内部帮你实现了这些goroutine之间的内存共享。执行goroutine只需极少的栈内存 (大概是4~5KB) ，当然会根据相应的数据伸缩。也正因为如此，可同时运行成千上万个并发任务。goroutine比thread更易用、更高效、更轻便。
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>func f(){
+    p := new(int) //局部指针变量，使用new申请的空间
+    *p = 1
+}
+</code></pre></div></div>
+<ul>
+  <li>上面程序中，第一个程序虽然i是通过var申请的局部变量，但是由于有外部指针指向访问，我们有路径可找到这个空间（变量能够逃逸出函数），所以局部变量i是申请在堆空间上。而第二个程序中p指针变量虽然是使用new申请的空间，但是由于退出函数就没有路径可寻找到它（变量无法逃出函数），所以局部变量p是申请在栈空间上的。</li>
+</ul>
+</div><section class="article__sharing d-print-none"></section><div class="d-print-none"><footer class="article__footer"><meta itemprop="dateModified" content="2019-09-11T00:00:00+08:00"><!-- start custom article footer snippet -->
 
-goroutine通过go关键字实现了，其实就是一个普通的函数。
-通过关键字go就启动了一个goroutine
+<!-- end custom article footer snippet --><div class="article__subscribe"><div class="subscribe"><i class="fas fa-rss"></i> <a type="application/rss+xml" href="/feed.xml">订阅</a></div></div><div class="article__license"><div class="license">
+    <p>本文遵守 <a itemprop="license" rel="license" href="https://creativecommons.org/licenses/by-nc/4.0/">Attribution-NonCommercial 4.0 International</a> 许可协议。
+      <a rel="license" href="https://creativecommons.org/licenses/by-nc/4.0/">
+        <img alt="Attribution-NonCommercial 4.0 International" src="https://i.creativecommons.org/l/by-nc/4.0/88x31.png" />
+      </a>
+    </p>
+  </div></div></footer><div class="article__section-navigator clearfix"><div class="previous"><span>上篇</span><a href="/2019/09/10/go-%E7%9F%A5%E8%AF%86%E7%82%B9.html">go知识点</a></div></div></div>
 
-1
-go hello(a, b, c)
+</div>
 
+<script>(function() {
+  var SOURCES = window.TEXT_VARIABLES.sources;
+  window.Lazyload.js(SOURCES.jquery, function() {
+    $(function() {
+      var $this ,$scroll;
+      var $articleContent = $('.js-article-content');
+      var hasSidebar = $('.js-page-root').hasClass('layout--page--sidebar');
+      var scroll = hasSidebar ? '.js-page-main' : 'html, body';
+      $scroll = $(scroll);
 
-goroutine 的设计要遵循：不通过共享来通信，而是通过通信来共享。
-
-gorouti...</div><p><a href="/2019/08/07/try-goroutine.html">阅读更多</a></p></div><div class="article__info clearfix"><ul class="left-col menu"><li>
-              <a class="button button--secondary button--pill button--sm"
-                href="/archive.html?tag=GO-lang">GO-lang</a>
-            </li></ul><ul class="right-col menu"><li><i class="far fa-calendar-alt"></i> <span>2019年 08月07日</span>
-            </li></ul></div><meta itemprop="author" content="雷永成|Ray_YC"/><meta itemprop="datePublished" content="2019-08-07T00:00:00+08:00">
-    <meta itemprop="keywords" content="GO-lang"></div>
-      </article><article class="item" itemscope itemtype="http://schema.org/BlogPosting"><div class="item__content">
-          <header><a href="/2019/08/03/grpc1.html"><h2 itemprop="headline" class="item__header">grpc初识</h2></a></header>
-          <div class="item__description"><div class="article__content" itemprop="description articleBody">使用grpc  内置的 protobuf 协议，其 DSL 语法 可清晰定义服务间通信的数据结构。
-可参考：gRPC Go: Beyond the basics
-
-编写好.proto 文件后可以使用Makefile 进行构建
-
-1
-2
-3
-4
-5
-build:
-    # 一定要注意 Makefile 中的缩进，否则 make build 可能报错 Nothing to be done for build
-    # protoc 命令前边是一个 Tab，不是四个或八个空格
-    # grpc:后面最好跟绝对路径
-    protoc -I. --go_out=plugins=grpc:$(GOPATH)/src/shippy/consignment-service proto/co...</div><p><a href="/2019/08/03/grpc1.html">阅读更多</a></p></div><div class="article__info clearfix"><ul class="left-col menu"><li>
-              <a class="button button--secondary button--pill button--sm"
-                href="/archive.html?tag=GO-lang">GO-lang</a>
-            </li></ul><ul class="right-col menu"><li><i class="far fa-calendar-alt"></i> <span>2019年 08月03日</span>
-            </li></ul></div><meta itemprop="author" content="雷永成|Ray_YC"/><meta itemprop="datePublished" content="2019-08-03T08:41:13+08:00">
-    <meta itemprop="keywords" content="GO-lang"></div>
-      </article><article class="item" itemscope itemtype="http://schema.org/BlogPosting"><div class="item__content">
-          <header><a href="/2019/08/01/Ubuntu-set-rc.local.html"><h2 itemprop="headline" class="item__header">ubuntu1804 设置开机启动脚本</h2></a></header>
-          <div class="item__description"><div class="article__content" itemprop="description articleBody">在Ubuntu 1804 中使用/etc/rc.local
-
-1、systemd默认读取/etc/systemd/system下的配置文件，该目录下的文件会链接/lib/systemd/system/下的文件。一般系统安装完/lib/systemd/system/下会有rc-local.service文件，即我们需要的配置文件。
-
-可以复制一份 不去动/lib/systemd/system/下面的文件
-
-cp /lib/systemd/system/rc-local.service /etc/systemd/system/
-
-1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12
-13
-14
-15
-16
-17
-18
-19
-20
-21
-22
-23
-24
-25
-26
-27
-#  SPDX-L...</div><p><a href="/2019/08/01/Ubuntu-set-rc.local.html">阅读更多</a></p></div><div class="article__info clearfix"><ul class="left-col menu"><li>
-              <a class="button button--secondary button--pill button--sm"
-                href="/archive.html?tag=linux">linux</a>
-            </li></ul><ul class="right-col menu"><li><i class="far fa-calendar-alt"></i> <span>2019年 08月01日</span>
-            </li></ul></div><meta itemprop="author" content="雷永成|Ray_YC"/><meta itemprop="datePublished" content="2019-08-01T00:00:00+08:00">
-    <meta itemprop="keywords" content="linux"></div>
-      </article></div>
-</div><div class="layout--home"><div class="pagination"><p>共计 20 篇文章，3 页。</p>
-    <div class="pagination__menu">
-      <ul class="menu menu--nowrap"><li><a class="button button--secondary button--circle" href="/">
-            <i class="fas fa-angle-left"></i>
-          </a></li><li>
-              <a class="button button--secondary button--circle" href="/"><span>1</span></a>
-            </li><li>
-              <div class="button button--primary button--circle focus"><span>2</span></div>
-            </li><li>
-                <a class="button button--secondary button--circle" href="/page3"><span>3</span></a>
-              </li><li><a class="button button--secondary button--circle" href="/page3">
-            <i class="fas fa-angle-right"></i>
-          </a></li></ul>
-    </div>
-  </div></div>
-<script>/*(function () {
-
-})();*/
-</script>
-
-
-</div><section class="page__comments d-print-none"></section></article><!-- start custom main bottom snippet -->
+      $articleContent.find('.highlight').each(function() {
+        $this = $(this);
+        $this.attr('data-lang', $this.find('code').attr('data-lang'));
+      });
+      $articleContent.find('h1[id], h2[id], h3[id], h4[id], h5[id], h6[id]').each(function() {
+        $this = $(this);
+        $this.append($('<a class="anchor d-print-none" aria-hidden="true"></a>').html('<i class="fas fa-anchor"></i>'));
+      });
+      $articleContent.on('click', '.anchor', function() {
+        $scroll.scrollToAnchor('#' + $(this).parent().attr('id'), 400);
+      });
+    });
+  });
+})();
+</script></div><section class="page__comments d-print-none"></section></article><!-- start custom main bottom snippet -->
 
 <!-- end custom main bottom snippet --></div>
             </div></div></div><div class="page__footer d-print-none">
@@ -1229,6 +933,68 @@ window.Lazyload.js([SOURCES.jquery, PAHTS.search_js], function() {
 /*(function () {
 
 })();*/
+</script><script>
+  /* toc must before affix, since affix need to konw toc' height. */(function() {
+  var SOURCES = window.TEXT_VARIABLES.sources;
+  var TOC_SELECTOR = window.TEXT_VARIABLES.site.toc.selectors;
+  window.Lazyload.js(SOURCES.jquery, function() {
+    var $window = $(window);
+    var $articleContent = $('.js-article-content');
+    var $tocRoot = $('.js-toc-root'), $col2 = $('.js-col-aside');
+    var toc;
+    var tocDisabled = false;
+    var hasSidebar = $('.js-page-root').hasClass('layout--page--sidebar');
+    var hasToc = $articleContent.find(TOC_SELECTOR).length > 0;
+
+    function disabled() {
+      return $col2.css('display') === 'none' || !hasToc;
+    }
+
+    tocDisabled = disabled();
+
+    toc = $tocRoot.toc({
+      selectors: TOC_SELECTOR,
+      container: $articleContent,
+      scrollTarget: hasSidebar ? '.js-page-main' : null,
+      scroller: hasSidebar ? '.js-page-main' : null,
+      disabled: tocDisabled
+    });
+
+    $window.on('resize', window.throttle(function() {
+      tocDisabled = disabled();
+      toc && toc.setOptions({
+        disabled: tocDisabled
+      });
+    }, 100));
+
+  });
+})();
+(function() {
+  var SOURCES = window.TEXT_VARIABLES.sources;
+  window.Lazyload.js(SOURCES.jquery, function() {
+    var $window = $(window), $pageFooter = $('.js-page-footer');
+    var $pageAside = $('.js-page-aside');
+    var affix;
+    var tocDisabled = false;
+    var hasSidebar = $('.js-page-root').hasClass('layout--page--sidebar');
+
+    affix = $pageAside.affix({
+      offsetBottom: $pageFooter.outerHeight(),
+      scrollTarget: hasSidebar ? '.js-page-main' : null,
+      scroller: hasSidebar ? '.js-page-main' : null,
+      scroll: hasSidebar ? $('.js-page-main').children() : null,
+      disabled: tocDisabled
+    });
+
+    $window.on('resize', window.throttle(function() {
+      affix && affix.setOptions({
+        disabled: tocDisabled
+      });
+    }, 100));
+
+    window.pageAsideAffix = affix;
+  });
+})();
 </script>
     </div>      
     <script>(function () {
