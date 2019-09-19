@@ -278,6 +278,51 @@
               <div class="col-main cell cell--auto"><!-- start custom main top snippet -->
 
 <!-- end custom main top snippet --><article itemscope itemtype="http://schema.org/WebPage"><meta itemprop="headline" content="浮名浮利，虚苦劳神。叹隙中驹，石中火，梦中身。——苏轼《行香子·述怀》"><meta itemprop="author" content="雷永成|Ray_YC"/><div class="js-article-content"><div class="layout--articles"><div class="article-list items items--divided"><article class="item" itemscope itemtype="http://schema.org/BlogPosting"><div class="item__content">
+          <header><a href="/2019/09/17/go-scripts.html"><h2 itemprop="headline" class="item__header">Go 脚本记录说明</h2></a></header>
+          <div class="item__description"><div class="article__content" itemprop="description articleBody">翻转一个整数
+
+  输入123,返回321；输入-321返回-123
+  输入的整数要求是一个 32bit 有符号数，如果反转后溢出，则输出 0
+
+
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+func reverse(x int) (num int) {
+	for x != 0 {
+		num = num*10 + x%10
+		x = x / 10
+	}
+	// 使用 math 包中定义好的最大最小值
+	if num &gt; math.MaxInt32 || num &lt; math.MinInt32 {
+		return 0
+	}
+	return
+}
+
+
+
+  
+    
+      2、3、4行进行翻转操作。
+      输入123，第二行先判断是否为0；不为0 就进入...</div><p><a href="/2019/09/17/go-scripts.html">阅读更多</a></p></div><div class="article__info clearfix"><ul class="left-col menu"><li>
+              <a class="button button--secondary button--pill button--sm"
+                href="/archive.html?tag=GO">GO</a>
+            </li><li>
+              <a class="button button--secondary button--pill button--sm"
+                href="/archive.html?tag=%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95">学习记录</a>
+            </li></ul><ul class="right-col menu"><li><i class="far fa-calendar-alt"></i> <span>2019年 09月17日</span>
+            </li></ul></div><meta itemprop="author" content="雷永成|Ray_YC"/><meta itemprop="datePublished" content="2019-09-17T00:00:00+08:00">
+    <meta itemprop="keywords" content="GO,学习记录"></div>
+      </article><article class="item" itemscope itemtype="http://schema.org/BlogPosting"><div class="item__content">
           <header><a href="/2019/09/11/go-slice_and_array.html"><h2 itemprop="headline" class="item__header">Go 的slice和array</h2></a></header>
           <div class="item__description"><div class="article__content" itemprop="description articleBody">Array
 
@@ -315,7 +360,12 @@ func main() {
     <meta itemprop="keywords" content="GO,slice,array,学习记录"></div>
       </article><article class="item" itemscope itemtype="http://schema.org/BlogPosting"><div class="item__content">
           <header><a href="/2019/09/10/go-%E7%9F%A5%E8%AF%86%E7%82%B9.html"><h2 itemprop="headline" class="item__header">go知识点</h2></a></header>
-          <div class="item__description"><div class="article__content" itemprop="description articleBody">golang 的堆和栈
+          <div class="item__description"><div class="article__content" itemprop="description articleBody">编码长度
+
+  汉字占3个字节，普通字符占1个字节。
+
+
+golang 的堆和栈
 
 var p *int    //全局指针变量
 func f(){
@@ -330,11 +380,7 @@ func f(){
     *p = 1
 }
 
-上面程序中，第一个程序虽然i是通过var申请的局部变量，但是由于有外部指针指向访问，我们有路径可找到这个空间（变量能够逃逸出函数），所以局部变量i是申请在堆空间上。而第二个程序中p指针变量虽然是使用new申请的空间，但是由于退出函数就没有路径可寻找到它（变量无法逃出函数），所以局部变量p是申请在栈空间上的。
-
-
-  
-    golang 1.13 d...</div><p><a href="/2019/09/10/go-%E7%9F%A5%E8%AF%86%E7%82%B9.html">阅读更多</a></p></div><div class="article__info clearfix"><ul class="left-col menu"><li>
+上面程序中，第一个程序虽然i是通过var申请的局部变量，但是由于有外部指针指向访问，我们有路径可找到这个空间（变量能够逃逸出函数），所以局部变量i是申请在堆空间上。而第二个程序中p指针变量虽然是使用new申请的空间，但是由于退出函数就没有路径可寻找到它（变量无法逃出函数），所以局部变量p是申请在...</div><p><a href="/2019/09/10/go-%E7%9F%A5%E8%AF%86%E7%82%B9.html">阅读更多</a></p></div><div class="article__info clearfix"><ul class="left-col menu"><li>
               <a class="button button--secondary button--pill button--sm"
                 href="/archive.html?tag=GO">GO</a>
             </li><li>
@@ -533,43 +579,8 @@ Socket介绍
             </li></ul><ul class="right-col menu"><li><i class="far fa-calendar-alt"></i> <span>2019年 08月21日</span>
             </li></ul></div><meta itemprop="author" content="雷永成|Ray_YC"/><meta itemprop="datePublished" content="2019-08-21T00:00:00+08:00">
     <meta itemprop="keywords" content="GO,socket,学习笔记"></div>
-      </article><article class="item" itemscope itemtype="http://schema.org/BlogPosting"><div class="item__content">
-          <header><a href="/2019/08/21/golang-%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%93%8D%E4%BD%9C.html"><h2 itemprop="headline" class="item__header">golang 字符串操作</h2></a></header>
-          <div class="item__description"><div class="article__content" itemprop="description articleBody">Go 字符串处理的常用函数
-
-Go标准库中的strings和strconv两个包里面有一些最常用的字符串操作函数
-
-strings 包中的常用函数
-
-strings官方文档
-
-func Contains(s,substr string) bool
-
-字符串s中是否包含 substr 返回bool值
-
-1
-2
-3
-4
-5
-6
-7
-8
-9
-fmt.Println(strings.Contains("seafood", "foo"))
-fmt.Println(strings.Contains("seafood", "bar"))
-fmt.Println(strings.Contains("seafood", ""))
-fmt.Println(strings.Contains("", ""))...</div><p><a href="/2019/08/21/golang-%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%93%8D%E4%BD%9C.html">阅读更多</a></p></div><div class="article__info clearfix"><ul class="left-col menu"><li>
-              <a class="button button--secondary button--pill button--sm"
-                href="/archive.html?tag=GO">GO</a>
-            </li><li>
-              <a class="button button--secondary button--pill button--sm"
-                href="/archive.html?tag=go%E5%AD%97%E7%AC%A6%E4%B8%B2">go字符串</a>
-            </li></ul><ul class="right-col menu"><li><i class="far fa-calendar-alt"></i> <span>2019年 08月21日</span>
-            </li></ul></div><meta itemprop="author" content="雷永成|Ray_YC"/><meta itemprop="datePublished" content="2019-08-21T00:00:00+08:00">
-    <meta itemprop="keywords" content="GO,go字符串"></div>
       </article></div>
-</div><div class="layout--home"><div class="pagination"><p>共计 20 篇文章，3 页。</p>
+</div><div class="layout--home"><div class="pagination"><p>共计 21 篇文章，3 页。</p>
     <div class="pagination__menu">
       <ul class="menu menu--nowrap"><li><div class="button button--secondary button--circle disabled">
             <i class="fas fa-angle-left"></i>
