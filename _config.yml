@@ -16,18 +16,19 @@
 
 ## => Site Settings
 ##############################
-text_skin: default # "default" (default), "dark", "forest", "ocean", "chocolate", "orange"
-highlight_theme: default # "default" (default), "tomorrow", "tomorrow-night", "tomorrow-night-eighties", "tomorrow-night-blue", "tomorrow-night-bright"
-url     : # the base hostname & protocol for your site e.g. https://www.someone.com
+text_skin: forest # "default" (default), "dark", "forest", "ocean", "chocolate", "orange"
+highlight_theme: tomorrow-night-eighties # "default" (default), "tomorrow", "tomorrow-night", "tomorrow-night-eighties", "tomorrow-night-blue", "tomorrow-night-bright"
+url     : https://lyc10031.github.io # the base hostname & protocol for your site e.g. https://www.someone.com
 baseurl : # does not include hostname
-title   : Your Site Title
-description: > # this means to ignore newlines until "Language & timezone"
-  Your Site Description
+title   : Ray_YC's Blog
+description: >   # this means to ignore newlines until "Language & timezone"
+  欢迎访问我的博客。
+  浮名浮利，虚苦劳神。叹隙中驹，石中火，梦中身。——苏轼《行香子·述怀》
 
 
 ## => Language and Timezone
 ##############################
-lang: # the language of your site, default as "en"
+lang: zh-CN # the language of your site, default as "en"
 timezone: # see https://en.wikipedia.org/wiki/List_of_tz_database_time_zones for the available values
 
 
@@ -35,27 +36,27 @@ timezone: # see https://en.wikipedia.org/wiki/List_of_tz_database_time_zones for
 ##############################
 author:
   type      : # "person" (default), "organization"
-  name      : Your Name
-  url       :
+  name      : 雷永成|Ray_YC
+  url       : https://github.com/lyc10031
   avatar    : # path or url of avatar image (square)
   bio       : I am an amazing person.
-  email     :
+  email     : lyc10031@126.com
   facebook  : # "user_name" the last part of your profile url, e.g. https://www.facebook.com/user_name
   twitter   : # "user_name" the last part of your profile url, e.g. https://twitter.com/user_name
   weibo     : # "user_id"   the last part of your profile url, e.g. https://www.weibo.com/user_id/profile?...
   googleplus: # "user_id"   the last part of your profile url, e.g. https://plus.google.com/u/0/user_id
   telegram  : # "user_name" the last part of your profile url, e.g. https://t.me/user_name
   medium    : # "user_name" the last part of your profile url, e.g. https://medium.com/user_name
-  zhihu     : # "user_name" the last part of your profile url, e.g. https://www.zhihu.com/people/user_name
+  zhihu     : lei-yong-cheng-10 # "user_name" the last part of your profile url, e.g. https://www.zhihu.com/people/user_name
   douban    : # "user_name" the last part of your profile url, e.g. https://www.douban.com/people/user_name
   linkedin  : # "user_name" the last part of your profile url, e.g. https://www.linkedin.com/in/user_name
-  github    : # "user_name" the last part of your profile url, e.g. https://github.com/user_name
+  github    : lyc10031 # "user_name" the last part of your profile url, e.g. https://github.com/user_name
   npm       : # "user_name" the last part of your profile url, e.g. https://www.npmjs.com/~user_name
 
 
 ## => GitHub Repository (if the site is hosted by GitHub)
 ##############################
-repository: user_name/repo_name
+repository: lyc10031/lyc10031.github.io
 repository_tree: master
 
 
@@ -118,7 +119,7 @@ sharing:
 ## => Comments
 ##############################
 comments:
-  provider: false # false (default), "disqus", "gitalk", "valine", "custom"
+  provider: gitalk # false (default), "disqus", "gitalk", "valine", "custom"
 
   ## Disqus
   disqus:
@@ -127,11 +128,11 @@ comments:
   ## Gitalk
   # please refer to https://github.com/gitalk/gitalk for more info.
   gitalk:
-    clientID    : # GitHub Application Client ID
-    clientSecret: # GitHub Application Client Secret
-    repository  : # GitHub repo
-    owner       : # GitHub repo owner
-    admin: # GitHub repo owner and collaborators, only these guys can initialize GitHub issues, IT IS A LIST.
+    clientID    : 2eb31db092ab526dd67d # GitHub Application Client ID
+    clientSecret: 09155f7ac648ec029375fb0b4367e84c75b79369 # GitHub Application Client Secret
+    repository  : gitalk # GitHub repo
+    owner       : lyc10031 # GitHub repo owner
+    admin: lyc10031 # GitHub repo owner and collaborators, only these guys can initialize GitHub issues, IT IS A LIST.
       # - your GitHub Id
 
   ## Valine
