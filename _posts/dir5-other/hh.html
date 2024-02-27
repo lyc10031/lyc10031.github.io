@@ -1,75 +1,51 @@
-
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>3D贪吃蛇示例</title>
+    <meta charset="UTF-8">
+    <title>Three.js 3D 贪吃蛇</title>
     <style>
         body { margin: 0; }
         canvas { display: block; }
     </style>
 </head>
 <body>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="https://threejs.org/build/three.js"></script>
 <script>
-    let scene, camera, renderer, snakeMesh, foodMesh;
+    let scene, camera, renderer, cube;
 
     function init() {
-        // 创建场景
+        // 场景
         scene = new THREE.Scene();
-        scene.background = new THREE.Color(0xabcdef);
-
-        // 创建和设置摄像机
-        camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-        camera.position.set(0, 50, 100);
-        camera.lookAt(0, 0, 0);
-
-        // 创建渲染器并添加到HTML
+        
+        // 相机
+        camera = new THREE.PerspectiveCamera(75, window.innerWidth/window.innerHeight, 0.1, 1000);
+        camera.position.z = 5;
+        
+        // 渲染器
         renderer = new THREE.WebGLRenderer();
         renderer.setSize(window.innerWidth, window.innerHeight);
         document.body.appendChild(renderer.domElement);
-
-        // 添加光源
-        const light = new THREE.DirectionalLight(0xffffff, 1);
-        light.position.set(0, 20, 10);
-        scene.add(light);
-
-        // 创建3D对象
-        createSnake();
-        createFood();
-
+        
+        // 创建一个立方体代表蛇头
+        const geometry = new THREE.BoxGeometry();
+        const material = new THREE.MeshBasicMaterial({color: 0x00ff00});
+        cube = new THREE.Mesh(geometry, material);
+        scene.add(cube);
+        
         // 渲染场景
         animate();
     }
-
-    function createSnake() {
-        const geometry = new THREE.BoxGeometry(5, 5, 5);
-        const material = new THREE.MeshLambertMaterial({ color: 0x00ff00 });
-        snakeMesh = new THREE.Mesh(geometry, material);
-        scene.add(snakeMesh);
-    }
-
-    function createFood() {
-        const geometry = new THREE.SphereGeometry(3, 32, 32);
-        const material = new THREE.MeshLambertMaterial({ color: 0xff0000 });
-        foodMesh = new THREE.Mesh(geometry, material);
-        foodMesh.position.set(15, 0, 0); // 举例放置食物
-        scene.add(foodMesh);
-    }
-
+    
     function animate() {
         requestAnimationFrame(animate);
 
-        // 在这里添加移动和游戏逻辑
+        // 简单的动画效果，你可以根据键盘输入来控制移动
+        cube.rotation.x += 0.01;
+        cube.rotation.y += 0.01;
 
         renderer.render(scene, camera);
     }
-
-    window.addEventListener('resize', () => {
-        camera.aspect = window.innerWidth / window.innerHeight;
-        camera.updateProjectionMatrix();
-        renderer.setSize(window.innerWidth, window.innerHeight);
-    });
-
+    
     init();
 </script>
 </body>
